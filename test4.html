@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Halfbaked Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+<script src="threejs/build/three.js"></script>
+<script src="threejs/examples/js/controls/OrbitControls.js"></script>
+<script src="threejs/examples/js/loaders/GLTFLoader.js"></script>
+<script src="threejs/examples/js/loaders/BasisTextureLoader.js"></script>
+<script src="js/jquery-3.4.1.js"></script>
+
+<script>
+
+  var camera, // We need a camera.
+    scene, // The camera has to see something.
+    renderer, // Render our graphics.
+    controls, // Our Orbit Controller for camera magic.
+    container, // Our HTML container for the program.
+    rotationPoint;  // The point in which our camera will rotate around.
+
+
+  if (1 == 1) {
+    // Load 3D Scene
+    scene = new THREE.Scene();
+
+    // Load Camera Perspektive
+
+    camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.set( 1000, 50, 1500 );
+//    camera.up = new THREE.Vector3(0,1,0);
+//    camera.lookAt(new THREE.Vector3(1000,0,10));
+
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild(renderer.domElement);
+    renderer.gammaInput = true;
+    renderer.gammaOutput = true;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.gammaFactor = 4.2;
+//    renderer.setClearColor(0xC5C5C3);
+
+
+    // Load the Orbitcontroller
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+
+    scene.background = new THREE.Color( 0xcce0ff );
+    scene.fog = new THREE.Fog( 0xcce0ff, 500, 10000 );
+    scene.add( new THREE.AmbientLight( 0x666666 ) );
+
+    var light = new THREE.DirectionalLight( 0xdfebff, 1 );
+    light.position.set( 30, 100, 100 );
+    light.position.multiplyScalar( 1.3 );
+    light.castShadow = true;
+
+    light.shadow.bias = -0.4;
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+    var d = 300;
+    light.shadow.camera.left = - d;
+    light.shadow.camera.right = d;
+    light.shadow.camera.top = d;
+    light.shadow.camera.bottom = - d;
+    light.shadow.camera.far = 1000;
+    scene.add( light );
+
+    const color = 0xFFFFFF;
+    const intensity = 1;
+    const light2 = new THREE.DirectionalLight(color, intensity);
+    light2.castShadow = true;
+    light2.position.set(-250, 800, -850);
+    light2.target.position.set(-550, 40, -450);
+
+    light2.shadow.bias = -0.004;
+    light2.shadow.mapSize.width = 2048;
+    light2.shadow.mapSize.height = 2048;
+
+    scene.add(light2);
+    scene.add(light2.target);
+
+    const cam = light2.shadow.camera;
+    cam.near = 1;
+    cam.far = 2000;
+    cam.left = -1500;
+    cam.right = 1500;
+    cam.top = 1500;
+    cam.bottom = -1500;
+
+    const dirLightHelper = new THREE.DirectionalLightHelper(light2, 1);
+    scene.add(dirLightHelper);
+
+
+    // // Load Light
+    // var ambientLight = new THREE.AmbientLight( 0xcccccc );
+    // scene.add( ambientLight );
+    //
+    // var directionalLight = new THREE.DirectionalLight( 0xffffff );
+    // directionalLight.position.set( 0, 1, 1 ).normalize();
+    // scene.add( directionalLight );
+
+    // glTf 2.0 Loader
+    var loader = new THREE.GLTFLoader();
+    var loaderTexture= new THREE.TextureLoader();
+
+    loader.load('./gltf_lib/wagon2/SF_Veh_HouseWagon_01.gltf', function (gltf) {             // <<--------- Model Path
+      var object = gltf.scene;
+
+      gltf.scene.scale.set(2000, 2000, 2000);
+      gltf.scene.position.x = 200;				    //Position (x = right+ left-)
+      gltf.scene.position.y = -1;				    //Position (y = up+, down-)
+      gltf.scene.position.z = 0;				    //Position (z = front +, back-)
+
+      scene.add(gltf.scene);
+      const root = gltf.scene;
+      root.traverse((obj) => {
+        if (obj.castShadow !== undefined) {
+          obj.castShadow = true;
+          obj.receiveShadow = true;
+        }
+      });
+
+    });
+
+    loader.load('./gltf_lib/windmill/SF_Bld_House_Windmill_01.gltf', function (gltf) {             // <<--------- Model Path
+      var object = gltf.scene;
+
+      gltf.scene.scale.set(2000, 2000, 2000);
+      gltf.scene.position.x = 0;				    //Position (x = right+ left-)
+      gltf.scene.position.y = -1;				    //Position (y = up+, down-)
+      gltf.scene.position.z = 0;				    //Position (z = front +, back-)
+
+      scene.add(gltf.scene);
+
+      const root = gltf.scene;
+      root.traverse((obj) => {
+        if (obj.castShadow !== undefined) {
+          obj.castShadow = true;
+          obj.receiveShadow = true;
+        }
+      });
+
+    });
+
+    //ground
+    var groundTexture = loaderTexture.load( './threejs/examples/textures/terrain/grasslight-big.jpg' );
+    groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+    groundTexture.repeat.set( 25, 25 );
+    groundTexture.anisotropy = 16;
+    var groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
+    var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 20000, 20000 ), groundMaterial );
+    mesh.position.y = -1;
+    mesh.rotation.x = - Math.PI / 2;
+    mesh.receiveShadow = true;
+    scene.add( mesh );
+
+
+    //skybox
+    var urls = [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ];
+    var loaderCube = new THREE.CubeTextureLoader().setPath( './threejs/examples/textures/cube/skyboxsun25deg/');
+    loaderCube.load( urls, function ( texture ) {
+      scene.background = texture;
+    } );
+
+
+    // controls
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.maxPolarAngle = Math.PI * 0.5;
+    controls.minDistance = 1000;
+    controls.maxDistance = 5000;
+    controls.target = new THREE.Vector3(0, 2, 0);
+
+
+
+    function animate() {
+      render();
+      requestAnimationFrame(animate);
+    }
+
+    function render() {
+      renderer.render(scene, camera);
+    }
+
+    render();
+    animate();
+  }
+
+</script>
+</body>
+</html>

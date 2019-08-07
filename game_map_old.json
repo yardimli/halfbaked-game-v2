@@ -1,0 +1,730 @@
+[
+  {
+    "Name": "Fence",
+    "FileName": "./gltf_lib2/Fence_Stone/Fence_Stone.gltf",
+    "Position": [
+      0,
+      0,
+      -350
+    ],
+    "Scale": [
+      1000,
+      2000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 14,
+    "RepeatSpacing": [
+      0,
+      0,
+      50
+    ]
+  },
+
+
+  {
+    "Name": "CounterTop1",
+    "FileName": "./gltf_lib2/Crate/Crate.gltf",
+    "Position": [
+      100,
+      10,
+      -100
+    ],
+    "Scale": [
+      2000,
+      2000,
+      2000
+    ],
+    "Rotate": [
+      0,
+      90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 10,
+    "RepeatSpacing": [
+      0,
+      0,
+      25
+    ]
+  },
+
+  {
+    "Name": "CounterTop2",
+    "FileName": "./gltf_lib2/Crate_02/Crate_02.gltf",
+    "Position": [
+      250,
+      0,
+      -100
+    ],
+    "Scale": [
+      2000,
+      2000,
+      2000
+    ],
+    "Rotate": [
+      0,
+      90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 10,
+    "RepeatSpacing": [
+      0,
+      0,
+      40
+    ]
+  },
+
+  {
+    "Name": "CounterTop3",
+    "FileName": "./gltf_lib2/Crate/Crate.gltf",
+    "Position": [
+      400,
+      10,
+      -100
+    ],
+    "Scale": [
+      2000,
+      2000,
+      2000
+    ],
+    "Rotate": [
+      0,
+      90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 10,
+    "RepeatSpacing": [
+      0,
+      0,
+      25
+    ]
+  },
+
+  {
+    "Name": "Fence2",
+    "FileName": "./gltf_lib2/Fence_Stone/Fence_Stone.gltf",
+    "Position": [
+      600,
+      0,
+      -350
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 15,
+    "RepeatSpacing": [
+      0,
+      0,
+      50
+    ]
+  },
+
+  {
+    "Name": "Fence3",
+    "FileName": "./gltf_lib2/Fence_Stone/Fence_Stone.gltf",
+    "Position": [
+      42,
+      0,
+      -345
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      0,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 12,
+    "RepeatSpacing": [
+      50,
+      0,
+      0
+    ]
+  },
+
+
+
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Windmill/House_Windmill.gltf",
+    "Position": [
+      -50,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_02/House_02.gltf",
+    "Position": [
+      100,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_03/House_03.gltf",
+    "Position": [
+      300,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      350,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Blue_03/House_Blue_03.gltf",
+    "Position": [
+      500,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Burntdown/House_Burntdown.gltf",
+    "Position": [
+      750,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House/House.gltf",
+    "Position": [
+      750,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_02/House_02.gltf",
+    "Position": [
+      700,
+      0,
+      -400
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_03/House_03.gltf",
+    "Position": [
+      780,
+      0,
+      -200
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      350,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Blue_03/House_Blue_03.gltf",
+    "Position": [
+      800,
+      0,
+      0
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Church/House_Church.gltf",
+    "Position": [
+      759,
+      0,
+      200
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+
+
+
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House/House.gltf",
+    "Position": [
+      -200,
+      0,
+      -600
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_02/House_02.gltf",
+    "Position": [
+      -220,
+      0,
+      -400
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      50,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_03/House_03.gltf",
+    "Position": [
+      -250,
+      0,
+      -200
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      350,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Blue_03/House_Blue_03.gltf",
+    "Position": [
+      -150,
+      0,
+      0
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "House",
+    "FileName": "./gltf_lib2/House_Large/House_Large.gltf",
+    "Position": [
+      -200,
+      0,
+      200
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      290,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+
+
+
+  {
+    "Name": "Tent",
+    "FileName": "./gltf_lib2/Tent_03/Tent_03.gltf",
+    "Position": [
+      100,
+      0,
+      -220
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "Tent",
+    "FileName": "./gltf_lib2/Tent_03/Tent_03.gltf",
+    "Position": [
+      550,
+      0,
+      -220
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+  {
+    "Name": "Stall",
+    "FileName": "./gltf_lib2/Stall/Stall.gltf",
+    "Position": [
+      550,
+      0,
+      0
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "Tent",
+    "FileName": "./gltf_lib2/Tent_04/Tent_04.gltf",
+    "Position": [
+      550,
+      0,
+      300
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      -90,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  },
+
+  {
+    "Name": "Stall2",
+    "FileName": "./gltf_lib2/Stall_02/Stall_02.gltf",
+    "Position": [
+      350,
+      0,
+      -250
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      0,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  }
+
+]

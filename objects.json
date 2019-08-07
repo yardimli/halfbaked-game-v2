@@ -1,0 +1,1570 @@
+[
+  {
+    "Folder": "Anvil",
+    "Name": "Anvil",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_WheatCut",
+    "Name": "Crops_WheatCut",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "GoldBar",
+    "Name": "GoldBar",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Fishing",
+    "Name": "House_Fishing",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Pumpkin",
+    "Name": "Pumpkin",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Ballista",
+    "Name": "Ballista",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_WheatStack",
+    "Name": "Crops_WheatStack",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "GoldBar_02",
+    "Name": "GoldBar_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Large",
+    "Name": "House_Large",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Ruins_Entrance",
+    "Name": "Ruins_Entrance",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel",
+    "Name": "Barrel",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Docks",
+    "Name": "Docks",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Graveyard_Fence",
+    "Name": "Graveyard_Fence",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Large_02",
+    "Name": "House_Large_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SF_Wep_Pitchfork",
+    "Name": "SF_Wep_Pitchfork",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "BarrelStack",
+    "Name": "BarrelStack",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fantasy_Texture.png",
+    "Name": "Fantasy_Texture.png",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Graveyard_Fence_02",
+    "Name": "Graveyard_Fence_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Large_Blank",
+    "Name": "House_Large_Blank",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SF_Wep_Rapier",
+    "Name": "SF_Wep_Rapier",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "BarrelStack_02",
+    "Name": "BarrelStack_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "FarmDirt",
+    "Name": "FarmDirt",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Graveyard_Fence_03",
+    "Name": "FarmDirt",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Red",
+    "Name": "House_Red",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SignPost",
+    "Name": "SignPost",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "BarrelStack_03",
+    "Name": "BarrelStack_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "FarmDirt_02",
+    "Name": "FarmDirt_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "GrindStone",
+    "Name": "GrindStone",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Red_02",
+    "Name": "House_Red_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SignPost_02",
+    "Name": "SignPost_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_02",
+    "Name": "Barrel_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Long",
+    "Name": "Fence_Long",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Guillotine",
+    "Name": "Guillotine",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Red_03",
+    "Name": "House_Red_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SignPost_03",
+    "Name": "SignPost_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Ale",
+    "Name": "Barrel_Ale",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Long_02",
+    "Name": "Fence_Long_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HangingCages",
+    "Name": "HangingCages",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Stables",
+    "Name": "House_Stables",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "SkullPole",
+    "Name": "SkullPole",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Ale_02",
+    "Name": "Barrel_Ale_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Stone",
+    "Name": "Fence_Stone",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House",
+    "Name": "House",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Tavern",
+    "Name": "House_Tavern",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stall",
+    "Name": "Stall",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Cabbages",
+    "Name": "Barrel_Cabbages",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Stone_02",
+    "Name": "Fence_Stone_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Base",
+    "Name": "HouseAdd_Base",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Windmill",
+    "Name": "House_Windmill",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stall_02",
+    "Name": "Stall_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Coal",
+    "Name": "Barrel_Coal",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Stone_End",
+    "Name": "Fence_Stone_End",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Chimney",
+    "Name": "HouseAdd_Chimney",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Human_Stairs",
+    "Name": "Human_Stairs",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stall_03",
+    "Name": "Stall_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Gold",
+    "Name": "Barrel_Gold",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Stone_End_02",
+    "Name": "Fence_Stone_End_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Door",
+    "Name": "HouseAdd_Door",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Mangonel",
+    "Name": "Mangonel",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stands",
+    "Name": "Stands",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Barrel_Water",
+    "Name": "Barrel_Water",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Wood",
+    "Name": "Fence_Wood",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_RoofRoom",
+    "Name": "HouseAdd_RoofRoom",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Market",
+    "Name": "Market",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stands_02",
+    "Name": "Stands_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "BatteringRam",
+    "Name": "BatteringRam",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_WoodGate",
+    "Name": "Fence_WoodGate",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Sign_Blacksmith",
+    "Name": "HouseAdd_Sign_Blacksmith",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Memorial",
+    "Name": "Memorial",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stocks",
+    "Name": "Stocks",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Boat",
+    "Name": "Boat",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Wood_02",
+    "Name": "Fence_Wood_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Sign_Fish",
+    "Name": "HouseAdd_Sign_Fish",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "OutdoorCover",
+    "Name": "OutdoorCover",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Target",
+    "Name": "Target",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Bridge",
+    "Name": "Bridge",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Fence_Wood_03",
+    "Name": "Fence_Wood_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Sign_Stables",
+    "Name": "HouseAdd_Sign_Stables",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "OutdoorCover_02",
+    "Name": "OutdoorCover_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Tent",
+    "Name": "Tent",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Bridge_Stone",
+    "Name": "Bridge_Stone",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Firepit",
+    "Name": "Firepit",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Sign_Tavern",
+    "Name": "HouseAdd_Sign_Tavern",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Bend",
+    "Name": "Path_Bend",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Tent_02",
+    "Name": "Tent_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Bucket",
+    "Name": "Bucket",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Firepit_02",
+    "Name": "Firepit_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Sign_Weapons",
+    "Name": "HouseAdd_Sign_Weapons",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Bend_02",
+    "Name": "Path_Bend_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Tent_03",
+    "Name": "Tent_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Bucket_02",
+    "Name": "Bucket_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Firepit_03",
+    "Name": "Firepit_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_StoneRoom",
+    "Name": "HouseAdd_StoneRoom",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_End",
+    "Name": "Path_End",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Tent_04",
+    "Name": "Tent_04",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Bucket_03",
+    "Name": "Bucket_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag",
+    "Name": "Flag",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_StoneRoom_02",
+    "Name": "HouseAdd_StoneRoom_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_End_02",
+    "Name": "Path_End_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "TrainingDummy",
+    "Name": "TrainingDummy",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Cabbage",
+    "Name": "Cabbage",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag0",
+    "Name": "Flag0",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Tower",
+    "Name": "HouseAdd_Tower",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_End_03",
+    "Name": "Path_End_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "TrainingDummy_02",
+    "Name": "TrainingDummy_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Cabbage_02",
+    "Name": "Cabbage_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag1",
+    "Name": "Flag1",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_WaterWheel",
+    "Name": "HouseAdd_WaterWheel",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_End_04",
+    "Name": "Path_End_04",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Trebuchet",
+    "Name": "Trebuchet",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Cage",
+    "Name": "Cage",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag2",
+    "Name": "Flag2",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Window",
+    "Name": "HouseAdd_Window",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Intersection",
+    "Name": "Path_Intersection",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Walkway",
+    "Name": "Walkway",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Cart",
+    "Name": "Cart",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "FlagString",
+    "Name": "FlagString",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Window_02",
+    "Name": "HouseAdd_Window_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Intersection_02",
+    "Name": "Path_Intersection_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Walkway_02",
+    "Name": "Walkway_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Cart_Food",
+    "Name": "Cart_Food",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_02",
+    "Name": "Flag_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseAdd_Window_03",
+    "Name": "HouseAdd_Window_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Intersection_03",
+    "Name": "Path_Intersection_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Washingline",
+    "Name": "Washingline",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Chest",
+    "Name": "Chest",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_03",
+    "Name": "Flag_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "HouseWagon",
+    "Name": "HouseWagon",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Intersection_04",
+    "Name": "Path_Intersection_04",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "WaterTrough",
+    "Name": "WaterTrough",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crate",
+    "Name": "Crate",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_04",
+    "Name": "Flag_04",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_02",
+    "Name": "House_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight",
+    "Name": "Path_Straight",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Well",
+    "Name": "Well",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "CrateStack",
+    "Name": "CrateStack",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_05",
+    "Name": "Flag_05",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_03",
+    "Name": "House_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_02",
+    "Name": "Path_Straight_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Wheel",
+    "Name": "Wheel",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crate_02",
+    "Name": "Crate_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_06",
+    "Name": "Flag_06",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Blacksmith",
+    "Name": "House_Blacksmith",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_03",
+    "Name": "Path_Straight_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Wheel_02",
+    "Name": "Wheel_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crate_03",
+    "Name": "Crate_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_07",
+    "Name": "Flag_07",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Blank",
+    "Name": "House_Blank",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_04",
+    "Name": "Path_Straight_04",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "WitchesHut",
+    "Name": "WitchesHut",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_Bale",
+    "Name": "Crops_Bale",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_08",
+    "Name": "Flag_08",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Blue",
+    "Name": "House_Blue",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_05",
+    "Name": "Path_Straight_05",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "WizardsTower",
+    "Name": "WizardsTower",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_Cabbage",
+    "Name": "Crops_Cabbage",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Flag_09",
+    "Name": "Flag_09",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Blue_02",
+    "Name": "House_Blue_02",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_06",
+    "Name": "Path_Straight_06",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_Corn",
+    "Name": "Crops_Corn",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Forge",
+    "Name": "Forge",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Blue_03",
+    "Name": "House_Blue_03",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_08",
+    "Name": "Path_Straight_08",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_Pumpkin",
+    "Name": "Crops_Pumpkin",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Gallows",
+    "Name": "Gallows",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Burntdown",
+    "Name": "House_Burntdown",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Path_Straight_09",
+    "Name": "Path_Straight_09",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Crops_Wheat",
+    "Name": "Crops_Wheat",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Goblin_Fence",
+    "Name": "Goblin_Fence",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "House_Church",
+    "Name": "House_Church",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Pillar",
+    "Name": "Pillar",
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ]
+  },
+  {
+    "Folder": "Stove_02",
+    "Name": "Stove_02",
+    "Scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "Folder": "Stove_01",
+    "Name": "Stove_01",
+    "Scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "Folder": "Bed02",
+    "Name": "Bed02",
+    "Scale": [
+      1,
+      1,
+      1
+    ]
+  }
+
+
+]

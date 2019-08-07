@@ -1,0 +1,31 @@
+[
+
+  {
+    "Name": "Stall2",
+    "FileName": "./library/set1/house/Stall_02/Stall_02.gltf",
+    "Position": [
+      350,
+      0,
+      -250
+    ],
+    "Scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "Rotate": [
+      0,
+      0,
+      0
+    ],
+    "Collision": true,
+    "Repeat": 1,
+    "RepeatSpacing": [
+      0,
+      0,
+      0
+    ]
+
+  }
+
+]
