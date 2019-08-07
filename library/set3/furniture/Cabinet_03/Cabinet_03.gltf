@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 546,
+      "type": "VEC3",
+      "max": [
+        14.650593757629395,
+        39.283767700195313,
+        14.684348106384277
+      ],
+      "min": [
+        -14.650593757629395,
+        0.05182647705078125,
+        -14.684345245361328
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 546,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 546,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 546,
+      "type": "VEC2",
+      "max": [
+        0.12432773411273956,
+        0.87434273958206177
+      ],
+      "min": [
+        0.0011290567927062511,
+        0.75048166513442993
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1116,
+      "type": "SCALAR",
+      "max": [
+        545.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Cabinet_03.bin",
+      "byteLength": 30672
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6552
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6552,
+      "byteLength": 6552
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13104,
+      "byteLength": 8736
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 21840,
+      "byteLength": 4368
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 26208,
+      "byteLength": 4464
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Cabinet_03"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Cabinet_03"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Cabinet_03"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

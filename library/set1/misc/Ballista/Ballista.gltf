@@ -1,0 +1,777 @@
+{
+    "asset": {
+        "generator": "FBX2glTF v0.9.6",
+        "version": "2.0"
+    },
+    "scene": 0,
+    "buffers": [
+        {
+            "byteLength": 58220,
+            "uri": "buffer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 1944,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 7560,
+            "byteOffset": 1944,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 7560,
+            "byteOffset": 9504,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 5040,
+            "byteOffset": 17064,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 324,
+            "byteOffset": 22104,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1344,
+            "byteOffset": 22428,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1344,
+            "byteOffset": 23772,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 896,
+            "byteOffset": 25116,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 168,
+            "byteOffset": 26012,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 672,
+            "byteOffset": 26180,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 672,
+            "byteOffset": 26852,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 448,
+            "byteOffset": 27524,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 168,
+            "byteOffset": 27972,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 672,
+            "byteOffset": 28140,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 672,
+            "byteOffset": 28812,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 448,
+            "byteOffset": 29484,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 29932,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3360,
+            "byteOffset": 30808,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3360,
+            "byteOffset": 34168,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2240,
+            "byteOffset": 37528,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 744,
+            "byteOffset": 39768,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2952,
+            "byteOffset": 40512,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2952,
+            "byteOffset": 43464,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1968,
+            "byteOffset": 46416,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 48384,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3360,
+            "byteOffset": 49260,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3360,
+            "byteOffset": 52620,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2240,
+            "byteOffset": 55980,
+            "target": 34962
+        }
+    ],
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "accessors": [
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 972,
+            "bufferView": 0,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 630,
+            "bufferView": 1,
+            "byteOffset": 0,
+            "min": [
+                0.0595425367355347,
+                1.72573327290593e-05,
+                1.0875415802002
+            ],
+            "max": [
+                0.0906283482909203,
+                0.0258641578257084,
+                1.13705909252167
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 630,
+            "bufferView": 2,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 630,
+            "bufferView": 3,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 162,
+            "bufferView": 4,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 112,
+            "bufferView": 5,
+            "byteOffset": 0,
+            "min": [
+                0.0736414790153503,
+                0.0129411071538925,
+                1.08146584033966
+            ],
+            "max": [
+                0.0765293389558792,
+                0.0206315368413925,
+                1.12044107913971
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 112,
+            "bufferView": 6,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 112,
+            "bufferView": 7,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 84,
+            "bufferView": 8,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 56,
+            "bufferView": 9,
+            "byteOffset": 0,
+            "min": [
+                0.0574449487030506,
+                0.0134903667494655,
+                1.08490669727325
+            ],
+            "max": [
+                0.0717029497027397,
+                0.0198603570461273,
+                1.10762917995453
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 56,
+            "bufferView": 10,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 56,
+            "bufferView": 11,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 84,
+            "bufferView": 12,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 56,
+            "bufferView": 13,
+            "byteOffset": 0,
+            "min": [
+                0.0784678608179092,
+                0.0134903667494655,
+                1.08490669727325
+            ],
+            "max": [
+                0.0927258655428886,
+                0.0198603570461273,
+                1.10762917995453
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 56,
+            "bufferView": 14,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 56,
+            "bufferView": 15,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 16,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 280,
+            "bufferView": 17,
+            "byteOffset": 0,
+            "min": [
+                0.0898225381970406,
+                0.0,
+                1.12316155433655
+            ],
+            "max": [
+                0.0931195616722107,
+                0.0143171092495322,
+                1.13747870922089
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 280,
+            "bufferView": 18,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 280,
+            "bufferView": 19,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 372,
+            "bufferView": 20,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 246,
+            "bufferView": 21,
+            "byteOffset": 0,
+            "min": [
+                0.0682407394051552,
+                0.00272561609745026,
+                1.08146584033966
+            ],
+            "max": [
+                0.0819300040602684,
+                0.0155313247814775,
+                1.0942714214325
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 246,
+            "bufferView": 22,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 246,
+            "bufferView": 23,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 24,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 280,
+            "bufferView": 25,
+            "byteOffset": 0,
+            "min": [
+                0.0570512562990189,
+                0.0,
+                1.12316155433655
+            ],
+            "max": [
+                0.060348279774189,
+                0.0143171092495322,
+                1.13747870922089
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 280,
+            "bufferView": 26,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 280,
+            "bufferView": 27,
+            "byteOffset": 0
+        }
+    ],
+    "images": [
+        {
+            "name": "Fantasy_Texture",
+            "uri": "../Fantasy_Texture.png"
+        }
+    ],
+"samplers": [
+        {}
+    ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Fantasy_Texture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Fantasy_Texture"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      },
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "lambert1"
+    }
+  ],
+"meshes": [
+        {
+            "name": "SF_Veh_Ballista_01",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_Bolt",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_ArmL",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 10,
+                        "POSITION": 9,
+                        "TEXCOORD_0": 11
+                    },
+                    "indices": 8
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_ArmR",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 14,
+                        "POSITION": 13,
+                        "TEXCOORD_0": 15
+                    },
+                    "indices": 12
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_WheelL",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 18,
+                        "POSITION": 17,
+                        "TEXCOORD_0": 19
+                    },
+                    "indices": 16
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_Handle",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 22,
+                        "POSITION": 21,
+                        "TEXCOORD_0": 23
+                    },
+                    "indices": 20
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_WheelR",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 26,
+                        "POSITION": 25,
+                        "TEXCOORD_0": 27
+                    },
+                    "indices": 24
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "SF_Veh_Ballista_01",
+            "translation": [
+                0.0750854462385178,
+                -1.72573327290593e-05,
+                1.11230027675629
+            ],
+            "rotation": [
+                6.12323426292584e-17,
+                1.0,
+                6.12323426292584e-17,
+                -3.82856880455694e-16
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ],
+            "mesh": 0
+        },
+        {
+            "name": "SF_Veh_Ballista_Bolt",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 1
+        },
+        {
+            "name": "SF_Veh_Ballista_ArmL",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 2
+        },
+        {
+            "name": "SF_Veh_Ballista_ArmR",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 3
+        },
+        {
+            "name": "SF_Veh_Ballista_WheelL",
+            "translation": [
+                0.150170803070068,
+                0.0,
+                2.22012495994568
+            ],
+            "rotation": [
+                6.12323426292584e-17,
+                1.0,
+                -6.12323426292584e-17,
+                5.05321539244431e-16
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 4
+        },
+        {
+            "name": "SF_Veh_Ballista_Handle",
+            "translation": [
+                0.150170803070068,
+                0.0,
+                2.22012495994568
+            ],
+            "rotation": [
+                6.12323426292584e-17,
+                1.0,
+                -6.12323426292584e-17,
+                5.05321539244431e-16
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 5
+        },
+        {
+            "name": "SF_Veh_Ballista_WheelR",
+            "translation": [
+                0.150170803070068,
+                0.0,
+                2.22012495994568
+            ],
+            "rotation": [
+                6.12323426292584e-17,
+                1.0,
+                -6.12323426292584e-17,
+                5.05321539244431e-16
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 6
+        }
+    ]
+}

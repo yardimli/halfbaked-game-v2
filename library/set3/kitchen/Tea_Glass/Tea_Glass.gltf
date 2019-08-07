@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 66,
+      "type": "VEC3",
+      "max": [
+        2.8812732696533203,
+        6.243438720703125,
+        2.5119304656982422
+      ],
+      "min": [
+        -2.8812942504882813,
+        -0.049236297607421875,
+        -2.5119590759277344
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 66,
+      "type": "VEC3",
+      "max": [
+        0.99813973903656006,
+        1.0,
+        0.86337912082672119
+      ],
+      "min": [
+        -0.99813961982727051,
+        -0.15087498724460602,
+        -0.8633798360824585
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 66,
+      "type": "VEC4",
+      "max": [
+        -0.0021237994078546762,
+        0.2146553099155426,
+        0.99939262866973877,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.21465528011322021,
+        -0.99939262866973877,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 66,
+      "type": "VEC2",
+      "max": [
+        0.62364745140075684,
+        0.59006130695343018
+      ],
+      "min": [
+        0.61024689674377441,
+        0.55861568450927734
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 198,
+      "type": "SCALAR",
+      "max": [
+        65.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Tea_Glass.bin",
+      "byteLength": 3960
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 792
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 792,
+      "byteLength": 792
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1584,
+      "byteLength": 1056
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2640,
+      "byteLength": 528
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3168,
+      "byteLength": 792
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Tea_Glass"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Tea_Glass"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Tea_Glass"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

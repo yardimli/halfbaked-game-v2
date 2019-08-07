@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2168,
+      "type": "VEC3",
+      "max": [
+        22.212852478027344,
+        65.831535339355469,
+        18.261898040771484
+      ],
+      "min": [
+        -22.212738037109375,
+        0.0920867919921875,
+        -18.261890411376953
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2168,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2168,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2168,
+      "type": "VEC2",
+      "max": [
+        0.12466354668140411,
+        0.24906773865222931
+      ],
+      "min": [
+        0.00066156353568658233,
+        0.12564675509929657
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 6042,
+      "type": "SCALAR",
+      "max": [
+        2167.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Stove_01.bin",
+      "byteLength": 128232
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 26016
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 26016,
+      "byteLength": 26016
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 52032,
+      "byteLength": 34688
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 86720,
+      "byteLength": 17344
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 104064,
+      "byteLength": 24168
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Stove_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "Stove_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Stove_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

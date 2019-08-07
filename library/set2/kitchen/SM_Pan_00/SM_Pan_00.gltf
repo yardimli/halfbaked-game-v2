@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 478,
+      "type": "VEC3",
+      "max": [
+        0.24049443006515503,
+        0.27567854523658752,
+        0.1706884354352951
+      ],
+      "min": [
+        -0.24049443006515503,
+        0.0018613399006426334,
+        -0.23116821050643921
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 478,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        0.98324280977249146
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -0.98324280977249146
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 478,
+      "type": "VEC4",
+      "max": [
+        0.8271719217300415,
+        0.9953761100769043,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.99999392032623291,
+        -0.99536043405532837,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 478,
+      "type": "VEC2",
+      "max": [
+        0.53040498495101929,
+        0.53061401844024658
+      ],
+      "min": [
+        0.0057470002211630344,
+        0.0056300000287592411
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1908,
+      "type": "SCALAR",
+      "max": [
+        477.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_Pan_00.bin",
+      "byteLength": 30576
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5736
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5736,
+      "byteLength": 5736
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 11472,
+      "byteLength": 7648
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 19120,
+      "byteLength": 3824
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 22944,
+      "byteLength": 7632
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11094_T_Dishes.jpg",
+      "name": "T_Dishes"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Dishes"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_Pan_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_Pan_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_Pan_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Dishes"
+    }
+  ]
+}

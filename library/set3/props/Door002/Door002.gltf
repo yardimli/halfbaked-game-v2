@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 53,
+      "type": "VEC3",
+      "max": [
+        27.088184356689453,
+        71.292068481445313,
+        2.1633148193359375
+      ],
+      "min": [
+        -24.451105117797852,
+        -0.39646148681640625,
+        -3.2595334053039551
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 53,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 53,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.88067948818206787,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.88067948818206787,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 53,
+      "type": "VEC2",
+      "max": [
+        0.49906429648399353,
+        0.74850255250930786
+      ],
+      "min": [
+        0.37644499540328979,
+        0.62535834312438965
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 84,
+      "type": "SCALAR",
+      "max": [
+        52.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Door002.bin",
+      "byteLength": 2880
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 636
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 636,
+      "byteLength": 636
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1272,
+      "byteLength": 848
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2120,
+      "byteLength": 424
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2544,
+      "byteLength": 336
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Door002"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Door002"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Door002"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

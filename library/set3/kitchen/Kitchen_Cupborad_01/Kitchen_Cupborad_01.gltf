@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1530,
+      "type": "VEC3",
+      "max": [
+        29.472103118896484,
+        46.427589416503906,
+        14.927592277526855
+      ],
+      "min": [
+        -29.472034454345703,
+        -46.427585601806641,
+        -14.927593231201172
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1530,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1530,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1530,
+      "type": "VEC2",
+      "max": [
+        0.49980992078781128,
+        0.62418830394744873
+      ],
+      "min": [
+        0.375417023897171,
+        0.50007247924804688
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 4302,
+      "type": "SCALAR",
+      "max": [
+        1529.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Kitchen_Cupborad_01.bin",
+      "byteLength": 90648
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 18360
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 18360,
+      "byteLength": 18360
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 36720,
+      "byteLength": 24480
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 61200,
+      "byteLength": 12240
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 73440,
+      "byteLength": 17208
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Kitchen_Cupborad_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Kitchen_Cupborad_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Kitchen_Cupborad_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

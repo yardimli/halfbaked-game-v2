@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 787,
+      "type": "VEC3",
+      "max": [
+        15.191642761230469,
+        39.920623779296875,
+        11.37623405456543
+      ],
+      "min": [
+        -12.8856201171875,
+        -0.00174713134765625,
+        -11.645952224731445
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 787,
+      "type": "VEC3",
+      "max": [
+        0.99982821941375732,
+        0.99999535083770752,
+        0.99661105871200562
+      ],
+      "min": [
+        -0.99989712238311768,
+        -1.0,
+        -0.99661117792129517
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 787,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.99932646751403809,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.95544517040252686,
+        -0.97988075017929077,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 787,
+      "type": "VEC2",
+      "max": [
+        0.99889904260635376,
+        0.62390708923339844
+      ],
+      "min": [
+        0.87615495920181274,
+        0.50058984756469727
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 3366,
+      "type": "SCALAR",
+      "max": [
+        786.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Chair_01.bin",
+      "byteLength": 51240
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9444
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 9444,
+      "byteLength": 9444
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 18888,
+      "byteLength": 12592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31480,
+      "byteLength": 6296
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 37776,
+      "byteLength": 13464
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Chair_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Chair_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Chair_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

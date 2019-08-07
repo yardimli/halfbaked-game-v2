@@ -1,0 +1,187 @@
+{
+    "asset": {
+        "generator": "FBX2glTF v0.9.6",
+        "version": "2.0"
+    },
+    "scene": 0,
+    "buffers": [
+        {
+            "byteLength": 9964,
+            "uri": "buffer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3408,
+            "byteOffset": 876,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3408,
+            "byteOffset": 4284,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2272,
+            "byteOffset": 7692,
+            "target": 34962
+        }
+    ],
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "accessors": [
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 0,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 284,
+            "bufferView": 1,
+            "byteOffset": 0,
+            "min": [
+                -0.0194647870957851,
+                0.000185197030077688,
+                0.976179659366608
+            ],
+            "max": [
+                -0.0163385104387999,
+                0.0137608144432306,
+                0.989755153656006
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 284,
+            "bufferView": 2,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 284,
+            "bufferView": 3,
+            "byteOffset": 0
+        }
+    ],
+    "images": [
+        {
+            "name": "Fantasy_Texture",
+            "uri": "../Fantasy_Texture.png"
+        }
+    ],
+"samplers": [
+        {}
+    ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Fantasy_Texture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Fantasy_Texture"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      },
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "lambert1"
+    }
+  ],
+"meshes": [
+        {
+            "name": "SF_Prop_Wheel_01",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "SF_Prop_Wheel_01",
+            "translation": [
+                0.0179016496986151,
+                -0.00697300583124161,
+                -0.982967376708984
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 0
+        }
+    ]
+}

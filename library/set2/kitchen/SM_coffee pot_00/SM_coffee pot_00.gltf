@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 358,
+      "type": "VEC3",
+      "max": [
+        0.13552287220954895,
+        0.44896200299263,
+        0.20907264947891235
+      ],
+      "min": [
+        -0.13587175309658051,
+        -5.6449996918672696E-05,
+        -0.21656276285648346
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 358,
+      "type": "VEC3",
+      "max": [
+        0.99624443054199219,
+        1.0,
+        0.99929511547088623
+      ],
+      "min": [
+        -0.99642962217330933,
+        -1.0,
+        -0.9992031455039978
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 358,
+      "type": "VEC4",
+      "max": [
+        0.99990677833557129,
+        0.99955993890762329,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.99990677833557129,
+        -0.99664247035980225,
+        -0.99972265958786011,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 358,
+      "type": "VEC2",
+      "max": [
+        0.99604302644729614,
+        0.69193702936172485
+      ],
+      "min": [
+        0.0090889995917677879,
+        0.0039470000192523
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1422,
+      "type": "SCALAR",
+      "max": [
+        357.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_coffee pot_00.bin",
+      "byteLength": 22872
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4296
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4296,
+      "byteLength": 4296
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8592,
+      "byteLength": 5728
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 14320,
+      "byteLength": 2864
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 17184,
+      "byteLength": 5688
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11094_T_Dishes.jpg",
+      "name": "T_Dishes"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Dishes"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_coffee pot_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_coffee pot_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_coffee pot_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Dishes"
+    }
+  ]
+}

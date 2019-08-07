@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 180,
+      "type": "VEC3",
+      "max": [
+        22.816646575927734,
+        0.91593551635742188,
+        6.4422688484191895
+      ],
+      "min": [
+        -23.637344360351563,
+        -63.770000457763672,
+        0.006252288818359375
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 180,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -0.866025447845459
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 180,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.86602562665939331,
+        1.0,
+        -1.0
+      ],
+      "min": [
+        -1.0,
+        -0.866025447845459,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 180,
+      "type": "VEC2",
+      "max": [
+        0.36819681525230408,
+        0.74927318096160889
+      ],
+      "min": [
+        0.28022363781929016,
+        0.62512427568435669
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 708,
+      "type": "SCALAR",
+      "max": [
+        179.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Curtain_02.bin",
+      "byteLength": 11472
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2160
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2160,
+      "byteLength": 2160
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4320,
+      "byteLength": 2880
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7200,
+      "byteLength": 1440
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8640,
+      "byteLength": 2832
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Curtain_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Curtain_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Curtain_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

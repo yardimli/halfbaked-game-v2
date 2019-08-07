@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 574,
+      "type": "VEC3",
+      "max": [
+        33.590568542480469,
+        35.704460144042969,
+        18.835784912109375
+      ],
+      "min": [
+        -33.5905876159668,
+        0.016526222229003906,
+        -18.835803985595703
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 574,
+      "type": "VEC3",
+      "max": [
+        0.95981901884078979,
+        0.99981111288070679,
+        0.99999821186065674
+      ],
+      "min": [
+        -0.95981901884078979,
+        -1.0,
+        -0.99999785423278809
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 574,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.43035873770713806,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.99999785423278809,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 574,
+      "type": "VEC2",
+      "max": [
+        0.74895507097244263,
+        0.37319085001945496
+      ],
+      "min": [
+        0.6259077787399292,
+        0.251350462436676
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 2166,
+      "type": "SCALAR",
+      "max": [
+        573.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Sofa_02.bin",
+      "byteLength": 36216
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6888,
+      "byteLength": 6888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13776,
+      "byteLength": 9184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 22960,
+      "byteLength": 4592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 27552,
+      "byteLength": 8664
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Sofa_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Sofa_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Sofa_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

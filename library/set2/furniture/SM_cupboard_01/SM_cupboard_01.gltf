@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 336,
+      "type": "VEC3",
+      "max": [
+        0.49812158942222595,
+        1.6463025808334351,
+        0.33552068471908569
+      ],
+      "min": [
+        -0.50113916397094727,
+        0.0074544399976730347,
+        -0.33219316601753235
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 336,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 336,
+      "type": "VEC4",
+      "max": [
+        0.999991774559021,
+        0.99999511241912842,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.99990200996398926,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 336,
+      "type": "VEC2",
+      "max": [
+        0.99613100290298462,
+        0.99834799766540527
+      ],
+      "min": [
+        0.21212099492549896,
+        0.0049239997752010822
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 546,
+      "type": "SCALAR",
+      "max": [
+        335.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_cupboard_01.bin",
+      "byteLength": 18312
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4032
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4032,
+      "byteLength": 4032
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8064,
+      "byteLength": 5376
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13440,
+      "byteLength": 2688
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 16128,
+      "byteLength": 2184
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11388_T_furniture.jpg",
+      "name": "T_furniture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_furniture"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_cupboard_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_cupboard_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_cupboard_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_furniture"
+    }
+  ]
+}

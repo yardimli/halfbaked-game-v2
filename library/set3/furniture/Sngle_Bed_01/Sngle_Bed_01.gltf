@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2632,
+      "type": "VEC3",
+      "max": [
+        32.920333862304688,
+        55.344108581542969,
+        46.281742095947266
+      ],
+      "min": [
+        -24.481878280639648,
+        -0.31194400787353516,
+        -46.281745910644531
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2632,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2632,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.9999997615814209,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2632,
+      "type": "VEC2",
+      "max": [
+        0.12413433194160461,
+        0.99594563245773315
+      ],
+      "min": [
+        0.00060733826830983162,
+        0.87577557563781738
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 8088,
+      "type": "SCALAR",
+      "max": [
+        2631.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Sngle_Bed_01.bin",
+      "byteLength": 158688
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 31584
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31584,
+      "byteLength": 31584
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 63168,
+      "byteLength": 42112
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 105280,
+      "byteLength": 21056
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 126336,
+      "byteLength": 32352
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Sngle_Bed_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Sngle_Bed_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Sngle_Bed_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

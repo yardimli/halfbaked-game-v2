@@ -1,0 +1,167 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC3",
+      "max": [
+        0.052540905773639679,
+        0.1390841007232666,
+        0.053709529340267181
+      ],
+      "min": [
+        -0.053225915879011154,
+        -0.011116900481283665,
+        -0.052057236433029175
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC3",
+      "max": [
+        0.999868631362915,
+        1.0,
+        0.999868631362915
+      ],
+      "min": [
+        -0.999868631362915,
+        -1.0,
+        -0.999868631362915
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC4",
+      "max": [
+        0.99990057945251465,
+        0.95369082689285278,
+        0.99970465898513794,
+        -1.0
+      ],
+      "min": [
+        -0.99619019031524658,
+        -0.97764790058135986,
+        -0.99948334693908691,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC2",
+      "max": [
+        0.73968601226806641,
+        0.38633599877357483
+      ],
+      "min": [
+        0.58300697803497314,
+        0.27409398555755615
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 384,
+      "type": "SCALAR",
+      "max": [
+        73.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_garlic_00.bin",
+      "byteLength": 5088
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 888,
+      "byteLength": 888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1776,
+      "byteLength": 1184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2960,
+      "byteLength": 592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3552,
+      "byteLength": 1536
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      },
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "garlic_00__lambert4SG1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_garlic_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_garlic_00"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_garlic_00"
+    }
+  ]
+}

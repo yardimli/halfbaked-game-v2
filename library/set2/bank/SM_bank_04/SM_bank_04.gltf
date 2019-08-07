@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 130,
+      "type": "VEC3",
+      "max": [
+        0.084593191742897034,
+        0.23291145265102386,
+        0.084022559225559235
+      ],
+      "min": [
+        -0.084256216883659363,
+        -0.0011150599457323551,
+        -0.084826841950416565
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 130,
+      "type": "VEC3",
+      "max": [
+        0.99962639808654785,
+        1.0,
+        0.99962639808654785
+      ],
+      "min": [
+        -0.99962639808654785,
+        -1.0,
+        -0.99962639808654785
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 130,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.96979504823684692,
+        0.99997317790985107,
+        1.0
+      ],
+      "min": [
+        -0.76327240467071533,
+        -0.22409482300281525,
+        -0.99997317790985107,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 130,
+      "type": "VEC2",
+      "max": [
+        0.99654197692871094,
+        0.36636200547218323
+      ],
+      "min": [
+        0.32795101404190063,
+        0.0013200000394135714
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 504,
+      "type": "SCALAR",
+      "max": [
+        129.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_bank_04.bin",
+      "byteLength": 8256
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1560
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1560,
+      "byteLength": 1560
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3120,
+      "byteLength": 2080
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5200,
+      "byteLength": 1040
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6240,
+      "byteLength": 2016
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11024_T_banks.png",
+      "name": "T_banks"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_banks"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_bank_04"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_bank_04"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_bank_04"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_banks"
+    }
+  ]
+}

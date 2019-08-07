@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 106,
+      "type": "VEC3",
+      "max": [
+        6.4824233055114746,
+        1.645751953125,
+        7.2705802917480469
+      ],
+      "min": [
+        -20.272201538085938,
+        -1.6457481384277344,
+        -7.4273185729980469
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 106,
+      "type": "VEC3",
+      "max": [
+        0.66900169849395752,
+        1.0,
+        0.66867625713348389
+      ],
+      "min": [
+        -0.67111194133758545,
+        -0.99999988079071045,
+        -0.66867631673812866
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 106,
+      "type": "VEC4",
+      "max": [
+        0.99904817342758179,
+        0.54165154695510864,
+        0.8368905782699585,
+        1.0
+      ],
+      "min": [
+        -0.14685901999473572,
+        -0.55296730995178223,
+        -0.99928611516952515,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 106,
+      "type": "VEC2",
+      "max": [
+        0.12458440661430359,
+        0.24810971319675446
+      ],
+      "min": [
+        0.095256172120571136,
+        0.23060412704944611
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 258,
+      "type": "SCALAR",
+      "max": [
+        105.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Chao ran trung.bin",
+      "byteLength": 6120
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1272
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1272,
+      "byteLength": 1272
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2544,
+      "byteLength": 1696
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4240,
+      "byteLength": 848
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5088,
+      "byteLength": 1032
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Chao ran trung"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Chao ran trung"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Chao ran trung"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

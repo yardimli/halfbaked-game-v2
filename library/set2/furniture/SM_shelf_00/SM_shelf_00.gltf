@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC3",
+      "max": [
+        0.3665749728679657,
+        0.0707906112074852,
+        0.095024898648262024
+      ],
+      "min": [
+        -0.3665749728679657,
+        -0.15703432261943817,
+        -0.095024891197681427
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        0.010665296576917171
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC4",
+      "max": [
+        0.82546579837799072,
+        0.9999992847442627,
+        0.99988639354705811,
+        -1.0
+      ],
+      "min": [
+        -0.99999630451202393,
+        -0.99997794628143311,
+        -0.0066493526101112366,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC2",
+      "max": [
+        0.874131977558136,
+        0.99834799766540527
+      ],
+      "min": [
+        0.27176898717880249,
+        0.60702002048492432
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 78,
+      "type": "SCALAR",
+      "max": [
+        51.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_shelf_00.bin",
+      "byteLength": 2808
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 624
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 624,
+      "byteLength": 624
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1248,
+      "byteLength": 832
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2080,
+      "byteLength": 416
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2496,
+      "byteLength": 312
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11388_T_furniture.jpg",
+      "name": "T_furniture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_furniture"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_shelf_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_shelf_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_shelf_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_furniture"
+    }
+  ]
+}

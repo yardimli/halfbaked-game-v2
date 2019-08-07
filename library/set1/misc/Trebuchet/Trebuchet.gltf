@@ -1,0 +1,779 @@
+{
+    "asset": {
+        "generator": "FBX2glTF v0.9.6",
+        "version": "2.0"
+    },
+    "scene": 0,
+    "buffers": [
+        {
+            "byteLength": 82552,
+            "uri": "buffer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 2736,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 10656,
+            "byteOffset": 2736,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 10656,
+            "byteOffset": 13392,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 7104,
+            "byteOffset": 24048,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 648,
+            "byteOffset": 31152,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2592,
+            "byteOffset": 31800,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2592,
+            "byteOffset": 34392,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1728,
+            "byteOffset": 36984,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 528,
+            "byteOffset": 38712,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2064,
+            "byteOffset": 39240,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2064,
+            "byteOffset": 41304,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1376,
+            "byteOffset": 43368,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 44744,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3096,
+            "byteOffset": 45620,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3096,
+            "byteOffset": 48716,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2064,
+            "byteOffset": 51812,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 53876,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3096,
+            "byteOffset": 54752,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3096,
+            "byteOffset": 57848,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2064,
+            "byteOffset": 60944,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 63008,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3336,
+            "byteOffset": 63884,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3336,
+            "byteOffset": 67220,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2224,
+            "byteOffset": 70556,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 876,
+            "byteOffset": 72780,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3336,
+            "byteOffset": 73656,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3336,
+            "byteOffset": 76992,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2224,
+            "byteOffset": 80328,
+            "target": 34962
+        }
+    ],
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "accessors": [
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 1368,
+            "bufferView": 0,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 888,
+            "bufferView": 1,
+            "byteOffset": 0,
+            "min": [
+                -0.431881844997406,
+                0.00294779986143112,
+                0.985114395618439
+            ],
+            "max": [
+                -0.374902904033661,
+                0.105475172400475,
+                1.12603807449341
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 888,
+            "bufferView": 2,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 888,
+            "bufferView": 3,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 324,
+            "bufferView": 4,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 216,
+            "bufferView": 5,
+            "byteOffset": 0,
+            "min": [
+                -0.407934248447418,
+                0.0931694656610489,
+                0.99787449836731
+            ],
+            "max": [
+                -0.398850619792938,
+                0.102779202163219,
+                1.18080592155457
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 216,
+            "bufferView": 6,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 216,
+            "bufferView": 7,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 264,
+            "bufferView": 8,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 172,
+            "bufferView": 9,
+            "byteOffset": 0,
+            "min": [
+                -0.412664711475372,
+                0.0642707496881485,
+                0.987838268280029
+            ],
+            "max": [
+                -0.394120156764984,
+                0.100020922720432,
+                1.0173442363739
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 172,
+            "bufferView": 10,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 172,
+            "bufferView": 11,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 12,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 258,
+            "bufferView": 13,
+            "byteOffset": 0,
+            "min": [
+                -0.377050936222076,
+                0.0,
+                1.08246898651123
+            ],
+            "max": [
+                -0.372562855482101,
+                0.0194890536367893,
+                1.10195803642273
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 258,
+            "bufferView": 14,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 258,
+            "bufferView": 15,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 16,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 258,
+            "bufferView": 17,
+            "byteOffset": 0,
+            "min": [
+                -0.377050936222076,
+                0.0,
+                0.979863822460175
+            ],
+            "max": [
+                -0.372562855482101,
+                0.0194890536367893,
+                0.999352753162384
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 258,
+            "bufferView": 18,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 258,
+            "bufferView": 19,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 20,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 278,
+            "bufferView": 21,
+            "byteOffset": 0,
+            "min": [
+                -0.43422195315361,
+                0.0,
+                0.979863822460175
+            ],
+            "max": [
+                -0.429733872413635,
+                0.0194890536367893,
+                0.999352753162384
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 278,
+            "bufferView": 22,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 278,
+            "bufferView": 23,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 438,
+            "bufferView": 24,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 278,
+            "bufferView": 25,
+            "byteOffset": 0,
+            "min": [
+                -0.43422195315361,
+                0.0,
+                1.08246898651123
+            ],
+            "max": [
+                -0.429733872413635,
+                0.0194890536367893,
+                1.10195803642273
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 278,
+            "bufferView": 26,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 278,
+            "bufferView": 27,
+            "byteOffset": 0
+        }
+    ],
+    "images": [
+        {
+            "name": "Fantasy_Texture",
+            "uri": "../Fantasy_Texture.png"
+        }
+    ],
+"samplers": [
+        {}
+    ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Fantasy_Texture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Fantasy_Texture"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      },
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "lambert1"
+    }
+  ],
+"meshes": [
+        {
+            "name": "SF_Veh_Trebuchet_01",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_Arm",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_Weight",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 10,
+                        "POSITION": 9,
+                        "TEXCOORD_0": 11
+                    },
+                    "indices": 8
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelBR",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 14,
+                        "POSITION": 13,
+                        "TEXCOORD_0": 15
+                    },
+                    "indices": 12
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelFR",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 18,
+                        "POSITION": 17,
+                        "TEXCOORD_0": 19
+                    },
+                    "indices": 16
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelFL",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 22,
+                        "POSITION": 21,
+                        "TEXCOORD_0": 23
+                    },
+                    "indices": 20
+                }
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelBL",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 26,
+                        "POSITION": 25,
+                        "TEXCOORD_0": 27
+                    },
+                    "indices": 24
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "SF_Veh_Trebuchet_01",
+            "translation": [
+                -0.403392374515533,
+                -0.00294779986143112,
+                1.0555762052536
+            ],
+            "rotation": [
+                6.12323426292584e-17,
+                1.0,
+                6.12323426292584e-17,
+                -5.05321539244431e-16
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                2,
+                4,
+                5,
+                6,
+                7
+            ],
+            "mesh": 0
+        },
+        {
+            "name": "SF_Veh_Trebuchet_Arm",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                3
+            ],
+            "mesh": 1
+        },
+        {
+            "name": "SF_Veh_Trebuchet_Weight",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 2
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelBR",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 3
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelFR",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 4
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelFL",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 5
+        },
+        {
+            "name": "SF_Veh_Trebuchet_WheelBL",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "mesh": 6
+        }
+    ]
+}

@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 724,
+      "type": "VEC3",
+      "max": [
+        10.81721305847168,
+        83.995903015136719,
+        8.27270793914795
+      ],
+      "min": [
+        -10.781524658203125,
+        0.13842868804931641,
+        -8.2726984024047852
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 724,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 724,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.60800915956497192,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 724,
+      "type": "VEC2",
+      "max": [
+        0.99940299987792969,
+        0.87426817417144775
+      ],
+      "min": [
+        0.875106692314148,
+        0.75081634521484375
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1452,
+      "type": "SCALAR",
+      "max": [
+        723.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Clock_02.bin",
+      "byteLength": 40560
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8688
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8688,
+      "byteLength": 8688
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 17376,
+      "byteLength": 11584
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 28960,
+      "byteLength": 5792
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 34752,
+      "byteLength": 5808
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Clock_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Clock_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Clock_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

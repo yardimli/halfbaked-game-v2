@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 94,
+      "type": "VEC3",
+      "max": [
+        0.18306495249271393,
+        0.057065289467573166,
+        0.182654470205307
+      ],
+      "min": [
+        -0.18230172991752625,
+        -3.3099997835961403E-06,
+        -0.50972765684127808
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 94,
+      "type": "VEC3",
+      "max": [
+        0.96076351404190063,
+        1.0,
+        0.96076375246047974
+      ],
+      "min": [
+        -0.96076428890228271,
+        -1.0,
+        -0.96076387166976929
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 94,
+      "type": "VEC4",
+      "max": [
+        0.91629296541213989,
+        0.63763278722763062,
+        0.99319833517074585,
+        -1.0
+      ],
+      "min": [
+        -0.97580170631408691,
+        -0.63763433694839478,
+        -0.82441425323486328,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 94,
+      "type": "VEC2",
+      "max": [
+        0.99656599760055542,
+        0.99641001224517822
+      ],
+      "min": [
+        0.0060890000313520432,
+        0.486270010471344
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 390,
+      "type": "SCALAR",
+      "max": [
+        93.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_frying pan_00.bin",
+      "byteLength": 6072
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1128
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1128,
+      "byteLength": 1128
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2256,
+      "byteLength": 1504
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3760,
+      "byteLength": 752
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4512,
+      "byteLength": 1560
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11094_T_Dishes.jpg",
+      "name": "T_Dishes"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Dishes"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_frying pan_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_frying pan_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_frying pan_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Dishes"
+    }
+  ]
+}

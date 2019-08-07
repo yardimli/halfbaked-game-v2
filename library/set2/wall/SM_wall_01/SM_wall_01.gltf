@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC3",
+      "max": [
+        1.1451002359390259,
+        1.9483026266098022,
+        0.14196497201919556
+      ],
+      "min": [
+        -1.1117914915084839,
+        0.0009220299543812871,
+        -0.14507953822612762
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC3",
+      "max": [
+        0.747597336769104,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.747597336769104,
+        -0.96166372299194336,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.31290656328201294,
+        0.963090717792511,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.31290668249130249,
+        -0.963090717792511,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC2",
+      "max": [
+        0.99684101343154907,
+        0.99590897560119629
+      ],
+      "min": [
+        0.0055350000038743019,
+        0.0069059999659657478
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 288,
+      "type": "SCALAR",
+      "max": [
+        131.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_wall_01.bin",
+      "byteLength": 7488
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1584
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1584,
+      "byteLength": 1584
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3168,
+      "byteLength": 2112
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5280,
+      "byteLength": 1056
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6336,
+      "byteLength": 1152
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11206_T_Wall.png",
+      "name": "T_Wall"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Wall"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_wall_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_wall_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_wall_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Wall"
+    }
+  ]
+}

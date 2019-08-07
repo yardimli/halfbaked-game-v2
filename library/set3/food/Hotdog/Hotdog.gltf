@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 278,
+      "type": "VEC3",
+      "max": [
+        5.5424041748046875,
+        1.2015953063964844,
+        5.5259799957275391
+      ],
+      "min": [
+        -5.5424041748046875,
+        -1.2015953063964844,
+        -5.5259804725646973
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 278,
+      "type": "VEC3",
+      "max": [
+        0.97845226526260376,
+        1.0,
+        0.886006236076355
+      ],
+      "min": [
+        -0.97845298051834106,
+        -1.0,
+        -0.88600635528564453
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 278,
+      "type": "VEC4",
+      "max": [
+        0.43276897072792053,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.92842388153076172,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 278,
+      "type": "VEC2",
+      "max": [
+        0.086921736598014832,
+        0.19273856282234192
+      ],
+      "min": [
+        0.053062465041875839,
+        0.17575003206729889
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1068,
+      "type": "SCALAR",
+      "max": [
+        277.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Hotdog.bin",
+      "byteLength": 17616
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3336
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3336,
+      "byteLength": 3336
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6672,
+      "byteLength": 4448
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 11120,
+      "byteLength": 2224
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13344,
+      "byteLength": 4272
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Hotdog"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Hotdog"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Hotdog"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

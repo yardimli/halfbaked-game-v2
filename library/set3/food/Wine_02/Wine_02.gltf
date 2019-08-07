@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC3",
+      "max": [
+        3.8166885375976563,
+        7.3069839477539063,
+        3.294525146484375
+      ],
+      "min": [
+        -3.8166732788085938,
+        -7.3069877624511719,
+        -3.2945404052734375
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC3",
+      "max": [
+        0.97783470153808594,
+        1.0,
+        0.84683245420455933
+      ],
+      "min": [
+        -0.97783571481704712,
+        -0.6116940975189209,
+        -0.84683364629745483
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC4",
+      "max": [
+        -0.025123456493020058,
+        0.26588094234466553,
+        0.99277323484420776,
+        1.0
+      ],
+      "min": [
+        -0.94491887092590332,
+        -0.2658633291721344,
+        -0.99277335405349731,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC2",
+      "max": [
+        0.0964403823018074,
+        0.42598876357078552
+      ],
+      "min": [
+        0.068628996610641479,
+        0.384723961353302
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 204,
+      "type": "SCALAR",
+      "max": [
+        51.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Wine_02.bin",
+      "byteLength": 3312
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 624
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 624,
+      "byteLength": 624
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1248,
+      "byteLength": 832
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2080,
+      "byteLength": 416
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2496,
+      "byteLength": 816
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 8"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Wine_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Wine_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Wine_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

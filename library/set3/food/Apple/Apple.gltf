@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 284,
+      "type": "VEC3",
+      "max": [
+        9.5136337280273438,
+        3.9706268310546875,
+        9.498199462890625
+      ],
+      "min": [
+        -9.5136260986328125,
+        -3.9706313610076904,
+        -9.498199462890625
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 284,
+      "type": "VEC3",
+      "max": [
+        0.97351056337356567,
+        1.0,
+        0.91785264015197754
+      ],
+      "min": [
+        -0.98493283987045288,
+        -0.98566484451293945,
+        -0.92058277130126953
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 284,
+      "type": "VEC4",
+      "max": [
+        0.20437581837177277,
+        0.51486814022064209,
+        0.99808770418167114,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.49750038981437683,
+        -0.99725985527038574,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 284,
+      "type": "VEC2",
+      "max": [
+        0.23026593029499054,
+        0.47849780321121216
+      ],
+      "min": [
+        0.042031317949295044,
+        0.42799815535545349
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 1080,
+      "type": "SCALAR",
+      "max": [
+        283.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Apple.bin",
+      "byteLength": 17952
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3408
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3408,
+      "byteLength": 3408
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6816,
+      "byteLength": 4544
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 11360,
+      "byteLength": 2272
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13632,
+      "byteLength": 4320
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Apple"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Apple"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Apple"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

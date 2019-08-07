@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 326,
+      "type": "VEC3",
+      "max": [
+        8.3093299865722656,
+        16.966142654418945,
+        4.3784465789794922
+      ],
+      "min": [
+        -8.39638900756836,
+        -0.017290115356445313,
+        -4.28502082824707
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 326,
+      "type": "VEC3",
+      "max": [
+        0.99923145771026611,
+        1.0,
+        0.93420988321304321
+      ],
+      "min": [
+        -0.99905949831008911,
+        -0.9969170093536377,
+        -0.93421000242233276
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 326,
+      "type": "VEC4",
+      "max": [
+        0.76322245597839355,
+        0.75835210084915161,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.99749183654785156,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 326,
+      "type": "VEC2",
+      "max": [
+        0.60406607389450073,
+        0.54980963468551636
+      ],
+      "min": [
+        0.58328801393508911,
+        0.51204782724380493
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 966,
+      "type": "SCALAR",
+      "max": [
+        325.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "TeaPot_02.bin",
+      "byteLength": 19512
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3912
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3912,
+      "byteLength": 3912
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7824,
+      "byteLength": 5216
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13040,
+      "byteLength": 2608
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 15648,
+      "byteLength": 3864
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "TeaPot_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "TeaPot_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "TeaPot_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

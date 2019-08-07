@@ -1,0 +1,194 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 244,
+      "type": "VEC3",
+      "max": [
+        14.080563545227051,
+        38.380428314208984,
+        14.089076042175293
+      ],
+      "min": [
+        -13.090912818908691,
+        -0.059658050537109375,
+        -12.683071136474609
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 244,
+      "type": "VEC3",
+      "max": [
+        0.99983775615692139,
+        1.0,
+        0.91410636901855469
+      ],
+      "min": [
+        -0.99983775615692139,
+        -0.85749238729476929,
+        -0.9783254861831665
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 244,
+      "type": "VEC4",
+      "max": [
+        0.98480784893035889,
+        0.77413344383239746,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.99619472026824951,
+        -0.99978595972061157,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 244,
+      "type": "VEC2",
+      "max": [
+        0.99874728918075562,
+        0.74884295463562012
+      ],
+      "min": [
+        0.877781331539154,
+        0.62624186277389526
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 675,
+      "type": "SCALAR",
+      "max": [
+        243.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "FlowerPot_01.bin",
+      "byteLength": 14412
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2928
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2928,
+      "byteLength": 2928
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5856,
+      "byteLength": 3904
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 9760,
+      "byteLength": 1952
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 11712,
+      "byteLength": 2700
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "FlowerPot_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "scale": [
+        1.24187493,
+        1.24187493,
+        1.24187493
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "FlowerPot_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "FlowerPot_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2598,
+      "type": "VEC3",
+      "max": [
+        23.461830139160156,
+        0.06781005859375,
+        23.461814880371094
+      ],
+      "min": [
+        -23.461818695068359,
+        -58.280300140380859,
+        -23.461812973022461
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2598,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2598,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.71837437152862549,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2598,
+      "type": "VEC2",
+      "max": [
+        0.87404465675354,
+        0.49829211831092834
+      ],
+      "min": [
+        0.75191408395767212,
+        0.37634560465812683
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 7824,
+      "type": "SCALAR",
+      "max": [
+        2597.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Lamp_03.bin",
+      "byteLength": 156000
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 31176
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31176,
+      "byteLength": 31176
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 62352,
+      "byteLength": 41568
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 103920,
+      "byteLength": 20784
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 124704,
+      "byteLength": 31296
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Lamp_03"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Lamp_03"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Lamp_03"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

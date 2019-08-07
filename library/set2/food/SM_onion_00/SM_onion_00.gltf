@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC3",
+      "max": [
+        0.078598000109195709,
+        0.17279389500617981,
+        0.082030698657035828
+      ],
+      "min": [
+        -0.076415471732616425,
+        -0.0049149598926305771,
+        -0.072982713580131531
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC3",
+      "max": [
+        0.999868631362915,
+        1.0,
+        0.999868631362915
+      ],
+      "min": [
+        -0.999868631362915,
+        -1.0,
+        -0.999868631362915
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC4",
+      "max": [
+        0.99810802936553955,
+        0.90068334341049194,
+        0.99954813718795776,
+        -1.0
+      ],
+      "min": [
+        -0.99999701976776123,
+        -0.92597329616546631,
+        -0.999915361404419,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 74,
+      "type": "VEC2",
+      "max": [
+        0.63852399587631226,
+        0.50411301851272583
+      ],
+      "min": [
+        0.444348007440567,
+        0.36405301094055176
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 384,
+      "type": "SCALAR",
+      "max": [
+        73.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_onion_00.bin",
+      "byteLength": 5088
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 888,
+      "byteLength": 888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1776,
+      "byteLength": 1184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2960,
+      "byteLength": 592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3552,
+      "byteLength": 1536
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11506_T_Food.jpg",
+      "name": "T_Food"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Food"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_onion_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_onion_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_onion_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Food"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1960,
+      "type": "VEC3",
+      "max": [
+        0.5514686107635498,
+        0.889301598072052,
+        0.553855836391449
+      ],
+      "min": [
+        -0.55719947814941406,
+        0.0023532898630946875,
+        -0.55481231212615967
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1960,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1960,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1960,
+      "type": "VEC2",
+      "max": [
+        0.9969630241394043,
+        0.99772399663925171
+      ],
+      "min": [
+        0.00303900009021163,
+        0.0052350000478327274
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 7620,
+      "type": "SCALAR",
+      "max": [
+        1959.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_chandelier_00.bin",
+      "byteLength": 124560
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 23520
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 23520,
+      "byteLength": 23520
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 47040,
+      "byteLength": 31360
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 78400,
+      "byteLength": 15680
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 94080,
+      "byteLength": 30480
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11284_T_lighting.png",
+      "name": "T_lighting"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_lighting"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_chandelier_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_chandelier_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_chandelier_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_lighting"
+    }
+  ]
+}

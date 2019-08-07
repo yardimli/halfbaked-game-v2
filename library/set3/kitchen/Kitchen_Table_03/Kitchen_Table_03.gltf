@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 3472,
+      "type": "VEC3",
+      "max": [
+        40.555068969726563,
+        40.280891418457031,
+        40.555076599121094
+      ],
+      "min": [
+        -40.555072784423828,
+        -0.615447998046875,
+        -40.555072784423828
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3472,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3472,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.99999904632568359,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.99999904632568359,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 3472,
+      "type": "VEC2",
+      "max": [
+        0.49915418028831482,
+        0.49948203563690186
+      ],
+      "min": [
+        0.37592205405235291,
+        0.37595853209495544
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 8658,
+      "type": "SCALAR",
+      "max": [
+        3471.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Kitchen_Table_03.bin",
+      "byteLength": 201288
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 41664
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 41664,
+      "byteLength": 41664
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 83328,
+      "byteLength": 55552
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 138880,
+      "byteLength": 27776
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 166656,
+      "byteLength": 34632
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Kitchen_Table_03"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Kitchen_Table_03"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Kitchen_Table_03"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}

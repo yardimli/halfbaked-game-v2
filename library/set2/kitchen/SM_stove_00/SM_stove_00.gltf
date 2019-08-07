@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 770,
+      "type": "VEC3",
+      "max": [
+        0.33837902545928955,
+        0.68487042188644409,
+        0.35145798325538635
+      ],
+      "min": [
+        -0.33837902545928955,
+        0.0059077194891870022,
+        -0.283408522605896
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 770,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 770,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.99830436706542969,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9994889497756958,
+        -0.99999713897705078,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 770,
+      "type": "VEC2",
+      "max": [
+        0.99593502283096313,
+        0.99777102470397949
+      ],
+      "min": [
+        0.0034799999557435513,
+        -2.4056580066680908
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 3078,
+      "type": "SCALAR",
+      "max": [
+        769.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_stove_00.bin",
+      "byteLength": 49272
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9240
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 9240,
+      "byteLength": 9240
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 18480,
+      "byteLength": 12320
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 30800,
+      "byteLength": 6160
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 36960,
+      "byteLength": 12312
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11442_T_stove.png",
+      "name": "T_stove"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_stove"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_stove_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "scale": [
+        0.927230954,
+        0.927230954,
+        0.927230954
+      ],
+      "name": "SM_stove_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_stove_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_stove"
+    }
+  ]
+}

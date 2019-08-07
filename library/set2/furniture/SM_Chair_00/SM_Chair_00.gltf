@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 240,
+      "type": "VEC3",
+      "max": [
+        0.17451940476894379,
+        0.79115986824035645,
+        0.18623463809490204
+      ],
+      "min": [
+        -0.16986341774463654,
+        0.0034472700208425522,
+        -0.18624089658260345
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 240,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 240,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.10491697490215302,
+        0.99998652935028076,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.99991154670715332,
+        -0.999998927116394,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 240,
+      "type": "VEC2",
+      "max": [
+        0.99489998817443848,
+        0.99745100736618042
+      ],
+      "min": [
+        0.004548999946564436,
+        0.0051529998891055584
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 408,
+      "type": "SCALAR",
+      "max": [
+        239.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_Chair_00.bin",
+      "byteLength": 13152
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2880
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2880,
+      "byteLength": 2880
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5760,
+      "byteLength": 3840
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 9600,
+      "byteLength": 1920
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 11520,
+      "byteLength": 1632
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11388_T_furniture.jpg",
+      "name": "T_furniture"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_furniture"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_Chair_00"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_Chair_00"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_Chair_00"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_furniture"
+    }
+  ]
+}

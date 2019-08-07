@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 115,
+      "type": "VEC3",
+      "max": [
+        0.11822249740362167,
+        0.43843072652816772,
+        0.10794133692979813
+      ],
+      "min": [
+        -0.11974778026342392,
+        0.0014120698906481266,
+        -0.12975427508354187
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 115,
+      "type": "VEC3",
+      "max": [
+        0.99999141693115234,
+        1.0,
+        0.99900323152542114
+      ],
+      "min": [
+        -0.99997043609619141,
+        -1.0,
+        -0.99900323152542114
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 115,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.59814280271530151,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.99415016174316406,
+        -0.80542528629302979,
+        -1.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 115,
+      "type": "VEC2",
+      "max": [
+        0.65816497802734375,
+        0.99458402395248413
+      ],
+      "min": [
+        0.0033269999548792839,
+        0.37059101462364197
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 384,
+      "type": "SCALAR",
+      "max": [
+        114.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_bottle_02.bin",
+      "byteLength": 7056
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1380
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1380,
+      "byteLength": 1380
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2760,
+      "byteLength": 1840
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4600,
+      "byteLength": 920
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5520,
+      "byteLength": 1536
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11174_T_Bottle.jpg",
+      "name": "T_Bottle"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_Bottle"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_bottle_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_bottle_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_bottle_02"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Bottle"
+    }
+  ]
+}

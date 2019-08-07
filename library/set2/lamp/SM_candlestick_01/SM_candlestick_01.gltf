@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1045,
+      "type": "VEC3",
+      "max": [
+        0.20667228102684021,
+        0.64284646511077881,
+        0.20710389316082
+      ],
+      "min": [
+        -0.20664237439632416,
+        0.0013618699740618467,
+        -0.20621076226234436
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1045,
+      "type": "VEC3",
+      "max": [
+        0.99967265129089355,
+        1.0,
+        0.99967265129089355
+      ],
+      "min": [
+        -0.99967265129089355,
+        -1.0,
+        -0.99967265129089355
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1045,
+      "type": "VEC4",
+      "max": [
+        0.999941349029541,
+        0.9999929666519165,
+        0.99831497669219971,
+        1.0
+      ],
+      "min": [
+        -0.99991631507873535,
+        -0.99810695648193359,
+        -0.9984092116355896,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1045,
+      "type": "VEC2",
+      "max": [
+        0.99738699197769165,
+        0.99369299411773682
+      ],
+      "min": [
+        0.2565779983997345,
+        0.0043520000763237476
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 3951,
+      "type": "SCALAR",
+      "max": [
+        1044.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "SM_candlestick_01.bin",
+      "byteLength": 65964
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12540
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 12540,
+      "byteLength": 12540
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 25080,
+      "byteLength": 16720
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 41800,
+      "byteLength": 8360
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 50160,
+      "byteLength": 15804
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../11284_T_lighting.png",
+      "name": "T_lighting"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "T_lighting"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_candlestick_01"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_candlestick_01"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "SM_candlestick_01"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_lighting"
+    }
+  ]
+}

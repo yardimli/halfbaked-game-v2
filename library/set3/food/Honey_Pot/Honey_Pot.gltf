@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 98,
+      "type": "VEC3",
+      "max": [
+        5.58909797668457,
+        8.6941471099853516,
+        4.8809318542480469
+      ],
+      "min": [
+        -5.5891208648681641,
+        -0.0954742431640625,
+        -4.88092041015625
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 98,
+      "type": "VEC3",
+      "max": [
+        0.99081331491470337,
+        1.0,
+        0.85713404417037964
+      ],
+      "min": [
+        -0.99081343412399292,
+        -0.89636963605880737,
+        -0.85713404417037964
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 98,
+      "type": "VEC4",
+      "max": [
+        -0.010436988435685635,
+        0.26217088103294373,
+        0.997017502784729,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.26217088103294373,
+        -0.997017502784729,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 98,
+      "type": "VEC2",
+      "max": [
+        0.62418127059936523,
+        0.55778074264526367
+      ],
+      "min": [
+        0.600273609161377,
+        0.53610736131668091
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 270,
+      "type": "SCALAR",
+      "max": [
+        97.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.1.4f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Honey_Pot.bin",
+      "byteLength": 5784
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1176
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1176,
+      "byteLength": 1176
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2352,
+      "byteLength": 1568
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3920,
+      "byteLength": 784
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4704,
+      "byteLength": 1080
+    }
+  ],
+  "images": [
+    {
+      "uri": "../../10916_Farm_Interior.png",
+      "name": "Farm_Interior"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Farm_Interior 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Honey_Pot"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        2.18556941E-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "translation": [
+        1.68141222,
+        0.07536602,
+        1.49662066
+      ],
+      "name": "Honey_Pot"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Honey_Pot"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Farm_Interior"
+    }
+  ]
+}
