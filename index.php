@@ -224,6 +224,23 @@
     </select>
   </div>
 
+  <div class="form-group">
+    <select class="form-control" id="object_physics">
+      <option value="collidable">Collidable</option>
+      <option value="pass_through">Pass Through</option>
+      <option value="floor_material">Floors</option>
+      <option value="wall_material">Wall</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <select class="form-control" id="object_collectible">
+      <option value="no_collecting">No Collectiong</option>
+      <option value="clone">Clone When Picked</option>
+      <option value="pickup">Pickup</option>
+    </select>
+  </div>
+
   <input id="position_x" class="form-control edit_object_prop" placeholder="X Position">
   <input id="position_y" class="form-control edit_object_prop" placeholder="Y Position">
   <input id="position_z" class="form-control edit_object_prop" placeholder="Z Position">

@@ -231,7 +231,7 @@ function AddLights() {
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function calculateCollisionPoints(mesh, scale, type = 'collision') {
+function calculateCollisionPoints(mesh, scale, type = 'collidable') {
   // Compute the bounding box after scale, translation, etc.
   var bbox = new THREE.Box3().setFromObject(mesh);
 
@@ -262,10 +262,32 @@ function detectCollisions() {
       zMax: main_player.position.z + main_player.geometry.parameters.width / 2,
     };
 
+    var playerYPosition = -10;
+
+    var setAccordingToFloorPositon = false;
     // Run through each object and detect if there is a collision.
     for (var index = 0; index < collisions.length; index++) {
 
-      if (collisions[index].type == 'collision') {
+      if (collisions[index].type == 'floor_material') {
+
+        if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
+          (bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
+          // We are on a floor object! elevate user.
+
+          setAccordingToFloorPositon = true;
+          var box = new THREE.Box3().setFromObject(main_player);
+          var boxsize = new THREE.Vector3();
+          box.getSize(boxsize);
+
+          //prevent from a lower tile to pull user down. better to walk in air than being inside the floor.. :)
+          if (collisions[index].yMax+((Math.round(boxsize.y * 1000) / 1000) / 2)>playerYPosition) {
+            main_player.position.y = collisions[index].yMax + ((Math.round(boxsize.y * 1000) / 1000) / 2);				    //Position (y = up+, down-)
+            playerYPosition = main_player.position.y;
+          }
+
+        }
+      }
+      else if (collisions[index].type == 'collidable' || collisions[index].type == 'wall_material') {
         if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
           (bounds.yMin <= collisions[index].yMax && bounds.yMax >= collisions[index].yMin) &&
           (bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
@@ -300,6 +322,13 @@ function detectCollisions() {
         }
       }
     }
+
+    if (!setAccordingToFloorPositon) {
+      var box = new THREE.Box3().setFromObject(main_player);
+      var boxsize = new THREE.Vector3();
+      box.getSize(boxsize);
+      main_player.position.y =  ((Math.round(boxsize.y * 1000) / 1000) / 2);				    //Position (y = up+, down-)
+    }
   }
 }
 
@@ -323,7 +352,7 @@ function createOtherCharacter(name, model_file, width, height, position, rotate,
   new_player.position.z = position.z;				    //Position (z = front +, back-)
 
   if (collidable) {
-    calculateCollisionPoints(new_player);
+    calculateCollisionPoints(new_player, "1", "player");
   }
 
 //  other_players.push({xname:name, mesh:new_player});
@@ -365,7 +394,12 @@ function createCharacter(width, height, position, rotate) {
   main_player.rotation.set(THREE.Math.degToRad(rotate.x), THREE.Math.degToRad(rotate.y), THREE.Math.degToRad(rotate.z));
 
   main_player.position.x = position.x;				    //Position (x = right+ left-)
-  main_player.position.y = position.y;				    //Position (y = up+, down-)
+
+  var box = new THREE.Box3().setFromObject(main_player);
+  var boxsize = new THREE.Vector3();
+  box.getSize(boxsize);
+  main_player.position.y =  ((Math.round(boxsize.y * 10000) / 10000) / 2);				    //Position (y = up+, down-)
+
   main_player.position.z = position.z;				    //Position (z = front +, back-)
 
   main_player.name = "main_player";
@@ -375,16 +409,12 @@ function createCharacter(width, height, position, rotate) {
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function loadGLTF(name, model_file, position, scale, rotate, collidable, can_move, load_from_scene) {
+function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from_scene, object_physics, object_collectible) {
   loader.load(model_file, function (gltf) {             // <<--------- Model Path
     var object = gltf.scene;
 
 //    gltf.geometry.center();
 
-
-    if (collidable) {
-      calculateCollisionPoints(gltf.scene);
-    }
 
     const root = gltf.scene;
 
@@ -398,7 +428,8 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
 
 
     root.userData.canMove = can_move;
-    root.userData.collision = true;
+    root.userData.object_physics = object_physics;
+    root.userData.object_collectible = object_collectible;
     root.userData.name = name;
     root.userData.filePath = model_file;
 
@@ -465,6 +496,11 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
     });
     logOnce = 1;
     scene_objects.add(gltf.scene);
+
+    if (object_physics !== "pass_through") {
+      console.log("add " + name + " to collidable array");
+      calculateCollisionPoints(gltf.scene, 1, object_physics);
+    }
 
 
     $("#all_objects").find('option').remove();
@@ -618,34 +654,35 @@ function changeMainCharacterAnime() {
   var xDiff = movements[0].x - main_player.position.x;
   var zDiff = movements[0].z - main_player.position.z;
 
-  console.log("zone: " + xZone + ",  xDiff:" + xDiff + ", zDiff:" + zDiff+" "+Math.abs(xDiff));
+  console.log("zone: " + xZone + ",  xDiff:" + xDiff + ", zDiff:" + zDiff + " " + Math.abs(xDiff));
 
   if (xZone == "00") {
 
-   if (Math.abs(xDiff)>Math.abs(zDiff)) {
-     if (xDiff > 0) {
-       console.log('go right')
-       main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-     }
-     else {
-       console.log('go left')
-       main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-     }
-   } else {
-     if (zDiff > 0) {
-      console.log('go front')
-      main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-     }
-     else {
-      console.log('go back')
-      main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-     }
-   }
+    if (Math.abs(xDiff) > Math.abs(zDiff)) {
+      if (xDiff > 0) {
+        console.log('go right')
+        main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
+      }
+      else {
+        console.log('go left')
+        main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+      }
+    }
+    else {
+      if (zDiff > 0) {
+        console.log('go front')
+        main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
+      }
+      else {
+        console.log('go back')
+        main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
+      }
+    }
   }
 
 
   if (xZone == "01") {
-    if (Math.abs(zDiff)>Math.abs(xDiff)) {
+    if (Math.abs(zDiff) > Math.abs(xDiff)) {
       if (zDiff > 0) {
         console.log('go left')
         main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
@@ -654,7 +691,8 @@ function changeMainCharacterAnime() {
         console.log('go right')
         main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
       }
-    } else {
+    }
+    else {
       if (xDiff > 0) {
         console.log('go front')
         main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
@@ -667,7 +705,7 @@ function changeMainCharacterAnime() {
   }
 
   if (xZone == "11") {
-    if (Math.abs(xDiff)>Math.abs(zDiff)) {
+    if (Math.abs(xDiff) > Math.abs(zDiff)) {
       if (xDiff > 0) {
         console.log('go left')
         main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
@@ -676,7 +714,8 @@ function changeMainCharacterAnime() {
         console.log('go right')
         main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
       }
-    } else {
+    }
+    else {
       if (zDiff > 0) {
         console.log('go back')
         main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
@@ -689,7 +728,7 @@ function changeMainCharacterAnime() {
   }
 
   if (xZone == "10") {
-    if (Math.abs(xDiff)>Math.abs(zDiff)) {
+    if (Math.abs(xDiff) > Math.abs(zDiff)) {
       if (xDiff > 0) {
         console.log('go back')
         main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
@@ -698,7 +737,8 @@ function changeMainCharacterAnime() {
         console.log('go front')
         main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
       }
-    } else {
+    }
+    else {
       if (zDiff > 0) {
         console.log('go right')
         main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
@@ -1049,6 +1089,12 @@ function SelectObject() {
       $("#rotate_y").val(radians_to_degrees(MeshChild.rotation.y));
       $("#rotate_z").val(radians_to_degrees(MeshChild.rotation.z));
 
+      console.log(" object collectible : " + Outline_selectedObject_temp.userData.object_collectible);
+      $('#object_collectible option[value="' + Outline_selectedObject_temp.userData.object_collectible + '"]').prop('selected', true);
+
+      console.log(" object physics : " + Outline_selectedObject_temp.userData.object_physics);
+      $('#object_physics option[value="' + Outline_selectedObject_temp.userData.object_physics + '"]').prop('selected', true);
+
       console.log(" can move : " + Outline_selectedObject_temp.userData.canMove);
       $('#object_fixed option[value="' + Outline_selectedObject_temp.userData.canMove + '"]').prop('selected', true);
     }
@@ -1307,7 +1353,7 @@ function init() {
     }
 
     console.log(AddNewObjectPoint);
-    loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, true, "can_move", false);
+    loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, "can_move", false, "pass_through", "no_collecting");
 
   });
 
@@ -1321,6 +1367,33 @@ function init() {
         Outline_selectedObjects.push(Outline_selectedObject_temp);
       }
 
+    }
+  });
+
+
+  document.addEventListener('keypress', logKey);
+
+  function logKey(e) {
+    console.log(e.code);
+
+    if (e.code ==="KeyC") {
+      if (Outline_selectedObject_temp !== null) {
+        console.log("pick up " +Outline_selectedObject_temp.userData.name);
+      }
+    }
+  }
+
+  $("#object_physics").on("change", function () {
+    if (Outline_selectedObject_temp !== null) {
+      Outline_selectedObject_temp.userData.object_physics = $(this).val();
+      console.log($(this).val());
+    }
+  });
+
+  $("#object_collectible").on("change", function () {
+    if (Outline_selectedObject_temp !== null) {
+      Outline_selectedObject_temp.userData.object_collectible = $(this).val();
+      console.log($(this).val());
     }
   });
 
@@ -1366,8 +1439,15 @@ function init() {
               }
 
               for (var i = 0; i < data.length; i++) {
+                if (data[i].object_physics === null || typeof data[i].object_physics === "undefined") {
+                  data[i].object_physics = "pass_through";
+                }
 
-                loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Vector3(data[i].rotation._x, data[i].rotation._y, data[i].rotation._z), data[i].collision, data[i].canMove, true);
+                if (data[i].object_collectible === null || typeof data[i].object_collectible === "undefined") {
+                  data[i].object_collectible = "no_collecting";
+                }
+
+                loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Vector3(data[i].rotation._x, data[i].rotation._y, data[i].rotation._z), data[i].canMove, true, data[i].object_physics, data[i].object_collectible);
 
 
               }
@@ -1447,7 +1527,8 @@ function init() {
           "id": scene_objects.children[i].id,
           "name": scene_objects.children[i].name,
           "canMove": scene_objects.children[i].userData.canMove,
-          "collision": scene_objects.children[i].userData.collision,
+          "object_physics": scene_objects.children[i].userData.object_physics,
+          "object_collectible": scene_objects.children[i].userData.object_collectible,
           "userName": scene_objects.children[i].userData.name,
           "filePath": scene_objects.children[i].userData.filePath,
           "position": position,
@@ -1590,7 +1671,7 @@ function init() {
             var boxsize = new THREE.Vector3();
             box.getSize(boxsize);
 
-            loadGLTF(scene_objects.children[i].name + " Clone", scene_objects.children[i].userData.filePath, position, MeshChild.scale, MeshChild.rotation, scene_objects.children[i].userData.collision, scene_objects.children[i].userData.canMove, true);
+            loadGLTF(scene_objects.children[i].name + " Clone", scene_objects.children[i].userData.filePath, position, MeshChild.scale, MeshChild.rotation, scene_objects.children[i].userData.canMove, true, scene_objects.children[i].userData.object_physics, scene_objects.children[i].userData.object_collectible);
           }
         }
       }
