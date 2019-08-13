@@ -630,172 +630,36 @@ function onDocumentMouseDown(event, bypass = false) {
 
 function changeMainCharacterAnime() {
 
-  console.log("camera position: x:" + camera.position.x + " z:" + camera.position.z);
+    var cameraLookAt = new THREE.Vector3(); // create once and reuse it!
+    camera.getWorldDirection(cameraLookAt);
 
-  var vector = new THREE.Vector3(); // create once and reuse it!
-  camera.getWorldDirection(vector);
+    var moveDirection = new THREE.Vector3(movements[0].x - main_player.position.x, 0, movements[0].z - main_player.position.z).normalize();
+    var angle = cameraLookAt.angleTo(moveDirection);
 
-//  console.log("x: "+Math.round( vector.x * 100)+" z:"+Math.round(vector.z*100));
-  // console.log("x "+ Math.round( movements[0].x)+" pp:"+main_player.position.x);
-  // console.log("z " + Math.round( movements[0].z)+" pp:"+main_player.position.z);
+    console.log('camera look at: ( ' + cameraLookAt.x + ', ' + cameraLookAt.y + ', ' + cameraLookAt.z + ' )');
+    console.log('walk direction: ( ' + moveDirection.x + ', ' + moveDirection.y + ', ' + moveDirection.z + ' )');
+    console.log('angle between: ' + angle);
 
-  var xState = "0";
-  if (vector.x * 100 > 0) {
-    xState = "1";
-  }
+    var frontOrBack = (cameraLookAt.dot(moveDirection) >=0 ) ? -1 : 1 ;
+    var rightOrLeft = (cameraLookAt.applyAxisAngle(new THREE.Vector3( 0, 1, 0 ), -Math.PI / 2).dot(moveDirection) >= 0) ? 1 : -1 ;
 
-  var zState = "0";
-  if (vector.z * 100 > 0) {
-    zState = "1";
-  }
+    console.log('Go To: ' + ((frontOrBack === 1) ? 'front' : 'back') + ' and ' + ((rightOrLeft === 1) ? 'right' : 'left'));
 
-  var xZone = xState + "" + zState;
-
-  var xDiff = movements[0].x - main_player.position.x;
-  var zDiff = movements[0].z - main_player.position.z;
-
-  console.log("zone: " + xZone + ",  xDiff:" + xDiff + ", zDiff:" + zDiff + " " + Math.abs(xDiff));
-
-  if (xZone == "00") {
-
-    if (Math.abs(xDiff) > Math.abs(zDiff)) {
-      if (xDiff > 0) {
-        console.log('go right')
-        main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go left')
-        main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-      }
-    }
-    else {
-      if (zDiff > 0) {
-        console.log('go front')
-        main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-      }
-      else {
+    if(angle >= 0 && angle <= Math.PI*0.25){
         console.log('go back')
         main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-      }
-    }
-  }
-
-
-  if (xZone == "01") {
-    if (Math.abs(zDiff) > Math.abs(xDiff)) {
-      if (zDiff > 0) {
-        console.log('go left')
-        main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go right')
-        main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-      }
-    }
-    else {
-      if (xDiff > 0) {
+    }else if(angle > Math.PI*0.25 && angle < Math.PI*0.75){
+        if(rightOrLeft === 1){
+            console.log('go right');
+            main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
+        }else if(rightOrLeft === -1){
+            console.log('go left');
+            main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+        }
+    }else if(angle >= Math.PI*0.75 && angle <= Math.PI){
         console.log('go front')
         main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go back')
-        main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-      }
     }
-  }
-
-  if (xZone == "11") {
-    if (Math.abs(xDiff) > Math.abs(zDiff)) {
-      if (xDiff > 0) {
-        console.log('go left')
-        main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go right')
-        main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-      }
-    }
-    else {
-      if (zDiff > 0) {
-        console.log('go back')
-        main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go front')
-        main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-      }
-    }
-  }
-
-  if (xZone == "10") {
-    if (Math.abs(xDiff) > Math.abs(zDiff)) {
-      if (xDiff > 0) {
-        console.log('go back')
-        main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go front')
-        main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-      }
-    }
-    else {
-      if (zDiff > 0) {
-        console.log('go right')
-        main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-      }
-      else {
-        console.log('go left')
-        main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-      }
-    }
-  }
-
-//
-// var direction = new THREE.Vector3(camera.position.x, 1, camera.position.z); //new THREE.Vector3(movements[0].x, 0, movements[0].z);
-// var angle = direction.angleTo(new THREE.Vector3(1, 1, 1));// * (180/Math.PI) ;
-//
-// console.log(angle);
-//
-// // console.log(camera.position);
-//
-// if (angle>0 && angle<45) {
-//       console.log('go front')
-//       main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-// } else
-//   if (angle>135 && angle<180) {
-//       console.log('go back')
-//       main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-// } else
-// {
-//       console.log('go right')
-//       main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-// }
-//
-
-//
-// if(direction.z > 0){
-//   if(angle < 45){
-//     console.log('go front')
-//     main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
-//   }else if(angle >= 45 && angle <= 135){
-//     console.log('go right')
-//     main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-//   }else {
-//     console.log('go left')
-//     main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-//   }
-// }else {
-//   if(angle < 45){
-//     console.log('go left 2')
-//     main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-//   }else if(angle >= 45 && angle <= 135){
-//     console.log('go right 2')
-//     main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-//   }else {
-//     console.log('go back 2')
-//     main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-//   }
-// }
 
 }
 
