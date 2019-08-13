@@ -288,7 +288,7 @@ function AddLights() {
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function calculateCollisionPoints(mesh, scale, type = 'collision') {
+function calculateCollisionPoints(mesh, scale, type = 'collidable') {
   // Compute the bounding box after scale, translation, etc.
   var bbox = new THREE.Box3().setFromObject(mesh);
 
@@ -319,15 +319,37 @@ function detectCollisions() {
       zMax: main_player.position.z + main_player.geometry.parameters.width / 2,
     };
 
+    var playerYPosition = -10;
+
+    var setAccordingToFloorPositon = false;
     // Run through each object and detect if there is a collision.
     for (var index = 0; index < collisions.length; index++) {
 
-      if (collisions[index].type == 'collision') {
+      if (collisions[index].type == 'floor_material') {
+
         if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
-          (bounds.yMin <= collisions[index].yMax && bounds.yMax >= collisions[index].yMin) &&
-          (bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
+            (bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
+          // We are on a floor object! elevate user.
+
+          setAccordingToFloorPositon = true;
+          var box = new THREE.Box3().setFromObject(main_player);
+          var boxsize = new THREE.Vector3();
+          box.getSize(boxsize);
+
+          //prevent from a lower tile to pull user down. better to walk in air than being inside the floor.. :)
+          if (collisions[index].yMax+((Math.round(boxsize.y * 1000) / 1000) / 2)>playerYPosition) {
+            main_player.position.y = collisions[index].yMax + ((Math.round(boxsize.y * 1000) / 1000) / 2);				    //Position (y = up+, down-)
+            playerYPosition = main_player.position.y;
+          }
+
+        }
+      }
+      else if (collisions[index].type == 'collidable' || collisions[index].type == 'wall_material') {
+        if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
+            (bounds.yMin <= collisions[index].yMax && bounds.yMax >= collisions[index].yMin) &&
+            (bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
           // We hit a solid object! Stop all movements.
-          // stopMovement();
+          stopMovement();
 
           // Move the object in the clear. Detect the best direction to move.
           if (bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) {
@@ -357,6 +379,13 @@ function detectCollisions() {
         }
       }
     }
+
+    if (!setAccordingToFloorPositon) {
+      var box = new THREE.Box3().setFromObject(main_player);
+      var boxsize = new THREE.Vector3();
+      box.getSize(boxsize);
+      main_player.position.y =  ((Math.round(boxsize.y * 1000) / 1000) / 2);				    //Position (y = up+, down-)
+    }
   }
 }
 
@@ -383,30 +412,29 @@ function createCharacter(width, height, position, rotate) {
 
   var geometry = new THREE.PlaneGeometry(width, height);
 
-  main_player = new THREE.Mesh( geometry, material );
+  main_player = new THREE.Mesh(geometry, material);
 
   main_player.rotation.set(THREE.Math.degToRad(rotate.x), THREE.Math.degToRad(rotate.y), THREE.Math.degToRad(rotate.z));
 
-  main_player.position.x = position.x;				    //Position (x = right+ left-)
-  main_player.position.y = position.y;				    //Position (y = up+, down-)
-  main_player.position.z = position.z;				    //Position (z = front +, back-)
+  var box = new THREE.Box3().setFromObject(main_player);
+  var boxsize = new THREE.Vector3();
+  box.getSize(boxsize);
 
+  main_player.position.x = position.x;				    //Position (x = right+ left-)
+  main_player.position.y =  ((Math.round(boxsize.y * 10000) / 10000) / 2);				    //Position (y = up+, down-)
+  main_player.position.z = position.z;				    //Position (z = front +, back-)
   main_player.name = "main_player";
 
   scene.add(main_player);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function loadGLTF(name, model_file, position, scale, rotate, collidable, can_move, load_from_scene) {
+function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from_scene, object_physics, object_collectible) {
   loader.load(model_file, function (gltf) {             // <<--------- Model Path
     var object = gltf.scene;
 
 //    gltf.geometry.center();
 
-
-    if (collidable) {
-      calculateCollisionPoints(gltf.scene);
-    }
 
     const root = gltf.scene;
 
@@ -420,7 +448,8 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
 
 
     root.userData.canMove = can_move;
-    root.userData.collision = true;
+    root.userData.object_physics = object_physics;
+    root.userData.object_collectible = object_collectible;
     root.userData.name = name;
     root.userData.filePath = model_file;
 
@@ -429,8 +458,14 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
     var AssignNameToFirst = true;
     root.traverse((obj) => {
       if (obj.isMesh) {
+
+        // obj.applyMatrix(mS);
+
+//        drag_objects.push(obj);
+
         obj.scale.set(scale.x, scale.y, scale.z);
         obj.geometry.center();
+
 
         var box = new THREE.Box3().setFromObject(obj);
         var boxsize = new THREE.Vector3();
@@ -459,6 +494,7 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
         }
 
         Outline_addSelectedObject(obj, root);
+        // outlinePass.selectedObjects = Outline_selectedObjects;
         SelectObject();
       }
 
@@ -480,6 +516,11 @@ function loadGLTF(name, model_file, position, scale, rotate, collidable, can_mov
     });
     logOnce = 1;
     scene_objects.add(gltf.scene);
+
+    if (object_physics !== "pass_through") {
+      console.log("add " + name + " to collidable array");
+      calculateCollisionPoints(gltf.scene, 1, object_physics);
+    }
 
 
     $("#all_objects").find('option').remove();
@@ -851,7 +892,7 @@ function init() {
   const near = 1; //1
   const far = 10000; //200000
   camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.set(300, 75, 600);
+  camera.position.set(0, 75, 600);
 //  camera.lookAt(1500,200,500);
 //    main_player.add(camera);
 
@@ -868,14 +909,14 @@ function init() {
   controls.zoomSpeed = 0.6;
   controls.enableKeys = false;
 
-  controls.target = new THREE.Vector3(300, 2, 0);
+  controls.target = new THREE.Vector3(0, 2, 0);
 
   controls.update();
 
   AddLights();
 
   //skybox
-  if (1 == 2) {
+  if (1 == 1) {
     var urls = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
     var loaderCube = new THREE.CubeTextureLoader().setPath('./threejs/examples/textures/cube/skyboxsun25deg/');
     loaderCube.load(urls, function (texture) {
@@ -927,6 +968,18 @@ function init() {
     }
   });
 
+  document.addEventListener('keypress', logKey);
+
+  function logKey(e) {
+    console.log(e.code);
+
+    if (e.code ==="KeyC") {
+      if (Outline_selectedObject_temp !== null) {
+        console.log("pick up " +Outline_selectedObject_temp.userData.name);
+      }
+    }
+  }
+
   $("#load_scene_dialog_button").on('click', function (e) {
     $("#loadSceneModal").modal("show");
 
@@ -962,8 +1015,15 @@ function init() {
               }
 
               for (var i = 0; i < data.length; i++) {
+                if (data[i].object_physics === null || typeof data[i].object_physics === "undefined") {
+                  data[i].object_physics = "pass_through";
+                }
 
-                loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Vector3(data[i].rotation._x, data[i].rotation._y, data[i].rotation._z), data[i].collision, data[i].canMove, true);
+                if (data[i].object_collectible === null || typeof data[i].object_collectible === "undefined") {
+                  data[i].object_collectible = "no_collecting";
+                }
+
+                loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Vector3(data[i].rotation._x, data[i].rotation._y, data[i].rotation._z), data[i].canMove, true, data[i].object_physics, data[i].object_collectible);
 
 
               }
