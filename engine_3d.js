@@ -372,7 +372,7 @@ function createCharacter(width, height, position, rotate) {
   CharacterCanvas.height = height * 100;
 
   // Draw the character animation --------------------------
-  var holdStuffs = ['', '_Watermelon', '_GreenApple', '_EmptyCup'];
+  var holdStuffs = ['', '_Watermelon', '_GreenApple', '_EmptyCup', '_FullCup', '_Orange', '_Pineapple'];
   main_player_holdStuff = holdStuffs[Math.floor(Math.random() * 4)];
   main_player_Anime = new CharacterAnime(CharacterCanvas, {
     characterId: Math.floor(Math.random() * 6) + 1,
