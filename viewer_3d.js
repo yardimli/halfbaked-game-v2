@@ -1141,6 +1141,7 @@ function render() {
     var clockTimer = timer.clockTimer;
     var clockTexture = timer.texture;
     var clockMesh = timer.mesh;
+    clockMesh.lookAt(camera.position);
     if(clockTimer.needsUpdateFrame){
       clockTexture.needsUpdate = true;
       clockTimer.needsUpdateFrame = false;
