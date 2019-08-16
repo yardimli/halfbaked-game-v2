@@ -3,6 +3,7 @@ class ClockTimer {
 		this.ctx = canvas.getContext('2d');
 		this.objType = 'ClockTimer'; // Mark the object type.
 		this.updateTimer = null;
+		this.blinkTimer = null;
 
 		// pos
 		this.x = parseInt(canvas.width/2);
@@ -19,6 +20,7 @@ class ClockTimer {
 		this.speed = config.hasOwnProperty('speed') ? config.speed : 1000 ; // milliseconds
 		this.degProgress = this.direction === 1 ? 0 : 360;
 		this.size = parseInt(canvas.width/2);
+		this.originSize = parseInt(canvas.width/2);
 
 		// style
 		this.startColor = config.hasOwnProperty('startColor') ? config.startColor : 'rgb(0, 255, 0)';
@@ -42,22 +44,30 @@ class ClockTimer {
 				if (ClockTimer.curtTime < ClockTimer.time) {
 					ClockTimer.curtTime++;
 					ClockTimer.degProgress += (360 / ClockTimer.time);
+					if( ClockTimer.degProgress > 270 && ClockTimer.blinkTimer === null) {
+						ClockTimer.startBlink();
+					}
 					ClockTimer.drawTimer();
 					ClockTimer.needsUpdateFrame = true;
 				}else if (ClockTimer.curtTime === ClockTimer.time) {
 					ClockTimer.status = 'stop';
 					window.clearInterval(ClockTimer.updateTimer);
+					window.clearInterval(ClockTimer.blinkTimer);
 				}
 			}
 			if (ClockTimer.direction === -1) {
 				if (ClockTimer.curtTime > 0) {
 					ClockTimer.curtTime--;
 					ClockTimer.degProgress -= (360 / ClockTimer.time);
+					if( ClockTimer.degProgress < 90 && ClockTimer.blinkTimer === null) {
+						ClockTimer.startBlink();
+					}
 					ClockTimer.drawTimer();
 					ClockTimer.needsUpdateFrame = true;
 				}else if (ClockTimer.curtTime === 0) {
 					ClockTimer.status = 'stop';
 					window.clearInterval(ClockTimer.updateTimer);
+					window.clearInterval(ClockTimer.blinkTimer);
 				}
 			}
 
@@ -65,10 +75,27 @@ class ClockTimer {
 
 	}
 
+	startBlink(){
+
+		this.blinkTimer = window.setInterval(function(ClockTimer) {
+			if(ClockTimer.size === ClockTimer.originSize){
+				ClockTimer.size = ClockTimer.size*0.8;
+			}else if(ClockTimer.size !== ClockTimer.originSize){
+				ClockTimer.size = ClockTimer.originSize
+			}
+			if(ClockTimer.curtTime === 0 || ClockTimer.curtTime === ClockTimer.time){
+				// ClockTimer.size = ClockTimer.originSize;
+			}
+			ClockTimer.drawTimer();
+			ClockTimer.needsUpdateFrame = true;
+		}, 10, this)
+
+	}
+
 	drawTimer(){
 
 		this.ctx.save();
-		this.ctx.clearRect(0, 0, this.size*2, this.size*2);
+		this.ctx.clearRect(0, 0, this.originSize*2, this.originSize*2);
 
 		if(this.direction === 1){
 			var colorIndex = Math.ceil(this.degProgress) < 360 ? Math.ceil(this.degProgress) : 359 ;
