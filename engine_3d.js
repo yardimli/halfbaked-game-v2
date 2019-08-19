@@ -1288,6 +1288,7 @@ function init() {
 
           var UrlToGet = "load_scene.php";
           var data = {"scene_name": $(this).data("scene_name")};
+          $("#saveSceneName").val($(this).data("scene_name"));
 
           $.ajax({
             url: UrlToGet,
