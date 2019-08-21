@@ -70,6 +70,7 @@ class CharacterAnime {
 
 		this.characterId = config.hasOwnProperty('characterId') ? config.characterId : 0 ;
         this.animation = config.hasOwnProperty('animation') ? config.animation : 'frontStand';
+        this.holdStuff = this.parseAnimationName()[1];
         this.character = this.buildCharacter();
 
         this.curtFrame = 0;
@@ -155,14 +156,36 @@ class CharacterAnime {
 
     }
 
+    parseAnimationName(){
+        return [
+            (this.animation.indexOf('_') === -1) ? this.animation : this.animation.substring(0, main_player_Anime.animation.indexOf('_')),
+            (this.animation.indexOf('_') === -1) ? '' : this.animation.substring(this.animation.indexOf('_'))
+        ]
+    }
+
 	setAnimation(value) {
 
-	    this.isAnimeReady = false;
-	    this.animation = value;
-	    this.curtFrame = 0;
-        this.drawAnimationFrame();
-	    this.isAnimeReady = true;
+	    if(this.isSupported(value)){
+            this.isAnimeReady = false;
+            this.animation = value;
+            this.curtFrame = 0;
+            this.holdStuff = this.parseAnimationName()[1];
+            this.drawAnimationFrame();
+            this.isAnimeReady = true;
+            return true;
+        }else {
+	        return false;
+        }
 
+    }
+
+    isSupported(value){
+        for(var i=0; i<this.supportAnime.length; i++){
+            if(this.supportAnime[i].name === value){
+                return true;
+            }
+        }
+        return false;
     }
 
     drawAnimationFrame() {

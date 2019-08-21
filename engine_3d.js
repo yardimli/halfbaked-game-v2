@@ -83,7 +83,7 @@ var collisions = [];
 var main_player = null;
 var main_player_Texture = null;
 var main_player_Anime = null;
-var main_player_holdStuff = '';
+var pickableObjects = [];
 
 var other_players = [];
 
@@ -372,11 +372,9 @@ function createCharacter(width, height, position, rotate) {
   CharacterCanvas.height = height * 100;
 
   // Draw the character animation --------------------------
-  var holdStuffs = ['', '_Watermelon', '_GreenApple', '_EmptyCup', '_FullCup', '_Orange', '_Pineapple'];
-  main_player_holdStuff = holdStuffs[Math.floor(Math.random() * 4)];
   main_player_Anime = new CharacterAnime(CharacterCanvas, {
     characterId: Math.floor(Math.random() * 6) + 1,
-    animation: 'frontStand' + main_player_holdStuff, // Optional, default is 'frontStand'
+    animation: 'frontStand', // Optional, default is 'frontStand'
     speed: 200 // Optional, default is 200
   });
 
@@ -403,6 +401,7 @@ function createCharacter(width, height, position, rotate) {
   main_player.position.z = position.z;				    //Position (z = front +, back-)
 
   main_player.name = "main_player";
+  main_player.holdStuff = null;
 
   scene.add(main_player);
 }
@@ -430,7 +429,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
     root.userData.canMove = can_move;
     root.userData.object_physics = object_physics;
     root.userData.object_collectible = object_collectible;
-    root.userData.name = name;
+    root.userData.userName = name;
     root.userData.filePath = model_file;
 
     Outline_selectedObject_temp = root;
@@ -439,6 +438,13 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
     root.traverse((obj) => {
       if (obj.isMesh) {
 
+        obj.userData = {
+            'canMove': can_move,
+            'object_physics': object_physics,
+            'object_collectible': object_collectible,
+            'userName': name,
+            'filePath': model_file
+        }
         // obj.applyMatrix(mS);
 
 //        drag_objects.push(obj);
@@ -505,7 +511,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 
     $("#all_objects").find('option').remove();
     for (var i = 0; i < scene_objects.children.length; i++) {
-      $("#all_objects").append('<option value="' + scene_objects.children[i].id + '" data-userdata_name="' + scene_objects.children[i].userData.name + '" >' + scene_objects.children[i].userData.name + "(" + scene_objects.children[i].id + ")" + '</option>');
+      $("#all_objects").append('<option value="' + scene_objects.children[i].id + '" data-userdata_name="' + scene_objects.children[i].userData.userName + '" >' + scene_objects.children[i].userData.userName + "(" + scene_objects.children[i].id + ")" + '</option>');
     }
     SelectObject();
 
@@ -647,28 +653,85 @@ function changeMainCharacterAnime() {
 
     if(angle >= 0 && angle <= Math.PI*0.25){
         console.log('go back')
-        main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
+        main_player_Anime.setAnimation('backWalk' + main_player_Anime.holdStuff);
     }else if(angle > Math.PI*0.25 && angle < Math.PI*0.75){
         if(rightOrLeft === 1){
             console.log('go right');
-            main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
+            main_player_Anime.setAnimation('rightWalk' + main_player_Anime.holdStuff);
         }else if(rightOrLeft === -1){
             console.log('go left');
-            main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+            main_player_Anime.setAnimation('leftWalk' + main_player_Anime.holdStuff);
         }
     }else if(angle >= Math.PI*0.75 && angle <= Math.PI){
         console.log('go front')
-        main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
+        main_player_Anime.setAnimation('frontWalk' + main_player_Anime.holdStuff);
     }
 
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function stopMovement() {
-  movements = [];
+function searchPickableObjs() {
+    pickableObjects = [];
+    var pickableArea = {
+        x:[main_player.position.x - main_player.geometry.parameters.width/2 - 15, main_player.position.x + main_player.geometry.parameters.width/2 + 15],
+        y:[main_player.position.y - main_player.geometry.parameters.height/2 - 15, main_player.position.y + main_player.geometry.parameters.height/2 + 15],
+        z:[main_player.position.z - 15, main_player.position.z + 15]
+    }
 
-  scene.remove(indicatorTop);
-  scene.remove(indicatorBottom);
+    scene_objects.traverse(function (groupObj) {
+        if(groupObj instanceof THREE.Scene){
+            // Check Collectible
+            var meshObj = groupObj.children[0];
+            if(meshObj.userData.object_collectible === 'pickup' || meshObj.userData.object_collectible === 'clone'){
+                // Check object is reachable by the player
+                if(meshObj.position.x >= pickableArea.x[0] && meshObj.position.x <= pickableArea.x[1] && meshObj.position.y >= pickableArea.y[0] && meshObj.position.y <= pickableArea.y[1] && meshObj.position.z >= pickableArea.z[0] && meshObj.position.z <= pickableArea.z[1]){
+                    meshObj.userData.groupID = groupObj.id;
+                    if(meshObj.userData.object_collectible === 'pickup'){
+                      pickableObjects.push(groupObj);
+                    }else if(meshObj.userData.object_collectible === 'clone'){
+                      var cloneScene = new THREE.Scene;
+                      var cloneMesh = meshObj.clone();
+
+                      cloneScene.children.push(cloneMesh);
+                      cloneScene.userData = groupObj.userData;
+
+                      pickableObjects.push(cloneScene);
+                    }
+                }
+            }
+        }
+    })
+
+    //Sort pickable object by the distance to the player
+    pickableObjects.sort(function(a, b){
+        return a.position.distanceTo(main_player.position) - b.position.distanceTo(main_player.position)
+    })
+
+}
+
+function stopMovement() {
+    console.log("stop move");
+
+    movements = [];
+
+    var mainAnime = main_player_Anime.parseAnimationName()[0];
+    if (mainAnime === 'frontWalk') {
+        main_player_Anime.setAnimation('frontStand' + main_player_Anime.holdStuff)
+    }
+    else if (mainAnime === 'backWalk') {
+        main_player_Anime.setAnimation('backStand' + main_player_Anime.holdStuff)
+    }
+    else if (mainAnime === 'rightWalk') {
+        main_player_Anime.setAnimation('rightStand' + main_player_Anime.holdStuff)
+    }
+    else if (mainAnime === 'leftWalk') {
+        main_player_Anime.setAnimation('leftStand' + main_player_Anime.holdStuff)
+    }
+
+    searchPickableObjs();
+
+    scene.remove(indicatorTop);
+    scene.remove(indicatorBottom);
 }
 
 
@@ -704,6 +767,9 @@ function move(location, destination, speed = playerSpeed) {
   location.position.x = location.position.x + (moveDistance * (diffX / distance)) * multiplierX;
   location.position.z = location.position.z + (moveDistance * (diffZ / distance)) * multiplierZ;
 
+  //When player is moving, there is nothing to pick up.
+  pickableObjects = [];
+
   // If the position is close we can call the movement complete.
   if ((Math.floor(location.position.x) <= Math.floor(newPosX) + 2.5 &&
     Math.floor(location.position.x) >= Math.floor(newPosX) - 2.5) &&
@@ -713,19 +779,6 @@ function move(location, destination, speed = playerSpeed) {
     location.position.z = Math.floor(location.position.z);
 
     // Reset any movements.
-    console.log("stop move");
-    if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
-      main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
-    }
-    else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
-      main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
-    }
-    else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
-      main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
-    }
-    else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
-      main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
-    }
     stopMovement();
 
     // Maybe move should return a boolean. True if completed, false if not.
@@ -895,7 +948,7 @@ function SelectObject() {
 
     console.log("select object");
 
-    $("#object_name").val(Outline_selectedObject_temp.userData.name);
+    $("#object_name").val(Outline_selectedObject_temp.userData.userName);
     console.log(Outline_selectedObject_temp);
 
     $('#all_objects option[value="' + Outline_selectedObject_temp.id + '"]').prop('selected', true);
@@ -1240,10 +1293,74 @@ function init() {
   function logKey(e) {
     console.log(e.code);
 
-    if (e.code ==="KeyC") {
-      if (Outline_selectedObject_temp !== null) {
-        console.log("pick up " +Outline_selectedObject_temp.userData.name);
-      }
+    if (e.code ==="Space") {
+
+        if(main_player.holdStuff === null){
+          //Try to pick up something ----------------------------------
+
+            console.log(pickableObjects);
+
+            if(pickableObjects.length > 0){
+
+                console.log('has something to pick up');
+
+                var closestObj = pickableObjects[0].children[0];
+
+                if(closestObj.userData.object_collectible === 'pickup'){
+                    console.log('pick up ' + closestObj.userData.userName);
+                    //Remove object from the scene after pick up .........
+                    for (var i = scene_objects.children.length - 1; i >= 0; i--) {
+                        if (closestObj.userData.groupID === scene_objects.children[i].id) {
+                            scene_objects.remove(scene_objects.children[i]);
+                        }
+                    }
+                }
+
+                if(closestObj.userData.object_collectible === 'clone'){
+                    console.log('clone ' + closestObj.userData.userName);
+                }
+
+                //Change player animation.
+                main_player_Anime.setAnimation(main_player_Anime.parseAnimationName()[0] + '_' + closestObj.userData.userName);
+
+                //Player is holding this object.
+                main_player.holdStuff = pickableObjects[0];
+
+            }
+
+        }else if(main_player.holdStuff !== null){
+          //Try to drop something -------------------------------------
+
+          var mesh = main_player.holdStuff.children[0];
+
+          //Calculate the position to drop.
+          mesh.position.x = main_player.position.x + 10;
+          // mesh.position.y = main_player.position.y;
+          mesh.position.z = main_player.position.z;
+
+          //The thing hold by the player and then drop, is always pickup.
+          main_player.holdStuff.userData.object_collectible = 'pickup';
+          mesh.userData.object_collectible = 'pickup';
+
+          //Add object back to the scene.
+          scene_objects.add(main_player.holdStuff);
+
+          //If player is not moving, this will be the first stuff player pick up again.
+          pickableObjects = [main_player.holdStuff];
+
+          //Re-calculate Collision Points.
+          calculateCollisionPoints(mesh, 1, mesh.userData.object_physics);
+
+          //After dropping, play is holding nothing.
+          main_player.holdStuff = null;
+
+          //Change player animation.
+          main_player_Anime.setAnimation(main_player_Anime.parseAnimationName()[0]);
+
+          console.log(scene_objects);
+
+        }
+
     }
   }
 
@@ -1263,7 +1380,7 @@ function init() {
 
   $("#object_name").on('change', function () {
     if (Outline_selectedObject_temp !== null) {
-      Outline_selectedObject_temp.userData.name = $(this).val();
+      Outline_selectedObject_temp.userData.userName = $(this).val();
       $('#all_objects option[value="' + Outline_selectedObject_temp.id + '"]').html($(this).val() + "(" + Outline_selectedObject_temp.id + ")");
     }
   });
@@ -1349,7 +1466,7 @@ function init() {
 
       // console.log(drag_objects[i].id);
       // console.log(drag_objects[i].name);
-      // console.log(drag_objects[i].userData.name);
+      // console.log(drag_objects[i].userData.userName);
       // console.log(drag_objects[i].userData.filePath);
 
       var MeshChild = null;
@@ -1394,7 +1511,7 @@ function init() {
           "canMove": scene_objects.children[i].userData.canMove,
           "object_physics": scene_objects.children[i].userData.object_physics,
           "object_collectible": scene_objects.children[i].userData.object_collectible,
-          "userName": scene_objects.children[i].userData.name,
+          "userName": scene_objects.children[i].userData.userName,
           "filePath": scene_objects.children[i].userData.filePath,
           "position": position,
           "scale": MeshChild.scale,
@@ -1535,8 +1652,7 @@ function init() {
             var box = new THREE.Box3().setFromObject(MeshChild);
             var boxsize = new THREE.Vector3();
             box.getSize(boxsize);
-
-            loadGLTF(scene_objects.children[i].name + " Clone", scene_objects.children[i].userData.filePath, position, MeshChild.scale, MeshChild.rotation, scene_objects.children[i].userData.canMove, true, scene_objects.children[i].userData.object_physics, scene_objects.children[i].userData.object_collectible);
+            loadGLTF(scene_objects.children[i].userData.userName, scene_objects.children[i].userData.filePath, position, MeshChild.scale, MeshChild.rotation, scene_objects.children[i].userData.canMove, true, scene_objects.children[i].userData.object_physics, scene_objects.children[i].userData.object_collectible);
           }
         }
       }
@@ -1563,7 +1679,7 @@ function init() {
 
     $("#all_objects").find('option').remove();
     for (var i = 0; i < scene_objects.children.length; i++) {
-      $("#all_objects").append('<option value="' + scene_objects.children[i].id + '" data-userdata_name="' + scene_objects.children[i].userData.name + '" >' + scene_objects.children[i].userData.name + "(" + scene_objects.children[i].id + ")" + '</option>');
+      $("#all_objects").append('<option value="' + scene_objects.children[i].id + '" data-userdata_name="' + scene_objects.children[i].userData.userName + '" >' + scene_objects.children[i].userData.userName + "(" + scene_objects.children[i].id + ")" + '</option>');
     }
 
     $("#deleteObjectModal").modal('hide');
@@ -1682,7 +1798,7 @@ function update() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function render() {
-//  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
   composer.render();
 
   // Don't let the camera go too low.
@@ -1699,7 +1815,7 @@ function render() {
           console.log(node.userData);
         }
 
-        if (node.userData.name === "SF_Bld_House_Windmill_01") {
+        if (node.userData.userName === "SF_Bld_House_Windmill_01") {
           WindMillRotation = WindMillRotation + 1;
           node.rotation.y = THREE.Math.degToRad(WindMillRotation);
         }
