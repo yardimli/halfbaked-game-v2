@@ -158,7 +158,7 @@ class CharacterAnime {
 
     parseAnimationName(){
         return [
-            (this.animation.indexOf('_') === -1) ? this.animation : this.animation.substring(0, main_player_Anime.animation.indexOf('_')),
+            (this.animation.indexOf('_') === -1) ? this.animation : this.animation.substring(0, this.animation.indexOf('_')),
             (this.animation.indexOf('_') === -1) ? '' : this.animation.substring(this.animation.indexOf('_'))
         ]
     }
