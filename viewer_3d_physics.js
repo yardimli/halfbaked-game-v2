@@ -57,8 +57,8 @@ $(document).ready(function () {
 	//Ammojs Initialization
 	Ammo().then(function() {
 
-		materialDynamic = new THREE.MeshPhongMaterial( { color:0xfca400 } );
-		materialStatic = new THREE.MeshPhongMaterial( { color:0x999999 } );
+		materialDynamic = new THREE.MeshPhongMaterial( { color:0x0ca400 } );
+		materialStatic = new THREE.MeshPhongMaterial( { color:0x000999 } );
 		materialInteractive=new THREE.MeshPhongMaterial( { color:0x990000 } );
 
 		// - Global variables -
@@ -156,9 +156,16 @@ function updatePhysics(deltaTime) {
 			let p = tmpTrans.getOrigin();
 			let q = tmpTrans.getRotation();
 			objThree.position.set(p.x(), p.y(), p.z());
-			if (rigidBodies[i].name !== "main_player") {
-				objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+
+			if (rigidBodies[i].name === "main_player") {
+				// var tbv30 = new Ammo.btVector3();
+				// tbv30.setValue(0,0,0);
+				// ms.setRotation(tbv30);
+				// objAmmo.setMotionState(ms);
+				// objAmmo.setAngularVelocity(tbv30);
 			}
+
+			objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
 		}
 	}
 }
@@ -272,22 +279,20 @@ function createCharacter(width, height, position, rotate) {
 	main_player_Texture.wrapS = THREE.RepeatWrapping;
 	main_player_Texture.wrapT = THREE.RepeatWrapping;
 
-	var materials = [
-		new THREE.MeshBasicMaterial({map: main_player_Texture}),
-		new THREE.MeshBasicMaterial({map: main_player_Texture}),
-		new THREE.MeshBasicMaterial({map: main_player_Texture}),
-		new THREE.MeshBasicMaterial({map: main_player_Texture}),
-		new THREE.MeshBasicMaterial({map: main_player_Texture}),
-		new THREE.MeshBasicMaterial({map: main_player_Texture})
-	];
+	var material = new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: main_player_Texture});
+	material.transparent = true;
+
+	var materials = [ null, null, null, null, material, null];
 	var faceMaterial = new THREE.MeshFaceMaterial(materials);
 
-	var geometry = new THREE.BoxGeometry(20, 20, 2);
+	var geometry = new THREE.BoxGeometry(20, 30, 1, 1, 1, 1);
 	main_player = new THREE.Mesh(geometry, faceMaterial);
 
 	var box = new THREE.Box3().setFromObject(main_player);
 	var boxsize = new THREE.Vector3();
 	box.getSize(boxsize);
+	main_player.position.x = position.x;//  ((Math.round(boxsize.y * 10000) / 10000) / 2);				    //Position (y = up+, down-)
+
 	main_player.position.y = position.y;//  ((Math.round(boxsize.y * 10000) / 10000) / 2);				    //Position (y = up+, down-)
 
 	main_player.position.z = position.z;				    //Position (z = front +, back-)
@@ -298,90 +303,34 @@ function createCharacter(width, height, position, rotate) {
 
 
 	//Ammojs Section
-	let mass = 100;
+	let mass = 1000;
 	let transform = new Ammo.btTransform();
 	let quat = {x: 0, y: 0, z: 0, w: 1};
+
 	transform.setIdentity();
-	transform.setOrigin(new Ammo.btVector3(main_player.position.x, main_player.position.y, main_player.position.z));
+	transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z));
 
 	transform.setRotation(new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w));
-	// transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
 	let motionState = new Ammo.btDefaultMotionState(transform);
 
-	let colShape = new Ammo.btBoxShape(new Ammo.btVector3(20, 20, 2));
-	colShape.setMargin(0.05);
+	let colShape = new Ammo.btBoxShape(new Ammo.btVector3(20 * 0.5, 30 * 0.5, 1 * 0.5));
+	//colShape.setMargin(0.05);
 
 	let localInertia = new Ammo.btVector3(0, 0, 0);
 	colShape.calculateLocalInertia(mass, localInertia);
 
 	let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
 	PlayerBody = new Ammo.btRigidBody(rbInfo);
+	PlayerBody.setFriction(0.2);
+	PlayerBody.setAngularFactor( 0, 1, 0 );
+	physicsWorld.addRigidBody(PlayerBody, colGroupRedBall, colGroupPlane | colGroupGreenBall);
 
-//  PlayerBody.setCollisionFlags( 2 );
+	//  PlayerBody.setCollisionFlags( 2 );
 	PlayerBody.setActivationState(4);
 
-	physicsWorld.addRigidBody(PlayerBody, colGroupRedBall, colGroupPlane | colGroupGreenBall);
 
 	main_player.userData.physicsBody = PlayerBody;
 	rigidBodies.push(main_player);
-
-	if (1 == 2) {
-
-		main_player_Texture = new THREE.Texture(CharacterCanvas);
-		main_player_Texture.wrapS = THREE.RepeatWrapping;
-		main_player_Texture.wrapT = THREE.RepeatWrapping;
-
-		var material = new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: main_player_Texture});
-		material.transparent = true;
-
-		var geometry = new THREE.PlaneGeometry(width, height);
-
-		main_player = new THREE.Mesh(geometry, material);
-
-		main_player.rotation.set(THREE.Math.degToRad(rotate.x), THREE.Math.degToRad(rotate.y), THREE.Math.degToRad(rotate.z));
-
-		main_player.position.x = position.x;				    //Position (x = right+ left-)
-
-		var box = new THREE.Box3().setFromObject(main_player);
-		var boxsize = new THREE.Vector3();
-		box.getSize(boxsize);
-		main_player.position.y = position.y;//  ((Math.round(boxsize.y * 10000) / 10000) / 2);				    //Position (y = up+, down-)
-
-		main_player.position.z = position.z;				    //Position (z = front +, back-)
-
-		main_player.name = "main_player";
-
-		scene.add(main_player);
-
-		//Ammojs Section
-		let mass = 100;
-		let transform = new Ammo.btTransform();
-		let quat = {x: 0, y: 0, z: 0, w: 1};
-		transform.setIdentity();
-		transform.setOrigin(new Ammo.btVector3(main_player.position.x, main_player.position.y, main_player.position.z));
-
-		transform.setRotation(new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w));
-		// transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
-		let motionState = new Ammo.btDefaultMotionState(transform);
-
-		let colShape = new Ammo.btBoxShape(new Ammo.btVector3(width, height, 5));
-		colShape.setMargin(0.05);
-
-		let localInertia = new Ammo.btVector3(0, 0, 0);
-		colShape.calculateLocalInertia(mass, localInertia);
-
-		let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
-		PlayerBody = new Ammo.btRigidBody(rbInfo);
-
-//  PlayerBody.setCollisionFlags( 2 );
-//	PlayerBody.setActivationState(4);
-
-		physicsWorld.addRigidBody(PlayerBody, colGroupRedBall, colGroupPlane | colGroupGreenBall);
-
-		main_player.userData.physicsBody = PlayerBody;
-		rigidBodies.push(main_player);
-	}
-
 }
 
 
@@ -535,26 +484,32 @@ function createBox(pos, quat, w, l, h, mass, friction) {
 	//body.setDamping(0.2, 0.2);
 
 //	physicsWorld.addRigidBody( body );
-	physicsWorld.addRigidBody(body, colGroupPlane, colGroupRedBall | colGroupGreenBall);
+//	physicsWorld.addRigidBody(body, colGroupPlane, colGroupRedBall | colGroupGreenBall);
+	physicsWorld.addRigidBody(body, colGroupGreenBall, colGroupPlane | colGroupRedBall | colGroupGreenBall);
 
 	if (mass > 0) {
 		body.setActivationState(4);
 		// Sync physics and graphics
-		function sync(dt) {
-			var ms = body.getMotionState();
-			if (ms) {
-				ms.getWorldTransform(TRANSFORM_AUX);
-				var p = TRANSFORM_AUX.getOrigin();
-				var q = TRANSFORM_AUX.getRotation();
-				mesh.position.set(p.x(), p.y(), p.z());
-				mesh.quaternion.set(q.x(), q.y(), q.z(), q.w());
-			}
-		}
 
-		floor_objects.push(sync);
+		// function sync(dt) {
+		// 	var ms = body.getMotionState();
+		// 	if (ms) {
+		// 		ms.getWorldTransform(TRANSFORM_AUX);
+		// 		var p = TRANSFORM_AUX.getOrigin();
+		// 		var q = TRANSFORM_AUX.getRotation();
+		// 		mesh.position.set(p.x(), p.y(), p.z());
+		// 		mesh.quaternion.set(q.x(), q.y(), q.z(), q.w());
+		// 	}
+		// }
 
-//		syncList.push(sync);
+		mesh.userData.physicsBody = body;
+		rigidBodies.push(mesh);
+		//		syncList.push(sync);
 	}
+	floor_objects.push(mesh);
+
+//	floor_objects.push(sync);
+
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -563,15 +518,15 @@ function createFloor() {
 	createBox(new THREE.Vector3(0, -0.5, 0), ZERO_QUATERNION, 750, 1, 750, 0, 2);
 
 	var quaternion = new THREE.Quaternion(0, 0, 0, 1);
-	quaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 18);
-	createBox(new THREE.Vector3(0, -1.5, 0), quaternion, 8, 4, 10, 0);
+	quaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 8);
+	createBox(new THREE.Vector3(0, -1.5, 90), quaternion, 40, 10, 30, 0);
 
-	var size = 5;
+	var size = 9;
 	var nw = 8;
 	var nh = 6;
 	for (var j = 0; j < nw; j++)
 		for (var i = 0; i < nh; i++)
-			createBox(new THREE.Vector3(size * j - (size * (nw - 1)) / 2, size * i, 10), ZERO_QUATERNION, size, size, size, 10);
+			createBox(new THREE.Vector3(size * j - (size * (nw - 1)) / 2, size * i, 10), ZERO_QUATERNION, size-1, size-1, size-1, 1);
 
 
 
@@ -1259,42 +1214,78 @@ function init() {
 	function logKey(e) {
 		console.log(e.code);
 
+		if (1==2) {
+			if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
+			}
+
+		}
+
 		if (e.code==="KeyA") {
 			console.log("A");
+
 			var tbv30 = new Ammo.btVector3();
-			tbv30.setValue(30,0,0);
-			PlayerBody.setLinearVelocity(tbv30);
+			tbv30 = PlayerBody.getLinearVelocity();
+			var tbv31 = new Ammo.btVector3();
+			tbv31.setValue(tbv30.x()-10,tbv30.y(),tbv30.z());
+			PlayerBody.setLinearVelocity(tbv31);
+
+			main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff)
 		}
 
 		if (e.code==="KeyD") {
 			console.log("A");
 			var tbv30 = new Ammo.btVector3();
-			tbv30.setValue(-30,0,0);
-			PlayerBody.setLinearVelocity(tbv30);
+			tbv30 = PlayerBody.getLinearVelocity();
+			var tbv31 = new Ammo.btVector3();
+			tbv31.setValue(tbv30.x()+10,tbv30.y(),tbv30.z());
+			PlayerBody.setLinearVelocity(tbv31);
+
+			main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff)
 		}
 
 		if (e.code==="KeyW") {
 			console.log("A");
+
 			var tbv30 = new Ammo.btVector3();
-			tbv30.setValue(0,0,30);
-			PlayerBody.setLinearVelocity(tbv30);
+			tbv30 = PlayerBody.getLinearVelocity();
+			var tbv31 = new Ammo.btVector3();
+			tbv31.setValue(tbv30.x(),tbv30.y(),tbv30.z()-10);
+			PlayerBody.setLinearVelocity(tbv31);
+
+			main_player_Anime.setAnimation('backWalk' + main_player_holdStuff)
 		}
 
 		if (e.code==="KeyS") {
 			console.log("A");
+
 			var tbv30 = new Ammo.btVector3();
-			tbv30.setValue(0,0,-30);
-			PlayerBody.setLinearVelocity(tbv30);
+			tbv30 = PlayerBody.getLinearVelocity();
+			var tbv31 = new Ammo.btVector3();
+			tbv31.setValue(tbv30.x(),tbv30.y(),tbv30.z()+10);
+			PlayerBody.setLinearVelocity(tbv31);
+
+			main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff)
 		}
 
 
 		if (e.code==="KeyQ") {
 			console.log("A");
 			var tbv30 = new Ammo.btVector3();
-			tbv30.setValue(0,30,0);
-			PlayerBody.setLinearVelocity(tbv30);
+			tbv30 = PlayerBody.getLinearVelocity();
+			var tbv31 = new Ammo.btVector3();
+			tbv31.setValue(tbv30.x(),tbv30.y()+7,tbv30.z());
+			PlayerBody.setLinearVelocity(tbv31);
 		}
-
 
 		if (e.code === "KeyC") {
 			if (Outline_selectedObject_temp !== null) {
