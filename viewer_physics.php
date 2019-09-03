@@ -191,6 +191,9 @@
 
 
   <button id="load_scene_dialog_button" class="form-control btn-dark" style="margin-bottom: 3px;">Load Scene</button>
+
+
+	<button id="add_blocks" class="form-control btn-dark" style="margin-bottom: 3px;">Add Blocks</button>
 </div>
 
 

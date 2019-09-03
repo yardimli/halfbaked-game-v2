@@ -1,0 +1,1 @@
+[{"id":149,"name":"Root Scene","canMove":"can_move","object_physics":"pass_through","object_collectible":"no_collecting","userName":"Cabbage","filePath":"./library/set1/crops/Cabbage/Cabbage.gltf","position":{"x":0,"y":1.7889,"z":0},"scale":{"x":500,"y":500,"z":500},"rotation":{"_x":0,"_y":0,"_z":0,"_order":"XYZ"},"quaternion":{"_x":0,"_y":0,"_z":0,"_w":1}}]

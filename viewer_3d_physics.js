@@ -46,31 +46,14 @@ var connection = null;
 
 var PlayerBody;
 
+var PlayerFlying = false;
+
 
 // - Global variables -
 var DISABLE_DEACTIVATION = 4;
 var TRANSFORM_AUX;
 var ZERO_QUATERNION;
 var materialDynamic, materialStatic, materialInteractive;
-
-$(document).ready(function () {
-	//Ammojs Initialization
-	Ammo().then(function() {
-
-		materialDynamic = new THREE.MeshPhongMaterial( { color:0x0ca400 } );
-		materialStatic = new THREE.MeshPhongMaterial( { color:0x000999 } );
-		materialInteractive=new THREE.MeshPhongMaterial( { color:0x990000 } );
-
-		// - Global variables -
-		TRANSFORM_AUX = new Ammo.btTransform();
-		ZERO_QUATERNION = new THREE.Quaternion(0, 0, 0, 1);
-
-
-		start();
-	});
-
-
-});
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 var HemisphereLight1;
@@ -83,6 +66,9 @@ var composer, effectFXAA, outlinePass, outlinePassSelected;
 var Outline_mouse = new THREE.Vector2();
 var Outline_selectedObjects = [];
 var Outline_selectedObject_temp;
+
+var CurrentAnimation = "";
+var lastKeyPress = 0;
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function makeXYZGUI(folder, vector3, onChangeFn) {
@@ -258,6 +244,97 @@ function AddLights() {
 
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function calculateCollisionPoints(mesh, scale, type = 'collidable') {
+	// Compute the bounding box after scale, translation, etc.
+	// var bbox = new THREE.Box3().setFromObject(mesh);
+
+	// var bounds = {
+	// 	type: type,
+	// 	xMin: bbox.min.x,
+	// 	xMax: bbox.max.x,
+	// 	yMin: bbox.min.y,
+	// 	yMax: bbox.max.y,
+	// 	zMin: bbox.min.z,
+	// 	zMax: bbox.max.z,
+	// };
+
+	var position = new THREE.Vector3();
+	position.setFromMatrixPosition(mesh.matrixWorld);
+	console.log(position);
+
+	var box = new THREE.Box3().setFromObject(mesh);
+	var boxsize = new THREE.Vector3();
+	box.getSize(boxsize);
+
+	var bounds = {
+		type: type,
+		xMin: position.x,
+		xMax: position.x+boxsize.x,
+		yMin: position.y,
+		yMax: position.y+boxsize.y,
+		zMin: position.z,
+		zMax: position.y+boxsize.z,
+	};
+
+	collisions.push(bounds);
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function detectCollisions() {
+	if (main_player !== null) {
+		// Get the user's current collision area.
+		var bounds = {
+			xMin: main_player.position.x - main_player.geometry.parameters.width / 2,
+			xMax: main_player.position.x + main_player.geometry.parameters.width / 2,
+			yMin: main_player.position.y - main_player.geometry.parameters.height / 2,
+			yMax: main_player.position.y + main_player.geometry.parameters.height / 2,
+			zMin: main_player.position.z - main_player.geometry.parameters.width / 2,
+			zMax: main_player.position.z + main_player.geometry.parameters.width / 2,
+		};
+//		console.log(bounds);
+
+		var playerYPosition = -10;
+
+		var setAccordingToFloorPositon = false;
+		// Run through each object and detect if there is a collision.
+		for (var index = 0; index < collisions.length; index++) {
+
+			if (collisions[index].type == 'collidable_floor') {
+
+//				console.log(collisions[index]);
+
+				if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
+					(bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
+					// We are on a floor object! elevate user.
+					console.log("on the floor");
+
+					if (bounds.yMin <= collisions[index].yMax) {
+
+						if (!PlayerFlying) {
+							// PlayerFlying = true;
+							// var tbv30 = new Ammo.btVector3();
+							// tbv30 = PlayerBody.getLinearVelocity();
+							// var tbv31 = new Ammo.btVector3();
+							// tbv31.setValue(tbv30.x(), tbv30.y() + 50, tbv30.z());
+							// PlayerBody.setLinearVelocity(tbv31);
+						}
+					}
+
+				}
+			}
+			else if (collisions[index].type == 'collidable' || collisions[index].type == 'wall_material') {
+				if ((bounds.xMin <= collisions[index].xMax && bounds.xMax >= collisions[index].xMin) &&
+					(bounds.yMin <= collisions[index].yMax && bounds.yMax >= collisions[index].yMin) &&
+					(bounds.zMin <= collisions[index].zMax && bounds.zMax >= collisions[index].zMin)) {
+					// We hit a solid object! Stop all movements.
+
+				}
+			}
+		}
+	}
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function createCharacter(width, height, position, rotate) {
@@ -282,10 +359,10 @@ function createCharacter(width, height, position, rotate) {
 	var material = new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: main_player_Texture});
 	material.transparent = true;
 
-	var materials = [ null, null, null, null, material, null];
+	var materials = [null, null, null, null, material, null];
 	var faceMaterial = new THREE.MeshFaceMaterial(materials);
 
-	var geometry = new THREE.BoxGeometry(20, 30, 1, 1, 1, 1);
+	var geometry = new THREE.BoxGeometry(20, 30, 5, 1, 1, 1);
 	main_player = new THREE.Mesh(geometry, faceMaterial);
 
 	var box = new THREE.Box3().setFromObject(main_player);
@@ -313,8 +390,8 @@ function createCharacter(width, height, position, rotate) {
 	transform.setRotation(new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w));
 	let motionState = new Ammo.btDefaultMotionState(transform);
 
-	let colShape = new Ammo.btBoxShape(new Ammo.btVector3(20 * 0.5, 30 * 0.5, 1 * 0.5));
-	//colShape.setMargin(0.05);
+	let colShape = new Ammo.btBoxShape(new Ammo.btVector3(20 * 0.5, 30 * 0.5, 5 * 0.5));
+	colShape.setMargin(0.05);
 
 	let localInertia = new Ammo.btVector3(0, 0, 0);
 	colShape.calculateLocalInertia(mass, localInertia);
@@ -322,7 +399,7 @@ function createCharacter(width, height, position, rotate) {
 	let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
 	PlayerBody = new Ammo.btRigidBody(rbInfo);
 	PlayerBody.setFriction(0.2);
-	PlayerBody.setAngularFactor( 0, 1, 0 );
+	PlayerBody.setAngularFactor(0, 1, 0);
 	physicsWorld.addRigidBody(PlayerBody, colGroupRedBall, colGroupPlane | colGroupGreenBall);
 
 	//  PlayerBody.setCollisionFlags( 2 );
@@ -387,6 +464,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				var boxsize = new THREE.Vector3();
 				box.getSize(boxsize);
 
+
 				obj.userData.canMove = can_move;
 				obj.userData.object_physics = object_physics;
 				obj.userData.object_collectible = object_collectible;
@@ -396,22 +474,30 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				logOnce = 1;
 				scene_objects.add(obj);
 
-				if (object_physics !== "pass_through") {
+				if (object_physics !== "pass_through_fixed" && object_physics !== "pass_through_falling") {
 					console.log("add " + name + " to collidable array");
+					calculateCollisionPoints(obj, 1, object_physics);
 				}
 
 
 				//Ammojs Section
 				let mass = 0;
 				if (!load_from_scene) {
-					mass = 1;
+					mass = 1000;
 				}
-				let transform = new Ammo.btTransform();
+
+				if (object_physics === "collidable_falling" || object_physics === "pass_through_falling") {
+					mass = 10;
+				}
+
+					let transform = new Ammo.btTransform();
 				let quat = {x: 0, y: 0, z: 0, w: 1};
 				transform.setIdentity();
 
 				if (load_from_scene) {
 					transform.setOrigin(new Ammo.btVector3(position.x, position.y + 1.5, position.z));
+
+			//		createBox(new THREE.Vector3(position.x-20, position.y + 1.5, position.z), ZERO_QUATERNION, boxsize.x+1, boxsize.y, boxsize.z+1, 0, 0);
 				}
 				else {
 					transform.setOrigin(new Ammo.btVector3(position.x, 100, position.z));
@@ -428,7 +514,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				}
 				let motionState = new Ammo.btDefaultMotionState(transform);
 
-				let colShape = new Ammo.btBoxShape(new Ammo.btVector3(boxsize.x, boxsize.y, boxsize.z));
+				let colShape = new Ammo.btBoxShape(new Ammo.btVector3(boxsize.x * 0.5, boxsize.y * 0.5, boxsize.z * 0.5));
 				colShape.setMargin(0.05);
 
 				let localInertia = new Ammo.btVector3(0, 0, 0);
@@ -436,9 +522,10 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 
 				let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
 				let xObjectBody = new Ammo.btRigidBody(rbInfo);
+				xObjectBody.setFriction(10);
 
 //  xObjectBody.setCollisionFlags( 2 );
-				xObjectBody.setActivationState(4);
+	//			xObjectBody.setActivationState(4);
 
 				physicsWorld.addRigidBody(xObjectBody, colGroupGreenBall, colGroupPlane | colGroupRedBall | colGroupGreenBall);
 
@@ -459,13 +546,13 @@ function createBox(pos, quat, w, l, h, mass, friction) {
 	var shape = new THREE.BoxGeometry(w, l, h, 1, 1, 1);
 	var geometry = new Ammo.btBoxShape(new Ammo.btVector3(w * 0.5, l * 0.5, h * 0.5));
 
-	if(!mass) mass = 0;
-	if(!friction) friction = 1;
+	if (!mass) mass = 0;
+	if (!friction) friction = 1;
 
 	var mesh = new THREE.Mesh(shape, material);
 	mesh.position.copy(pos);
 	mesh.quaternion.copy(quat);
-	scene.add( mesh );
+	scene.add(mesh);
 
 	var transform = new Ammo.btTransform();
 	transform.setIdentity();
@@ -514,146 +601,14 @@ function createBox(pos, quat, w, l, h, mass, friction) {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function createFloor() {
-
 	createBox(new THREE.Vector3(0, -0.5, 0), ZERO_QUATERNION, 750, 1, 750, 0, 2);
-
-	var quaternion = new THREE.Quaternion(0, 0, 0, 1);
-	quaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 8);
-	createBox(new THREE.Vector3(0, -1.5, 90), quaternion, 40, 10, 30, 0);
-
-	var size = 9;
-	var nw = 8;
-	var nh = 6;
-	for (var j = 0; j < nw; j++)
-		for (var i = 0; i < nh; i++)
-			createBox(new THREE.Vector3(size * j - (size * (nw - 1)) / 2, size * i, 10), ZERO_QUATERNION, size-1, size-1, size-1, 1);
-
-
-
-	if (1==2) {
-
-		var geometry = new THREE.Geometry();
-		geometry.vertices.push(new THREE.Vector3(-1500, 0, 0));
-		geometry.vertices.push(new THREE.Vector3(1500, 0, 0));
-
-		linesMaterial = new THREE.LineBasicMaterial({color: 0x787878, opacity: 0.2, linewidth: .1});
-
-		for (var i = 0; i <= 60; i++) {
-
-			var line = new THREE.Line(geometry, linesMaterial);
-			line.position.z = (i * 50) - 1500;
-			scene.add(line);
-
-			var line = new THREE.Line(geometry, linesMaterial);
-			line.position.x = (i * 50) - 1500;
-			line.rotation.y = 90 * Math.PI / 180;
-			scene.add(line);
-		}
-
-		var geo = new THREE.PlaneBufferGeometry(2000, 2000, 8, 8);
-		var mat = new THREE.MeshBasicMaterial({color: 0x0000ff, opacity: 0, wireframe: false});
-		mat.transparent = true;
-		var plane = new THREE.Mesh(geo, mat);
-		plane.position.y = -1;
-		plane.rotation.x = -Math.PI / 2;
-		plane.receiveShadow = false;
-		plane.name = "plane";
-
-		scene.add(plane);
-		floor_objects.push(plane);
-
-
-		let pos = {x: 0, y: 0, z: 0};
-		let scale = {x: 600, y: 1, z: 600};
-
-		//threeJS Section
-		let blockPlane = new THREE.Mesh(new THREE.BoxBufferGeometry(), new THREE.MeshPhongMaterial({color: 0xa0afa4}));
-
-		blockPlane.position.set(pos.x, pos.y, pos.z);
-		blockPlane.scale.set(scale.x, scale.y, scale.z);
-
-		blockPlane.castShadow = true;
-		blockPlane.receiveShadow = true;
-		blockPlane.name = "plane";
-		scene.add(blockPlane);
-		floor_objects.push(blockPlane);
-
-
-		//Ammojs Section
-
-		let quat = {x: 0, y: -5, z: 0, w: 1};
-		let mass = 0;
-
-		let transform = new Ammo.btTransform();
-		transform.setIdentity();
-		transform.setOrigin(new Ammo.btVector3(pos.x, pos.y, pos.z));
-		transform.setRotation(new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w));
-		let motionState = new Ammo.btDefaultMotionState(transform);
-
-		let colShape = new Ammo.btBoxShape(new Ammo.btVector3(scale.x * 0.5, scale.y * 0.5, scale.z * 0.5));
-		colShape.setMargin(0.05);
-
-		let localInertia = new Ammo.btVector3(0, 0, 0);
-		colShape.calculateLocalInertia(mass, localInertia);
-
-		let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
-		let body = new Ammo.btRigidBody(rbInfo);
-
-		physicsWorld.addRigidBody(body, colGroupPlane, colGroupRedBall | colGroupGreenBall);
-	}
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-function drawIndicator() {
-	// Store variables.
-	var topSize = 2;
-	var bottomRadius = 3;
-
-	// Create the top indicator.
-	var geometry = new THREE.TetrahedronGeometry(topSize, 0);
-	var material = new THREE.MeshToonMaterial({color: 0x00ccff, emissive: 0x00ccff});
-	indicatorTop = new THREE.Mesh(geometry, material);
-	indicatorTop.position.y = 50; // Flat surface so hardcode Y position for now.
-	indicatorTop.position.x = movements[0].x; // Get the X destination.
-	indicatorTop.position.z = movements[0].z; // Get the Z destination.
-	indicatorTop.rotation.x = -0.97;
-	indicatorTop.rotation.y = Math.PI / 4;
-	indicatorTop.name = 'indicator_top';
-	scene.add(indicatorTop);
-
-	// Create the top indicator outline.
-	var geometry = new THREE.TetrahedronGeometry(topSize + outlineSize, 0);
-	var material = new THREE.MeshBasicMaterial({color: 0x0000000, side: THREE.BackSide});
-	var outlineTop = new THREE.Mesh(geometry, material);
-	indicatorTop.add(outlineTop);
-
-	// Create the bottom indicator.
-	var geometry = new THREE.TorusGeometry(bottomRadius, (bottomRadius * 0.25), 2, 12);
-	geometry.dynamic = true;
-	var material = new THREE.MeshToonMaterial({color: 0x00ccff, emissive: 0x00ccff});
-	indicatorBottom = new THREE.Mesh(geometry, material);
-	indicatorBottom.position.y = 3;
-	indicatorBottom.position.x = movements[0].x;
-	indicatorBottom.position.z = movements[0].z;
-	indicatorBottom.rotation.x = -Math.PI / 2;
-	indicatorBottom.name = 'indicator_bottom';
-	scene.add(indicatorBottom);
-
-	// Create the bottom outline.
-	var geometry = new THREE.TorusGeometry(bottomRadius + outlineSize / 10, bottomRadius / 2.5, 2, 24);
-	var material = new THREE.MeshBasicMaterial({color: 0x0000000, side: THREE.BackSide});
-	var outlineBottom = new THREE.Mesh(geometry, material);
-	outlineBottom.position.z = -2;
-	outlineBottom.name = 'outlineBottom';
-	indicatorBottom.add(outlineBottom);
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function onDocumentMouseDown(event, bypass = false) {
 	event.preventDefault();
-	stopMovement();
+
 	// Grab the coordinates.
 	mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
 	mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
@@ -674,9 +629,6 @@ function onDocumentMouseDown(event, bypass = false) {
 			}));
 
 		}
-		AddNewObjectPoint = intersects[0].point;
-
-		movements.push(intersects[0].point);
 	}
 }
 
@@ -719,113 +671,13 @@ function changeMainCharacterAnime() {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function stopMovement() {
-	movements = [];
-
-	scene.remove(indicatorTop);
-	scene.remove(indicatorBottom);
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-function move(location, destination, speed = playerSpeed) {
-	var moveDistance = speed;
-
-	var transform = new Ammo.btTransform();
-	transform = PlayerBody.getCenterOfMassTransform();
-//	console.log(transform.getOrigin().x());
-
-	// var tbv30 = new Ammo.btVector3();
-	// tbv30 = PlayerBody.getWorldTransform().getOrigin();
-	// console.log(tbv30.x());
-
-	// Translate over to the position.
-	var posX = transform.getOrigin().x();
-	var posY = transform.getOrigin().y() + 1;
-	var posZ = transform.getOrigin().z();
-	var newPosX = destination.x;
-	var newPosZ = destination.z;
-
-	// Set a multiplier just in case we need negative values.
-	var multiplierX = 1;
-	var multiplierZ = 1;
-
-	// Detect the distance between the current pos and target.
-	var diffX = Math.abs(posX - newPosX);
-	var diffZ = Math.abs(posZ - newPosZ);
-	var distance = Math.sqrt(diffX * diffX + diffZ * diffZ);
-
-
-	// Use negative multipliers if necessary.
-	if (posX > newPosX) {
-		multiplierX = -1;
-	}
-
-	if (posZ > newPosZ) {
-		multiplierZ = -1;
-	}
-
-	// Update the main position.
-	var NewX = posX + (moveDistance * (diffX / distance)) * multiplierX;
-	var NewZ = posZ + (moveDistance * (diffZ / distance)) * multiplierZ;
-	var NewY = posY;
-
-
-	// NewX = Math.floor(NewX);
-	// NewZ = Math.floor(NewZ);
-
-	var tbv31 = new Ammo.btVector3();
-	tbv31.setValue(NewX, NewY, NewZ);
-
-	var transform = new Ammo.btTransform();
-	transform = PlayerBody.getCenterOfMassTransform();
-	console.log(transform.getOrigin().x());
-	transform.setOrigin(tbv31);
-	PlayerBody.setCenterOfMassTransform(transform);
-
-	console.log(NewX);
-//  PlayerBody.setWorldTransform(tbv31);
-
-
-	// If the position is close we can call the movement complete.
-	if ((Math.floor(posX) <= Math.floor(newPosX) + 2.5 &&
-		Math.floor(posX) >= Math.floor(newPosX) - 2.5) &&
-		(Math.floor(posZ) <= Math.floor(newPosZ) + 2.5 &&
-			Math.floor(posZ) >= Math.floor(newPosZ) - 2.5)) {
-
-		// Reset any movements.
-		console.log("stop move");
-		if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
-			main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
-		}
-		else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
-			main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
-		}
-		else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
-			main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
-		}
-		else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
-			main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
-		}
-		stopMovement();
-
-		// let deltaTime = clock.getDelta();
-		// updatePhysics(deltaTime);
-
-		// Maybe move should return a boolean. True if completed, false if not.
-	}
-}
-*/
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-function Outline_addSelectedObject(object, parent) {
+function Outline_addSelectedObject(object) {
 	Outline_selectedObjects = [];
 
 	// console.log(parent);
 	// console.log(parent.userData);
 
-	if (parent.userData.canMove !== "fixed") {
+	if (object.userData.canMove !== "fixed") {
 		Outline_selectedObjects.push(object);
 	}
 }
@@ -848,28 +700,13 @@ function Outline_checkIntersection(event) {
 	raycaster.setFromCamera(Outline_mouse, camera);
 	var intersects = raycaster.intersectObjects(scene_objects.children, true);
 	if (intersects.length > 0) {
-
-		if (intersects[0].object.parent.isScene) {
-			Outline_selectedObject_temp = intersects[0].object.parent;
-		}
-		else if (intersects[0].object.parent.parent.isScene) {
-			Outline_selectedObject_temp = intersects[0].object.parent.parent;
-		}
-		else if (intersects[0].object.parent.parent.parent.isScene) {
-			Outline_selectedObject_temp = intersects[0].object.parent.parent.parent;
-		}
-		else if (intersects[0].object.parent.parent.parent.parent.isScene) {
-			Outline_selectedObject_temp = intersects[0].object.parent.parent.parent.parent;
-		}
-		else if (intersects[0].object.parent.parent.parent.parent.parent.isScene) {
-			Outline_selectedObject_temp = intersects[0].object.parent.parent.parent.parent.parent;
-		}
-
-
+		console.log(intersects[0]);
+		Outline_selectedObject_temp = intersects[0].object;
+		console.log(Outline_selectedObject_temp);
 		// console.log("--------------");
 		// console.log(intersects);
 		// console.log(Outline_selectedObject_temp);
-		Outline_addSelectedObject(intersects[0].object, Outline_selectedObject_temp);
+		Outline_addSelectedObject(intersects[0].object);
 		// outlinePass.selectedObjects = Outline_selectedObjects;
 	}
 	else {
@@ -965,49 +802,35 @@ function SelectObject() {
 
 		console.log("select object");
 
-//    $("#object_name").val(Outline_selectedObject_temp.userData.name);
+		$("#object_name").val(Outline_selectedObject_temp.userData.userName);
 		console.log(Outline_selectedObject_temp);
 
-//    $('#all_objects option[value="' + Outline_selectedObject_temp.id + '"]').prop('selected', true);
+		$('#all_objects option[value="' + Outline_selectedObject_temp.id + '"]').prop('selected', true);
 
 
 		var position = new THREE.Vector3();
 //    console.log(Outline_selectedObject_temp);
 
-		var MeshChild = null;
-		if (Outline_selectedObject_temp.isMesh) {
-			MeshChild = Outline_selectedObject_temp;
-		}
-		else if (Outline_selectedObject_temp.children[0].isMesh) {
-			MeshChild = Outline_selectedObject_temp.children[0];
-		}
-		else if (Outline_selectedObject_temp.children[0].children[0].isMesh) {
-			MeshChild = Outline_selectedObject_temp.children[0].children[0];
-		}
-		else if (Outline_selectedObject_temp.children[0].children[0].children[0].isMesh) {
-			MeshChild = Outline_selectedObject_temp.children[0].children[0].children[0];
-		}
-		else if (Outline_selectedObject_temp.children[0].children[0].children[0].children[0].isMesh) {
-			MeshChild = Outline_selectedObject_temp.children[0].children[0].children[0].children[0];
-		}
-		else if (Outline_selectedObject_temp.children[0].children[0].children[0].children[0].children[0].isMesh) {
-			MeshChild = Outline_selectedObject_temp.children[0].children[0].children[0].children[0].children[0];
-		}
+//    var MeshChild = Outline_selectedObject_temp;
+		var MeshChild = outlinePassSelected.selectedObjects[0];
 
-
-		if (MeshChild !== null) {
+		if (outlinePassSelected.selectedObjects[0] !== null) {
 			position.setFromMatrixPosition(MeshChild.matrixWorld);
 			console.log(position);
-
-			$("#position_x").val(Math.round(position.x * 10000) / 10000);
-			$("#position_y").val(Math.round(position.y * 10000) / 10000);
-			$("#position_z").val(Math.round(position.z * 10000) / 10000);
-
 
 			var box = new THREE.Box3().setFromObject(MeshChild);
 //      console.log( box.min, box.max, box.getSize() );
 			var boxsize = new THREE.Vector3();
 			box.getSize(boxsize);
+
+			console.log(" object collectible : " + Outline_selectedObject_temp.userData.object_collectible);
+			$('#object_collectible option[value="' + Outline_selectedObject_temp.userData.object_collectible + '"]').prop('selected', true);
+
+			console.log(" object physics : " + Outline_selectedObject_temp.userData.object_physics);
+			$('#object_physics option[value="' + Outline_selectedObject_temp.userData.object_physics + '"]').prop('selected', true);
+
+			console.log(" can move : " + Outline_selectedObject_temp.userData.canMove);
+			$('#object_fixed option[value="' + Outline_selectedObject_temp.userData.canMove + '"]').prop('selected', true);
 		}
 	}
 	else {
@@ -1020,8 +843,6 @@ function SelectObject() {
 function init() {
 	// Build the container
 	container = $("#GameContainer");
-	// document.createElement('div');
-	// document.body.appendChild(container);
 
 	var width = window.innerWidth - 250;
 	var height = window.innerHeight;
@@ -1080,13 +901,11 @@ function init() {
 	AddLights();
 
 	//skybox
-	if (1 == 1) {
-		var urls = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
-		var loaderCube = new THREE.CubeTextureLoader().setPath('./threejs/examples/textures/cube/skyboxsun25deg/');
-		loaderCube.load(urls, function (texture) {
-			scene.background = texture;
-		});
-	}
+	var urls = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
+	var loaderCube = new THREE.CubeTextureLoader().setPath('./threejs/examples/textures/cube/skyboxsun25deg/');
+	loaderCube.load(urls, function (texture) {
+		scene.background = texture;
+	});
 
 
 	createCharacter(10, 20, new THREE.Vector3(0, 50, 155), new THREE.Vector3(0, 0, 0));
@@ -1094,7 +913,6 @@ function init() {
 	createFloor();
 
 	scene.add(scene_objects);
-
 
 	// postprocessing
 	composer = new THREE.EffectComposer(renderer);
@@ -1139,6 +957,129 @@ function init() {
 	composer.addPass(effectFXAA);
 
 	window.addEventListener('resize', onWindowResize, false);
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function onWindowResize() {
+
+	var width = window.innerWidth - 250;
+	var height = window.innerHeight;
+
+	camera.aspect = width / height;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize(width, height);
+	composer.setSize(width, height);
+
+//  effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function update() {
+//  camera.updateProjectionMatrix();
+	controls.update();
+	console.log("update");
+
+	if (main_player !== null) {
+//		main_player.lookAt(camera.position);
+//  main_player.quaternion.copy(camera.quaternion);
+	}
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function renderFrame() {
+
+	if (main_player !== null) {
+
+		var tbv30 = new Ammo.btVector3();
+		tbv30 = PlayerBody.getLinearVelocity();
+
+		if (tbv30.y() < 5 && tbv30.y() > -5) {
+			PlayerFlying = false;
+		}
+
+		if (tbv30.x() < 10 && tbv30.x() > -10 && tbv30.y() < 5 && tbv30.y() > -5 && tbv30.z() < 10 && tbv30.z() > -10 && lastKeyPress === 0) {
+			console.log(tbv30.x() + " " + tbv30.y() + " " + tbv30.z());
+			lastKeyPress = -1;
+
+			if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
+			}
+			else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
+			}
+
+		}
+		else if (lastKeyPress > 0) {
+			lastKeyPress--;
+		}
+
+		// PlayerBody.lookAt(camera.position);
+		//main_player.lookAt(camera.position);
+//  main_player.quaternion.copy(camera.quaternion);
+	}
+
+	let deltaTime = clock.getDelta();
+	updatePhysics(deltaTime);
+
+	composer.render();
+
+	requestAnimationFrame(renderFrame);
+
+	//If main player animation needs update, tell three.js updates the texture.
+	if (main_player_Anime.needsUpdateFrame) {
+		main_player_Texture.needsUpdate = true;
+		main_player_Anime.needsUpdateFrame = false;
+	}
+
+	// Detect collisions.
+	if (collisions.length > 0) {
+		detectCollisions();
+	}
+
+
+}
+
+$(document).ready(function () {
+	//Ammojs Initialization
+	Ammo().then(function () {
+
+		materialDynamic = new THREE.MeshPhongMaterial({color: 0x0ca400});
+		materialStatic = new THREE.MeshPhongMaterial({color: 0x000999});
+		materialInteractive = new THREE.MeshPhongMaterial({color: 0x990000});
+
+		// - Global variables -
+		TRANSFORM_AUX = new Ammo.btTransform();
+		ZERO_QUATERNION = new THREE.Quaternion(0, 0, 0, 1);
+
+
+		start();
+	});
+
+
+	$("#add_blocks").on('click', function () {
+		var quaternion = new THREE.Quaternion(0, 0, 0, 1);
+		quaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 8);
+		createBox(new THREE.Vector3(0, -1.5, 90), quaternion, 40, 10, 30, 0);
+
+		var size = 9;
+		var nw = 8;
+		var nh = 6;
+		for (var j = 0; j < nw; j++)
+			for (var i = 0; i < nh; i++)
+				createBox(new THREE.Vector3(size * j - (size * (nw - 1)) / 2, size * i, 10), ZERO_QUATERNION, size - 1, size - 1, size - 1, 1);
+	});
+
 
 	$(document).dblclick(function (event) {
 		if (event.target.nodeName === "CANVAS") {
@@ -1208,83 +1149,83 @@ function init() {
 
 	});
 
-	document.addEventListener('keypress', logKey);
+	document.addEventListener('keypress', function (e) {
 
-
-	function logKey(e) {
 		console.log(e.code);
 
-		if (1==2) {
-			if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
+		if (e.code === "KeyA") {
+			var tbv30 = new Ammo.btVector3();
+			tbv30 = PlayerBody.getLinearVelocity();
+			if (tbv30.x() > -50) {
+				lastKeyPress = 50;
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x() - 10, tbv30.y(), tbv30.z());
+				PlayerBody.setLinearVelocity(tbv31);
 			}
-			else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
+			if (CurrentAnimation !== 'leftWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+				CurrentAnimation = 'leftWalk' + main_player_holdStuff;
 			}
-			else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
+		}
+
+		if (e.code === "KeyD") {
+			var tbv30 = new Ammo.btVector3();
+			tbv30 = PlayerBody.getLinearVelocity();
+			if (tbv30.x() < 50) {
+				lastKeyPress = 50;
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x() + 10, tbv30.y(), tbv30.z());
+				PlayerBody.setLinearVelocity(tbv31);
 			}
-			else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
+
+			if (CurrentAnimation !== 'rightWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff)
+				CurrentAnimation = 'rightWalk' + main_player_holdStuff;
+			}
+		}
+
+		if (e.code === "KeyW") {
+			var tbv30 = new Ammo.btVector3();
+			tbv30 = PlayerBody.getLinearVelocity();
+			if (tbv30.z() > -50) {
+				lastKeyPress = 50;
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() - 10);
+				PlayerBody.setLinearVelocity(tbv31);
 			}
 
+			if (CurrentAnimation !== 'backWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('backWalk' + main_player_holdStuff)
+				CurrentAnimation = 'backWalk' + main_player_holdStuff;
+			}
 		}
 
-		if (e.code==="KeyA") {
-			console.log("A");
-
+		if (e.code === "KeyS") {
 			var tbv30 = new Ammo.btVector3();
 			tbv30 = PlayerBody.getLinearVelocity();
-			var tbv31 = new Ammo.btVector3();
-			tbv31.setValue(tbv30.x()-10,tbv30.y(),tbv30.z());
-			PlayerBody.setLinearVelocity(tbv31);
+			if (tbv30.z() < 50) {
+				lastKeyPress = 50;
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() + 10);
+				PlayerBody.setLinearVelocity(tbv31);
+			}
 
-			main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff)
-		}
-
-		if (e.code==="KeyD") {
-			console.log("A");
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			var tbv31 = new Ammo.btVector3();
-			tbv31.setValue(tbv30.x()+10,tbv30.y(),tbv30.z());
-			PlayerBody.setLinearVelocity(tbv31);
-
-			main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff)
-		}
-
-		if (e.code==="KeyW") {
-			console.log("A");
-
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			var tbv31 = new Ammo.btVector3();
-			tbv31.setValue(tbv30.x(),tbv30.y(),tbv30.z()-10);
-			PlayerBody.setLinearVelocity(tbv31);
-
-			main_player_Anime.setAnimation('backWalk' + main_player_holdStuff)
-		}
-
-		if (e.code==="KeyS") {
-			console.log("A");
-
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			var tbv31 = new Ammo.btVector3();
-			tbv31.setValue(tbv30.x(),tbv30.y(),tbv30.z()+10);
-			PlayerBody.setLinearVelocity(tbv31);
-
-			main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff)
+			if (CurrentAnimation !== 'frontWalk' + main_player_holdStuff) {
+				main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff)
+				CurrentAnimation = 'frontWalk' + main_player_holdStuff;
+			}
 		}
 
 
-		if (e.code==="KeyQ") {
-			console.log("A");
+		if (e.code === "KeyQ") {
 			var tbv30 = new Ammo.btVector3();
 			tbv30 = PlayerBody.getLinearVelocity();
-			var tbv31 = new Ammo.btVector3();
-			tbv31.setValue(tbv30.x(),tbv30.y()+7,tbv30.z());
-			PlayerBody.setLinearVelocity(tbv31);
+			if (tbv30.y()<2 && tbv30.y()>-2) {
+				PlayerFlying = true;
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x(), tbv30.y() + 50, tbv30.z());
+				PlayerBody.setLinearVelocity(tbv31);
+			}
 		}
 
 		if (e.code === "KeyC") {
@@ -1292,7 +1233,8 @@ function init() {
 				console.log("pick up " + Outline_selectedObject_temp.userData.name);
 			}
 		}
-	}
+
+	});
 
 	$("#object_physics").on("change", function () {
 		if (Outline_selectedObject_temp !== null) {
@@ -1408,80 +1350,6 @@ function init() {
 			IgnoreThisClick = false;
 		}
 	});
-}
 
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-function onWindowResize() {
-
-	var width = window.innerWidth - 250;
-	var height = window.innerHeight;
-
-	camera.aspect = width / height;
-	camera.updateProjectionMatrix();
-
-	renderer.setSize(width, height);
-	composer.setSize(width, height);
-
-//  effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
-
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-function update() {
-//  camera.updateProjectionMatrix();
-	controls.update();
-	console.log("update");
-
-	if (main_player !== null) {
-//		main_player.lookAt(camera.position);
-//  main_player.quaternion.copy(camera.quaternion);
-	}
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-function renderFrame() {
-	if (main_player !== null) {
-		// PlayerBody.lookAt(camera.position);
-		//main_player.lookAt(camera.position);
-//  main_player.quaternion.copy(camera.quaternion);
-	}
-
-	let deltaTime = clock.getDelta();
-	updatePhysics(deltaTime);
-
-	composer.render();
-
-	requestAnimationFrame(renderFrame);
-
-	//If main player animation needs update, tell three.js updates the texture.
-	if (main_player_Anime.needsUpdateFrame) {
-		main_player_Texture.needsUpdate = true;
-		main_player_Anime.needsUpdateFrame = false;
-	}
-
-	// If any movement was added, run it!
-	if (movements.length > 0) {
-		// Set an indicator point to destination.
-		if (scene.getObjectByName('indicator_top') === undefined) {
-			drawIndicator();
-		}
-		else {
-			if (indicatorTop.position.y > 2) {
-				indicatorTop.position.y -= 2;
-			}
-			else {
-				indicatorTop.position.y = 50;
-			}
-		}
-
-		//Move after character anime is changed and ready.
-		if (main_player_Anime.isAnimeReady) {
-//			move(PlayerBody, movements[0]); //main_player
-		}
-	}
-
-}
-
+})
+;

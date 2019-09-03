@@ -226,16 +226,17 @@
 
   <div class="form-group">
     <select class="form-control" id="object_physics">
-      <option value="collidable">Collidable</option>
-      <option value="pass_through">Pass Through</option>
-      <option value="floor_material">Floors</option>
-      <option value="wall_material">Wall</option>
+	    <option value="collidable_floor">Collidable Floor</option>
+      <option value="collidable_fixed">Collidable Fixed</option>
+	    <option value="collidable_falling">Collidable Falling</option>
+      <option value="pass_through_fixed">Pass Through Fixed</option>
+	    <option value="pass_through_falling">Pass Through Falling</option>
     </select>
   </div>
 
   <div class="form-group">
     <select class="form-control" id="object_collectible">
-      <option value="no_collecting">No Collectiong</option>
+      <option value="no_collecting">No Collecting</option>
       <option value="clone">Clone When Picked</option>
       <option value="pickup">Pickup</option>
     </select>

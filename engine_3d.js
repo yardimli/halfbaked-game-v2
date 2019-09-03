@@ -460,7 +460,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				logOnce = 1;
 				scene_objects.add(obj);
 
-				if (object_physics !== "pass_through") {
+				if (object_physics !== "pass_through_fixed" && object_physics !== "pass_through_falling") {
 					console.log("add " + name + " to collidable array");
 					calculateCollisionPoints(obj, 1, object_physics);
 				}
@@ -550,7 +550,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 
 		scene_objects.add(root);
 
-		if (object_physics !== "pass_through") {
+		if (object_physics !== "pass_through_fixed" && object_physics !== "pass_through_falling" ) {
 			console.log("add " + name + " to collidable array");
 			calculateCollisionPoints(gltf.scene, 1, object_physics);
 		}
@@ -1265,7 +1265,7 @@ function init() {
 		}
 
 		console.log(AddNewObjectPoint);
-		loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, "can_move", false, "pass_through", "no_collecting");
+		loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, "can_move", false, "pass_through_fixed", "no_collecting");
 
 	});
 
@@ -1418,7 +1418,7 @@ function init() {
 
 							for (var i = 0; i < data.length; i++) {
 								if (data[i].object_physics === null || typeof data[i].object_physics === "undefined") {
-									data[i].object_physics = "pass_through";
+									data[i].object_physics = "pass_through_fixed";
 								}
 
 								if (data[i].object_collectible === null || typeof data[i].object_collectible === "undefined") {
