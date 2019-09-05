@@ -30,7 +30,6 @@ var collisions = [];
 var main_player = null;
 var main_player_Texture = null;
 var main_player_Anime = null;
-var main_player_holdStuff = '';
 
 var json_objects;
 
@@ -67,9 +66,7 @@ var Outline_mouse = new THREE.Vector2();
 var Outline_selectedObjects = [];
 var Outline_selectedObject_temp;
 
-var CurrentAnimation = "";
-var lastKeyPress = 0;
-
+var CurrentMoveKeyCode = [];
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function makeXYZGUI(folder, vector3, onChangeFn) {
 	folder.add(vector3, 'x', -500, 500).onChange(onChangeFn);
@@ -344,10 +341,9 @@ function createCharacter(width, height, position, rotate) {
 
 	// Draw the character animation --------------------------
 	var holdStuffs = ['', '_Watermelon', '_GreenApple', '_EmptyCup', '_FullCup', '_Orange', '_Pineapple'];
-	main_player_holdStuff = holdStuffs[Math.floor(Math.random() * 4)];
 	main_player_Anime = new CharacterAnime(CharacterCanvas, {
 		characterId: Math.floor(Math.random() * 6) + 1,
-		animation: 'frontStand' + main_player_holdStuff, // Optional, default is 'frontStand'
+		animation: 'frontStand' + holdStuffs[Math.floor(Math.random() * 4)], // Optional, default is 'frontStand'
 		speed: 200 // Optional, default is 200
 	});
 
@@ -651,21 +647,21 @@ function changeMainCharacterAnime() {
 
 	if (angle >= 0 && angle <= Math.PI * 0.25) {
 		console.log('go back')
-		main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
+		main_player_Anime.setAnimation('backWalk' + main_player_Anime.holdStuff);
 	}
 	else if (angle > Math.PI * 0.25 && angle < Math.PI * 0.75) {
 		if (rightOrLeft === 1) {
 			console.log('go right');
-			main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
+			main_player_Anime.setAnimation('rightWalk' + main_player_Anime.holdStuff);
 		}
 		else if (rightOrLeft === -1) {
 			console.log('go left');
-			main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+			main_player_Anime.setAnimation('leftWalk' + main_player_Anime.holdStuff);
 		}
 	}
 	else if (angle >= Math.PI * 0.75 && angle <= Math.PI) {
 		console.log('go front')
-		main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
+		main_player_Anime.setAnimation('frontWalk' + main_player_Anime.holdStuff);
 	}
 
 }
@@ -977,6 +973,89 @@ function onWindowResize() {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
+function movePlayer(){
+	if (main_player !== null) {
+
+		var tbv30 = new Ammo.btVector3();
+		tbv30 = PlayerBody.getLinearVelocity();
+
+		if (tbv30.y() < 5 && tbv30.y() > -5) {
+			PlayerFlying = false;
+		}
+
+		if(CurrentMoveKeyCode.indexOf('KeyA') !== -1){
+			if (tbv30.x() > -80) {
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x() - 10, tbv30.y(), tbv30.z());
+				PlayerBody.setLinearVelocity(tbv31);
+			}
+		}
+		if(CurrentMoveKeyCode.indexOf('KeyD') !== -1){
+			if (tbv30.x() < 80) {
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x() + 10, tbv30.y(), tbv30.z());
+				PlayerBody.setLinearVelocity(tbv31);
+			}
+		}
+		if(CurrentMoveKeyCode.indexOf('KeyW') !== -1){
+			if (tbv30.z() > -80) {
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() - 10);
+				PlayerBody.setLinearVelocity(tbv31);
+			}
+		}
+		if(CurrentMoveKeyCode.indexOf('KeyS') !== -1){
+			if (tbv30.z() < 80) {
+				var tbv31 = new Ammo.btVector3();
+				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() + 10);
+				PlayerBody.setLinearVelocity(tbv31);
+			}
+
+		}
+		if (CurrentMoveKeyCode.length === 0) {
+
+		}
+
+		//Change Animation
+		if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyA'){
+			if (main_player_Anime.posture !== 'leftWalk') {
+				main_player_Anime.setAnimation('leftWalk' + main_player_Anime.holdStuff);
+			}
+		}
+		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyD'){
+			if (main_player_Anime.posture !== 'rightWalk') {
+				main_player_Anime.setAnimation('rightWalk' + main_player_Anime.holdStuff);
+			}
+		}
+		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyW'){
+			if (main_player_Anime.posture !== 'backWalk') {
+				main_player_Anime.setAnimation('backWalk' + main_player_Anime.holdStuff);
+			}
+		}
+		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyS'){
+			if (main_player_Anime.posture !== 'frontWalk') {
+				main_player_Anime.setAnimation('frontWalk' + main_player_Anime.holdStuff);
+			}
+		}
+
+		if(Math.abs(tbv30.x()) <= 3 && Math.abs(tbv30.z()) <= 3){
+			if(main_player_Anime.posture === 'frontWalk'){
+				main_player_Anime.setAnimation('frontStand' + main_player_Anime.holdStuff)
+			}
+			else if (main_player_Anime.posture === 'backWalk') {
+				main_player_Anime.setAnimation('backStand' + main_player_Anime.holdStuff)
+			}
+			else if (main_player_Anime.posture === 'rightWalk') {
+				main_player_Anime.setAnimation('rightStand' + main_player_Anime.holdStuff)
+			}
+			else if (main_player_Anime.posture === 'leftWalk') {
+				main_player_Anime.setAnimation('leftStand' + main_player_Anime.holdStuff)
+			}
+		}
+
+	}
+}
+
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
@@ -993,41 +1072,9 @@ function update() {
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function renderFrame() {
 
-	if (main_player !== null) {
-
-		var tbv30 = new Ammo.btVector3();
-		tbv30 = PlayerBody.getLinearVelocity();
-
-		if (tbv30.y() < 5 && tbv30.y() > -5) {
-			PlayerFlying = false;
-		}
-
-		if (tbv30.x() < 10 && tbv30.x() > -10 && tbv30.y() < 5 && tbv30.y() > -5 && tbv30.z() < 10 && tbv30.z() > -10 && lastKeyPress === 0) {
-			console.log(tbv30.x() + " " + tbv30.y() + " " + tbv30.z());
-			lastKeyPress = -1;
-
-			if (main_player_Anime.animation === 'frontWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
-			}
-			else if (main_player_Anime.animation === 'backWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
-			}
-			else if (main_player_Anime.animation === 'rightWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
-			}
-			else if (main_player_Anime.animation === 'leftWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
-			}
-
-		}
-		else if (lastKeyPress > 0) {
-			lastKeyPress--;
-		}
-
-		// PlayerBody.lookAt(camera.position);
-		//main_player.lookAt(camera.position);
-//  main_player.quaternion.copy(camera.quaternion);
-	}
+	//Because the repeatability of renderFrame is much faster than the event keypress, we should give player a velocity to move here
+	//So the friction won't cause weird effects.
+	movePlayer();
 
 	let deltaTime = clock.getDelta();
 	updatePhysics(deltaTime);
@@ -1149,73 +1196,42 @@ $(document).ready(function () {
 
 	});
 
+	document.addEventListener('keydown', function (e) {
+		if (e.code === "KeyA" || e.code === "KeyD" || e.code === "KeyW" || e.code === "KeyS") {
+			if(CurrentMoveKeyCode.indexOf(e.code) === -1){
+				if(CurrentMoveKeyCode.length === 2){
+					CurrentMoveKeyCode.shift();
+				}
+				CurrentMoveKeyCode.push(e.code);
+			}
+		}
+	})
+
+	document.addEventListener('keyup', function (e) {
+		if (e.code === "KeyA" || e.code === "KeyD" || e.code === "KeyW" || e.code === "KeyS") {
+			CurrentMoveKeyCode.splice(CurrentMoveKeyCode.indexOf(e.code), 1);
+		}
+	})
+
 	document.addEventListener('keypress', function (e) {
 
 		console.log(e.code);
 
 		if (e.code === "KeyA") {
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			if (tbv30.x() > -50) {
-				lastKeyPress = 50;
-				var tbv31 = new Ammo.btVector3();
-				tbv31.setValue(tbv30.x() - 10, tbv30.y(), tbv30.z());
-				PlayerBody.setLinearVelocity(tbv31);
-			}
-			if (CurrentAnimation !== 'leftWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
-				CurrentAnimation = 'leftWalk' + main_player_holdStuff;
-			}
+
 		}
 
 		if (e.code === "KeyD") {
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			if (tbv30.x() < 50) {
-				lastKeyPress = 50;
-				var tbv31 = new Ammo.btVector3();
-				tbv31.setValue(tbv30.x() + 10, tbv30.y(), tbv30.z());
-				PlayerBody.setLinearVelocity(tbv31);
-			}
 
-			if (CurrentAnimation !== 'rightWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff)
-				CurrentAnimation = 'rightWalk' + main_player_holdStuff;
-			}
 		}
 
 		if (e.code === "KeyW") {
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			if (tbv30.z() > -50) {
-				lastKeyPress = 50;
-				var tbv31 = new Ammo.btVector3();
-				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() - 10);
-				PlayerBody.setLinearVelocity(tbv31);
-			}
 
-			if (CurrentAnimation !== 'backWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('backWalk' + main_player_holdStuff)
-				CurrentAnimation = 'backWalk' + main_player_holdStuff;
-			}
 		}
 
 		if (e.code === "KeyS") {
-			var tbv30 = new Ammo.btVector3();
-			tbv30 = PlayerBody.getLinearVelocity();
-			if (tbv30.z() < 50) {
-				lastKeyPress = 50;
-				var tbv31 = new Ammo.btVector3();
-				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() + 10);
-				PlayerBody.setLinearVelocity(tbv31);
-			}
 
-			if (CurrentAnimation !== 'frontWalk' + main_player_holdStuff) {
-				main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff)
-				CurrentAnimation = 'frontWalk' + main_player_holdStuff;
-			}
 		}
-
 
 		if (e.code === "KeyQ") {
 			var tbv30 = new Ammo.btVector3();

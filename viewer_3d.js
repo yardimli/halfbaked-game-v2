@@ -74,9 +74,8 @@ $(document).ready(function () {
       demoCharacterAnime.setAnimation(animation);
       $('#animeSelect').val(animation);
 
-      main_player_holdStuff = (animation.indexOf('_') === -1) ? '' : animation.substring(animation.indexOf('_'));
-      var mainAnime = (main_player_Anime.animation.indexOf('_') === -1) ? main_player_Anime.animation : main_player_Anime.animation.substring(0, main_player_Anime.animation.indexOf('_'))
-      main_player_Anime.animation = mainAnime + main_player_holdStuff ;
+      var holdStuff = (animation.indexOf('_') === -1) ? '' : animation.substring(animation.indexOf('_'));
+      main_player_Anime.animation = main_player_Anime.posture + holdStuff ;
 
     }
   })
@@ -88,9 +87,8 @@ $(document).ready(function () {
       demoCharacterAnime.setAnimation(animation);
       $('#animeSelect').val(animation);
 
-      main_player_holdStuff = (animation.indexOf('_') === -1) ? '' : animation.substring(animation.indexOf('_'));
-      var mainAnime = (main_player_Anime.animation.indexOf('_') === -1) ? main_player_Anime.animation : main_player_Anime.animation.substring(0, main_player_Anime.animation.indexOf('_'))
-      main_player_Anime.animation = mainAnime + main_player_holdStuff ;
+      var holdStuff = (animation.indexOf('_') === -1) ? '' : animation.substring(animation.indexOf('_'));
+      main_player_Anime.animation = main_player_Anime.posture + holdStuff ;
 
     }
   })
@@ -106,9 +104,8 @@ $(document).ready(function () {
     curtDemoAnimeKey = parseInt($('#animeSelect option:selected').data('animekey'));
     $('#curtDemo').text(curtDemoAnimeKey+1);
 
-    main_player_holdStuff = (selectAnime.indexOf('_') === -1) ? '' : selectAnime.substring(selectAnime.indexOf('_'));
-    var mainAnime = (main_player_Anime.animation.indexOf('_') === -1) ? main_player_Anime.animation : main_player_Anime.animation.substring(0, main_player_Anime.animation.indexOf('_'))
-    main_player_Anime.animation = mainAnime + main_player_holdStuff ;
+    var holdStuff = (selectAnime.indexOf('_') === -1) ? '' : selectAnime.substring(selectAnime.indexOf('_'));
+    main_player_Anime.animation = main_player_Anime.posture + holdStuff ;
 
   })
 
@@ -658,25 +655,28 @@ function changeMainCharacterAnime() {
   console.log('walk direction: ( ' + moveDirection.x + ', ' + moveDirection.y + ', ' + moveDirection.z + ' )');
   console.log('angle between: ' + angle);
 
-  var frontOrBack = (cameraLookAt.dot(moveDirection) >=0 ) ? -1 : 1 ;
-  var rightOrLeft = (cameraLookAt.applyAxisAngle(new THREE.Vector3( 0, 1, 0 ), -Math.PI / 2).dot(moveDirection) >= 0) ? 1 : -1 ;
+  var frontOrBack = (cameraLookAt.dot(moveDirection) >= 0) ? -1 : 1;
+  var rightOrLeft = (cameraLookAt.applyAxisAngle(new THREE.Vector3(0, 1, 0), -Math.PI / 2).dot(moveDirection) >= 0) ? 1 : -1;
 
   console.log('Go To: ' + ((frontOrBack === 1) ? 'front' : 'back') + ' and ' + ((rightOrLeft === 1) ? 'right' : 'left'));
 
-  if(angle >= 0 && angle <= Math.PI*0.25){
+  if (angle >= 0 && angle <= Math.PI * 0.25) {
     console.log('go back')
-    main_player_Anime.setAnimation('backWalk' + main_player_holdStuff);
-  }else if(angle > Math.PI*0.25 && angle < Math.PI*0.75){
-    if(rightOrLeft === 1){
+    main_player_Anime.setAnimation('backWalk' + main_player_Anime.holdStuff);
+  }
+  else if (angle > Math.PI * 0.25 && angle < Math.PI * 0.75) {
+    if (rightOrLeft === 1) {
       console.log('go right');
-      main_player_Anime.setAnimation('rightWalk' + main_player_holdStuff);
-    }else if(rightOrLeft === -1){
-      console.log('go left');
-      main_player_Anime.setAnimation('leftWalk' + main_player_holdStuff);
+      main_player_Anime.setAnimation('rightWalk' + main_player_Anime.holdStuff);
     }
-  }else if(angle >= Math.PI*0.75 && angle <= Math.PI){
+    else if (rightOrLeft === -1) {
+      console.log('go left');
+      main_player_Anime.setAnimation('leftWalk' + main_player_Anime.holdStuff);
+    }
+  }
+  else if (angle >= Math.PI * 0.75 && angle <= Math.PI) {
     console.log('go front')
-    main_player_Anime.setAnimation('frontWalk' + main_player_holdStuff);
+    main_player_Anime.setAnimation('frontWalk' + main_player_Anime.holdStuff);
   }
 
 }
@@ -733,14 +733,14 @@ function move(location, destination, speed = playerSpeed) {
 
     // Reset any movements.
     console.log("stop move");
-    if(main_player_Anime.animation === 'frontWalk' + main_player_holdStuff){
-      main_player_Anime.setAnimation('frontStand' + main_player_holdStuff)
-    }else if(main_player_Anime.animation === 'backWalk' + main_player_holdStuff){
-      main_player_Anime.setAnimation('backStand' + main_player_holdStuff)
-    }else if(main_player_Anime.animation === 'rightWalk' + main_player_holdStuff){
-      main_player_Anime.setAnimation('rightStand' + main_player_holdStuff)
-    }else if(main_player_Anime.animation === 'leftWalk' + main_player_holdStuff){
-      main_player_Anime.setAnimation('leftStand' + main_player_holdStuff)
+    if(main_player_Anime.posture === 'frontWalk'){
+      main_player_Anime.setAnimation('frontStand' + main_player_Anime.holdStuff)
+    }else if(main_player_Anime.posture === 'backWalk'){
+      main_player_Anime.setAnimation('backStand' + main_player_Anime.holdStuff)
+    }else if(main_player_Anime.posture === 'rightWalk'){
+      main_player_Anime.setAnimation('rightStand' + main_player_Anime.holdStuff)
+    }else if(main_player_Anime.posture === 'leftWalk'){
+      main_player_Anime.setAnimation('leftStand' + main_player_Anime.holdStuff)
     }
     stopMovement();
 
