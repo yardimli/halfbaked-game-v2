@@ -30,6 +30,7 @@ var collisions = [];
 var main_player = null;
 var main_player_Texture = null;
 var main_player_Anime = null;
+var PickUpObjects = [];
 
 var json_objects;
 
@@ -335,18 +336,17 @@ function detectCollisions() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function createCharacter(width, height, position, rotate) {
+
 	var CharacterCanvas = document.createElement('canvas');
 	CharacterCanvas.width = width * 10;
 	CharacterCanvas.height = height * 10;
 
 	// Draw the character animation --------------------------
-	var holdStuffs = ['', '_Watermelon', '_GreenApple', '_EmptyCup', '_FullCup', '_Orange', '_Pineapple'];
 	main_player_Anime = new CharacterAnime(CharacterCanvas, {
 		characterId: Math.floor(Math.random() * 6) + 1,
-		animation: 'frontStand' + holdStuffs[Math.floor(Math.random() * 4)], // Optional, default is 'frontStand'
+		animation: 'frontStand', // Optional, default is 'frontStand'
 		speed: 200 // Optional, default is 200
 	});
-
 
 	main_player_Texture = new THREE.Texture(CharacterCanvas);
 	main_player_Texture.wrapS = THREE.RepeatWrapping;
@@ -428,7 +428,7 @@ function getQuatertionFromEuler(x, y, z) {
 };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from_scene, object_physics, object_collectible) {
+function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from, object_physics, object_collectible) {
 	loader.load(model_file, function (gltf) {             // <<--------- Model Path
 
 
@@ -441,73 +441,69 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				obj.castShadow = true;
 				obj.receiveShadow = true;
 
-				obj.userData = {
-					'canMove': can_move,
-					'object_physics': object_physics,
-					'object_collectible': object_collectible,
-					'userName': name,
-					'filePath': model_file
-				}
 				// obj.applyMatrix(mS);
-
-//        drag_objects.push(obj);
+                // drag_objects.push(obj);
 
 				obj.scale.set(scale.x, scale.y, scale.z);
 				obj.geometry.center();
-
 
 				var box = new THREE.Box3().setFromObject(obj);
 				var boxsize = new THREE.Vector3();
 				box.getSize(boxsize);
 
-
-				obj.userData.canMove = can_move;
-				obj.userData.object_physics = object_physics;
-				obj.userData.object_collectible = object_collectible;
-				obj.userData.userName = name;
-				obj.userData.filePath = model_file;
-
 				logOnce = 1;
-				scene_objects.add(obj);
 
 				if (object_physics !== "pass_through_fixed" && object_physics !== "pass_through_falling") {
 					console.log("add " + name + " to collidable array");
 					calculateCollisionPoints(obj, 1, object_physics);
 				}
 
-
 				//Ammojs Section
 				let mass = 0;
-				if (!load_from_scene) {
+				if (load_from === 'scene') {
+
+				} else if(load_from === 'add_obj_btn'){
 					mass = 1000;
+				} else if(load_from === 'player_drop'){
+					mass = 1000;
+				} else {
+
 				}
 
 				if (object_physics === "collidable_falling" || object_physics === "pass_through_falling") {
 					mass = 10;
 				}
 
-					let transform = new Ammo.btTransform();
+				let transform = new Ammo.btTransform();
 				let quat = {x: 0, y: 0, z: 0, w: 1};
 				transform.setIdentity();
 
-				if (load_from_scene) {
+				if (load_from === 'scene') {
 					transform.setOrigin(new Ammo.btVector3(position.x, position.y + 1.5, position.z));
 
-			//		createBox(new THREE.Vector3(position.x-20, position.y + 1.5, position.z), ZERO_QUATERNION, boxsize.x+1, boxsize.y, boxsize.z+1, 0, 0);
-				}
-				else {
+					// createBox(new THREE.Vector3(position.x-20, position.y + 1.5, position.z), ZERO_QUATERNION, boxsize.x+1, boxsize.y, boxsize.z+1, 0, 0);
+				} else if(load_from === 'add_obj_btn'){
 					transform.setOrigin(new Ammo.btVector3(position.x, 100, position.z));
-				}
-				if (rotate !== null) {
+				} else if(load_from === 'player_drop'){
+					transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z));
+				} else {
 
-					if (load_from_scene) {
+				}
+
+				if (rotate !== null) {
+					if (load_from === 'scene') {
 						// var tt = getQuatertionFromEuler(rotate.y, rotate.z, rotate.x);
 						// console.log(tt);
 						transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
-					}
-					else {
+					} else if(load_from === 'add_obj_btn'){
+
+					} else if(load_from === 'player_drop'){
+						transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
+						// mesh.setRotation()
+					} else {
 					}
 				}
+
 				let motionState = new Ammo.btDefaultMotionState(transform);
 
 				let colShape = new Ammo.btBoxShape(new Ammo.btVector3(boxsize.x * 0.5, boxsize.y * 0.5, boxsize.z * 0.5));
@@ -520,18 +516,28 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				let xObjectBody = new Ammo.btRigidBody(rbInfo);
 				xObjectBody.setFriction(10);
 
-//  xObjectBody.setCollisionFlags( 2 );
-	//			xObjectBody.setActivationState(4);
+				 // xObjectBody.setCollisionFlags( 2 );
+				 // xObjectBody.setActivationState(4);
 
 				physicsWorld.addRigidBody(xObjectBody, colGroupGreenBall, colGroupPlane | colGroupRedBall | colGroupGreenBall);
 
 				obj.userData.physicsBody = xObjectBody;
+				obj.userData.canMove = can_move;
+				obj.userData.object_physics = object_physics;
+				obj.userData.object_collectible = object_collectible;
+				obj.userData.userName = name;
+				obj.userData.filePath = model_file;
+				obj.userData.rigidBodiesKey = rigidBodies.length;
+				obj.userData.sceneObjKey = scene_objects.children.length;
+				console.log(obj.id);
+				// Add obj to the global var
+				scene_objects.add(obj);
+				console.log(scene_objects.children);
 				rigidBodies.push(obj);
 
 			}
 
 		});
-//    console.log(gltf.scene);
 
 	});
 }
@@ -1056,6 +1062,132 @@ function movePlayer(){
 	}
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+function searchPickUpObj() {
+	PickUpObjects = [];
+	var pickableArea = {
+		x: [main_player.position.x - main_player.geometry.parameters.width / 2 - 15, main_player.position.x + main_player.geometry.parameters.width / 2 + 15],
+		y: [main_player.position.y - main_player.geometry.parameters.height / 2 - 15, main_player.position.y + main_player.geometry.parameters.height / 2 + 15],
+		z: [main_player.position.z - 15, main_player.position.z + 15]
+	};
+
+	rigidBodies.forEach(function (obj, i) {
+		if (obj.isMesh) {
+			// Check Collectible
+			if (obj.userData.object_collectible === 'pickup' || obj.userData.object_collectible === 'clone') {
+				// Check object is reachable by the player
+				if (obj.position.x >= pickableArea.x[0] && obj.position.x <= pickableArea.x[1] && obj.position.y >= pickableArea.y[0] && obj.position.y <= pickableArea.y[1] && obj.position.z >= pickableArea.z[0] && obj.position.z <= pickableArea.z[1]) {
+
+					if (obj.userData.object_collectible === 'pickup') {
+						PickUpObjects.push(obj);
+					}
+					else if (obj.userData.object_collectible === 'clone') {
+						var cloneMesh = obj.clone();
+						PickUpObjects.push(cloneMesh);
+					}
+
+				}
+			}
+		}
+	});
+
+	//Sort pickable object by the distance to the player
+	PickUpObjects.sort(function (a, b) {
+		return a.position.distanceTo(main_player.position) - b.position.distanceTo(main_player.position)
+	})
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function pickUpAndDrop(){
+
+	searchPickUpObj();
+
+	console.log(PickUpObjects);
+	console.log(main_player.holdStuff);
+
+	if (main_player.holdStuff === null || main_player.holdStuff === undefined) {
+
+		//Try to pick up something ----------------------------------
+
+		if (PickUpObjects.length > 0) {
+
+			console.log('has something to pick up');
+
+			var closestObj = PickUpObjects[0];
+
+			if (closestObj.userData.object_collectible === 'pickup') {
+				console.log('pick up ' + closestObj.userData.userName);
+
+				//Remove object from the scene after pick up .........
+				// scene_objects.remove(closestObj);
+				for (var i = scene_objects.children.length - 1; i >= 0; i--) {
+					if (closestObj.id === scene_objects.children[i].id) {
+						scene_objects.remove(scene_objects.children[i]);
+					}
+				}
+				physicsWorld.removeRigidBody(closestObj.userData.physicsBody);
+				rigidBodies.splice(closestObj.userData.rigidBodiesKey, 1);
+
+			}
+
+			if (closestObj.userData.object_collectible === 'clone') {
+				console.log('clone ' + closestObj.userData.userName);
+			}
+
+			//Change player animation.
+			main_player_Anime.setAnimation(main_player_Anime.posture + '_' + closestObj.userData.userName);
+
+			//Player is holding this object.
+			main_player.holdStuff = closestObj;
+
+		}
+
+	}
+	else if (main_player.holdStuff !== null && main_player.holdStuff !== undefined) {
+
+		//Try to drop something -------------------------------------
+
+		var mesh = main_player.holdStuff;
+
+		loadGLTF(mesh.userData.userName, mesh.userData.filePath, main_player.position, mesh.scale, null, mesh.userData.canMove, 'player_drop', mesh.userData.object_physics, 'pickup');
+
+		//After dropping, play is holding nothing.
+		main_player.holdStuff = null;
+
+		//Change player animation.
+		main_player_Anime.setAnimation(main_player_Anime.posture);
+
+		/*
+						//Calculate the position to drop.
+						mesh.position.x = main_player.position.x;
+						// mesh.position.y = main_player.position.y;
+						mesh.position.z = main_player.position.z;
+
+						//The thing hold by the player and then drop, is always pickup.
+						// main_player.holdStuff.userData.object_collectible = 'pickup';
+						mesh.userData.object_collectible = 'pickup';
+
+						//Add object back to the scene.
+						scene_objects.add(mesh);
+
+						//If player is not moving, this will be the first stuff player pick up again.
+						// PickUpObjects = [main_player.holdStuff];
+
+						//Re-calculate Collision Points.
+						calculateCollisionPoints(mesh, 1, mesh.userData.object_physics);
+
+						//After dropping, play is holding nothing.
+						main_player.holdStuff = null;
+
+						//Change player animation.
+						main_player_Anime.setAnimation(main_player_Anime.parseAnimationName()[0]);
+
+						console.log(scene_objects);
+		*/
+
+	}
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
@@ -1192,7 +1324,7 @@ $(document).ready(function () {
 		}
 
 		console.log(AddNewObjectPoint);
-		loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, "can_move", false, "pass_through", "no_collecting");
+		loadGLTF($("#object_file").val(), "./library/" + $("#object_set").val() + "/" + $("#object_group").val() + "/" + $("#object_file").val() + "/" + $("#object_file").val() + ".gltf", AddNewObjectPoint, scaleFactor, null, "can_move", "add_obj_btn", "pass_through", "no_collecting");
 
 	});
 
@@ -1217,19 +1349,9 @@ $(document).ready(function () {
 
 		console.log(e.code);
 
-		if (e.code === "KeyA") {
+		if (e.code === "Space") {
 
-		}
-
-		if (e.code === "KeyD") {
-
-		}
-
-		if (e.code === "KeyW") {
-
-		}
-
-		if (e.code === "KeyS") {
+			pickUpAndDrop();
 
 		}
 
@@ -1241,12 +1363,6 @@ $(document).ready(function () {
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x(), tbv30.y() + 50, tbv30.z());
 				PlayerBody.setLinearVelocity(tbv31);
-			}
-		}
-
-		if (e.code === "KeyC") {
-			if (Outline_selectedObject_temp !== null) {
-				console.log("pick up " + Outline_selectedObject_temp.userData.name);
 			}
 		}
 
@@ -1313,7 +1429,7 @@ $(document).ready(function () {
 //								loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Vector3(data[i].rotation._x, data[i].rotation._y, data[i].rotation._z), data[i].canMove, true, data[i].object_physics, data[i].object_collectible);
 
 
-								loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Quaternion(data[i].quaternion._x, data[i].quaternion._y, data[i].quaternion._z, data[i].quaternion._w), data[i].canMove, true, data[i].object_physics, data[i].object_collectible);
+								loadGLTF(data[i].userName, data[i].filePath, new THREE.Vector3(data[i].position.x, data[i].position.y, data[i].position.z), new THREE.Vector3(data[i].scale.x, data[i].scale.y, data[i].scale.z), new THREE.Quaternion(data[i].quaternion._x, data[i].quaternion._y, data[i].quaternion._z, data[i].quaternion._w), data[i].canMove, "scene", data[i].object_physics, data[i].object_collectible);
 
 
 							}

@@ -19,4 +19,6 @@ foreach ($files2 as $file2) {
   }
 }
 
+sort($file_array);
+
 echo json_encode($file_array);
