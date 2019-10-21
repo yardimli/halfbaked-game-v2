@@ -48,6 +48,7 @@ var PlayerBody;
 
 var PlayerFlying = false;
 
+var PlayerDirection = 0;
 
 // - Global variables -
 var DISABLE_DEACTIVATION = 4;
@@ -68,6 +69,7 @@ var Outline_selectedObjects = [];
 var Outline_selectedObject_temp;
 
 var CurrentMoveKeyCode = [];
+
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function makeXYZGUI(folder, vector3, onChangeFn) {
 	folder.add(vector3, 'x', -500, 500).onChange(onChangeFn);
@@ -268,11 +270,11 @@ function calculateCollisionPoints(mesh, scale, type = 'collidable') {
 	var bounds = {
 		type: type,
 		xMin: position.x,
-		xMax: position.x+boxsize.x,
+		xMax: position.x + boxsize.x,
 		yMin: position.y,
-		yMax: position.y+boxsize.y,
+		yMax: position.y + boxsize.y,
 		zMin: position.z,
-		zMax: position.y+boxsize.z,
+		zMax: position.y + boxsize.z,
 	};
 
 	collisions.push(bounds);
@@ -428,9 +430,12 @@ function getQuatertionFromEuler(x, y, z) {
 };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from, object_physics, object_collectible) {
+function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from, object_physics, object_collectible, object_speed_vector) {
 	loader.load(model_file, function (gltf) {             // <<--------- Model Path
 
+		if (typeof object_speed_vector === "undefined") {
+			object_speed_vector = null;
+		}
 
 		const root = gltf.scene;
 
@@ -442,7 +447,7 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				obj.receiveShadow = true;
 
 				// obj.applyMatrix(mS);
-                // drag_objects.push(obj);
+				// drag_objects.push(obj);
 
 				obj.scale.set(scale.x, scale.y, scale.z);
 				obj.geometry.center();
@@ -462,11 +467,14 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				let mass = 0;
 				if (load_from === 'scene') {
 
-				} else if(load_from === 'add_obj_btn'){
+				}
+				else if (load_from === 'add_obj_btn') {
 					mass = 1000;
-				} else if(load_from === 'player_drop'){
+				}
+				else if (load_from === 'player_drop') {
 					mass = 1000;
-				} else {
+				}
+				else {
 
 				}
 
@@ -482,11 +490,27 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 					transform.setOrigin(new Ammo.btVector3(position.x, position.y + 1.5, position.z));
 
 					// createBox(new THREE.Vector3(position.x-20, position.y + 1.5, position.z), ZERO_QUATERNION, boxsize.x+1, boxsize.y, boxsize.z+1, 0, 0);
-				} else if(load_from === 'add_obj_btn'){
+				}
+				else if (load_from === 'add_obj_btn') {
 					transform.setOrigin(new Ammo.btVector3(position.x, 100, position.z));
-				} else if(load_from === 'player_drop'){
-					transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z));
-				} else {
+				}
+				else if (load_from === 'player_drop') {
+					if (PlayerDirection === 1) {
+						transform.setOrigin(new Ammo.btVector3(position.x-5, position.y, position.z));
+					} else
+					if (PlayerDirection === 2) {
+						transform.setOrigin(new Ammo.btVector3(position.x+5, position.y, position.z));
+					} else
+					if (PlayerDirection === 3) {
+						transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z-5));
+					} else
+					if (PlayerDirection === 4) {
+						transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z+5));
+					} else {
+						transform.setOrigin(new Ammo.btVector3(position.x, position.y, position.z));
+					}
+				}
+				else {
 
 				}
 
@@ -495,12 +519,15 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 						// var tt = getQuatertionFromEuler(rotate.y, rotate.z, rotate.x);
 						// console.log(tt);
 						transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
-					} else if(load_from === 'add_obj_btn'){
+					}
+					else if (load_from === 'add_obj_btn') {
 
-					} else if(load_from === 'player_drop'){
+					}
+					else if (load_from === 'player_drop') {
 						transform.setRotation(new Ammo.btQuaternion(rotate.x, rotate.y, rotate.z, rotate.w));
 						// mesh.setRotation()
-					} else {
+					}
+					else {
 					}
 				}
 
@@ -516,9 +543,38 @@ function loadGLTF(name, model_file, position, scale, rotate, can_move, load_from
 				let xObjectBody = new Ammo.btRigidBody(rbInfo);
 				xObjectBody.setFriction(10);
 
-				 // xObjectBody.setCollisionFlags( 2 );
-				 // xObjectBody.setActivationState(4);
 
+				if (object_speed_vector !== null) {
+					console.log(PlayerDirection);
+					if (PlayerDirection === 1) {
+						var tbv31 = new Ammo.btVector3();
+						tbv31.setValue(object_speed_vector.x() - 55, object_speed_vector.y(), object_speed_vector.z());
+						xObjectBody.setLinearVelocity(tbv31);
+					}
+					else if (PlayerDirection === 2) {
+						var tbv31 = new Ammo.btVector3();
+						tbv31.setValue(object_speed_vector.x() + 55, object_speed_vector.y(), object_speed_vector.z());
+						xObjectBody.setLinearVelocity(tbv31);
+					}
+					else if (PlayerDirection === 3) {
+						var tbv31 = new Ammo.btVector3();
+						tbv31.setValue(object_speed_vector.x(), object_speed_vector.y(), object_speed_vector.z() - 55);
+						xObjectBody.setLinearVelocity(tbv31);
+					}
+					else if (PlayerDirection === 4) {
+						var tbv31 = new Ammo.btVector3();
+						tbv31.setValue(object_speed_vector.x(), object_speed_vector.y(), object_speed_vector.z() + 55);
+						xObjectBody.setLinearVelocity(tbv31);
+					}
+					else {
+						xObjectBody.setLinearVelocity(object_speed_vector);
+					}
+				}
+
+				// xObjectBody.setCollisionFlags( 2 );
+				// xObjectBody.setActivationState(4);
+
+				console.log(xObjectBody);
 				physicsWorld.addRigidBody(xObjectBody, colGroupGreenBall, colGroupPlane | colGroupRedBall | colGroupGreenBall);
 
 				obj.userData.physicsBody = xObjectBody;
@@ -603,7 +659,7 @@ function createBox(pos, quat, w, l, h, mass, friction) {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 function createFloor() {
-	createBox(new THREE.Vector3(0, -0.5, 0), ZERO_QUATERNION, 750, 1, 750, 0, 2);
+	createBox(new THREE.Vector3(0, -0.5, 0), ZERO_QUATERNION, 750, 1, 750, 0, 20);
 }
 
 
@@ -979,7 +1035,7 @@ function onWindowResize() {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
-function movePlayer(){
+function movePlayer() {
 	if (main_player !== null) {
 
 		var tbv30 = new Ammo.btVector3();
@@ -989,33 +1045,38 @@ function movePlayer(){
 			PlayerFlying = false;
 		}
 
-		if(CurrentMoveKeyCode.indexOf('KeyA') !== -1){
+
+		if (CurrentMoveKeyCode.indexOf('KeyA') !== -1) {
 			if (tbv30.x() > -80) {
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x() - 10, tbv30.y(), tbv30.z());
 				PlayerBody.setLinearVelocity(tbv31);
 			}
+			PlayerDirection = 1;
 		}
-		if(CurrentMoveKeyCode.indexOf('KeyD') !== -1){
+		if (CurrentMoveKeyCode.indexOf('KeyD') !== -1) {
 			if (tbv30.x() < 80) {
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x() + 10, tbv30.y(), tbv30.z());
 				PlayerBody.setLinearVelocity(tbv31);
 			}
+			PlayerDirection = 2;
 		}
-		if(CurrentMoveKeyCode.indexOf('KeyW') !== -1){
+		if (CurrentMoveKeyCode.indexOf('KeyW') !== -1) {
 			if (tbv30.z() > -80) {
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() - 10);
 				PlayerBody.setLinearVelocity(tbv31);
 			}
+			PlayerDirection = 3;
 		}
-		if(CurrentMoveKeyCode.indexOf('KeyS') !== -1){
+		if (CurrentMoveKeyCode.indexOf('KeyS') !== -1) {
 			if (tbv30.z() < 80) {
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x(), tbv30.y(), tbv30.z() + 10);
 				PlayerBody.setLinearVelocity(tbv31);
 			}
+			PlayerDirection = 4;
 
 		}
 		if (CurrentMoveKeyCode.length === 0) {
@@ -1023,29 +1084,29 @@ function movePlayer(){
 		}
 
 		//Change Animation
-		if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyA'){
+		if (CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyA') {
 			if (main_player_Anime.posture !== 'leftWalk') {
 				main_player_Anime.setAnimation('leftWalk' + main_player_Anime.holdStuff);
 			}
 		}
-		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyD'){
+		else if (CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyD') {
 			if (main_player_Anime.posture !== 'rightWalk') {
 				main_player_Anime.setAnimation('rightWalk' + main_player_Anime.holdStuff);
 			}
 		}
-		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyW'){
+		else if (CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyW') {
 			if (main_player_Anime.posture !== 'backWalk') {
 				main_player_Anime.setAnimation('backWalk' + main_player_Anime.holdStuff);
 			}
 		}
-		else if(CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyS'){
+		else if (CurrentMoveKeyCode[CurrentMoveKeyCode.length - 1] === 'KeyS') {
 			if (main_player_Anime.posture !== 'frontWalk') {
 				main_player_Anime.setAnimation('frontWalk' + main_player_Anime.holdStuff);
 			}
 		}
 
-		if(Math.abs(tbv30.x()) <= 3 && Math.abs(tbv30.z()) <= 3){
-			if(main_player_Anime.posture === 'frontWalk'){
+		if (Math.abs(tbv30.x()) <= 3 && Math.abs(tbv30.z()) <= 3) {
+			if (main_player_Anime.posture === 'frontWalk') {
 				main_player_Anime.setAnimation('frontStand' + main_player_Anime.holdStuff)
 			}
 			else if (main_player_Anime.posture === 'backWalk') {
@@ -1057,6 +1118,7 @@ function movePlayer(){
 			else if (main_player_Anime.posture === 'leftWalk') {
 				main_player_Anime.setAnimation('leftStand' + main_player_Anime.holdStuff)
 			}
+			PlayerDirection = 0;
 		}
 
 	}
@@ -1099,7 +1161,7 @@ function searchPickUpObj() {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-function pickUpAndDrop(){
+function pickUpAndDrop() {
 
 	searchPickUpObj();
 
@@ -1148,9 +1210,13 @@ function pickUpAndDrop(){
 
 		//Try to drop something -------------------------------------
 
+
+		var tbv30 = new Ammo.btVector3();
+		tbv30 = PlayerBody.getLinearVelocity();
+
 		var mesh = main_player.holdStuff;
 
-		loadGLTF(mesh.userData.userName, mesh.userData.filePath, main_player.position, mesh.scale, null, mesh.userData.canMove, 'player_drop', mesh.userData.object_physics, 'pickup');
+		loadGLTF(mesh.userData.userName, mesh.userData.filePath, main_player.position, mesh.scale, null, mesh.userData.canMove, 'player_drop', mesh.userData.object_physics, 'pickup', tbv30);
 
 		//After dropping, play is holding nothing.
 		main_player.holdStuff = null;
@@ -1330,8 +1396,8 @@ $(document).ready(function () {
 
 	document.addEventListener('keydown', function (e) {
 		if (e.code === "KeyA" || e.code === "KeyD" || e.code === "KeyW" || e.code === "KeyS") {
-			if(CurrentMoveKeyCode.indexOf(e.code) === -1){
-				if(CurrentMoveKeyCode.length === 2){
+			if (CurrentMoveKeyCode.indexOf(e.code) === -1) {
+				if (CurrentMoveKeyCode.length === 2) {
 					CurrentMoveKeyCode.shift();
 				}
 				CurrentMoveKeyCode.push(e.code);
@@ -1345,7 +1411,7 @@ $(document).ready(function () {
 		}
 	})
 
-	document.addEventListener('keypress', function (e) {
+	document.addEventListener('keyup', function (e) {
 
 		console.log(e.code);
 
@@ -1358,7 +1424,7 @@ $(document).ready(function () {
 		if (e.code === "KeyQ") {
 			var tbv30 = new Ammo.btVector3();
 			tbv30 = PlayerBody.getLinearVelocity();
-			if (tbv30.y()<2 && tbv30.y()>-2) {
+			if (tbv30.y() < 2 && tbv30.y() > -2) {
 				PlayerFlying = true;
 				var tbv31 = new Ammo.btVector3();
 				tbv31.setValue(tbv30.x(), tbv30.y() + 50, tbv30.z());
